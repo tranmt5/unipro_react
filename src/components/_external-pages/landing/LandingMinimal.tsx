@@ -8,20 +8,34 @@ import { varFadeInUp, MotionInView, varFadeInDown } from '../../animate';
 
 const CARDS = [
   {
-    icon: '/static/icons/ic_design.svg',
-    title: 'UI & UX Design',
+    icon: '/static/icons/ic_customer.svg',
+    title: (
+      <>
+        Reso <br /> Direct-to-Consumer
+      </>
+    ),
     description:
-      'The set is built on the principles of the atomic design system. It helps you to create projects fastest and easily customized packages for your projects.'
+      'Allow your brand to offer your customers a personalised buying experience. Go D2C and add a new distribution channel for your brand.'
   },
   {
-    icon: '/static/icons/ic_code.svg',
-    title: 'Development',
-    description: 'Easy to customize and extend each component, saving you time and money.'
+    icon: '/static/icons/ic_store.svg',
+    title: (
+      <>
+        Reso <br /> Hyperlocal Marketplace
+      </>
+    ),
+    description:
+      'Leverage your business with a hyperlocal marketplace platform and focus on your target audience, ensuring on-time delivery.'
   },
   {
-    icon: '/static/brand/logo_single.svg',
-    title: 'Branding',
-    description: 'Consistent design in colors, fonts ... makes brand recognition easy.'
+    icon: '/static/icons/ic_headless.svg',
+    title: (
+      <>
+        Reso <br /> Headless Commerce
+      </>
+    ),
+    description:
+      'Scale your business with an event-driven platform. Build your own front-end and enhance your business without worrying about the infrastructure.'
   }
 ];
 
@@ -45,35 +59,32 @@ const CardStyle = styled(Card)(({ theme }) => {
     minHeight: 440,
     margin: 'auto',
     textAlign: 'center',
-    padding: theme.spacing(10, 5, 0),
+    padding: theme.spacing(10, 2, 0),
     boxShadow: `-40px 40px 80px 0 ${shadowCard(0.48)}`,
     [theme.breakpoints.up('md')]: {
-      boxShadow: 'none',
-      backgroundColor: theme.palette.grey[theme.palette.mode === 'light' ? 200 : 800]
+      boxShadow: 'none'
+      // backgroundColor: theme.palette.grey[theme.palette.mode === 'light' ? 200 : 800]
     },
-    '&.cardLeft': {
-      [theme.breakpoints.up('md')]: { marginTop: -40 }
-    },
+    '&.cardLeft': {},
     '&.cardCenter': {
       [theme.breakpoints.up('md')]: {
-        marginTop: -80,
         backgroundColor: theme.palette.background.paper,
-        boxShadow: `-40px 40px 80px 0 ${shadowCard(0.4)}`,
-        '&:before': {
-          top: 0,
-          left: 0,
-          right: 0,
-          bottom: 0,
-          zIndex: -1,
-          content: "''",
-          margin: 'auto',
-          position: 'absolute',
-          width: 'calc(100% - 40px)',
-          height: 'calc(100% - 40px)',
-          borderRadius: theme.shape.borderRadiusMd,
-          backgroundColor: theme.palette.background.paper,
-          boxShadow: `-20px 20px 40px 0 ${shadowCard(0.12)}`
-        }
+        boxShadow: `0px 40px 80px 0 ${shadowCard(0.4)}`
+        // '&:before': {
+        //   top: 0,
+        //   left: 0,
+        //   right: 0,
+        //   bottom: 0,
+        //   zIndex: -1,
+        //   content: "''",
+        //   margin: 'auto',
+        //   position: 'absolute',
+        //   width: 'calc(100% - 40px)',
+        //   height: 'calc(100% - 40px)',
+        //   borderRadius: theme.shape.borderRadiusMd,
+        //   backgroundColor: theme.palette.background.paper,
+        //   boxShadow: `-20px 20px 40px 0 ${shadowCard(0.12)}`
+        // }
       }
     }
   };
@@ -97,39 +108,44 @@ export default function LandingMinimalHelps() {
   return (
     <RootStyle>
       <Container maxWidth="lg">
-        <Box sx={{ mb: { xs: 10, md: 25 } }}>
-          <MotionInView variants={varFadeInUp}>
-            <Typography
-              component="p"
-              variant="overline"
-              sx={{ mb: 2, color: 'text.secondary', textAlign: 'center' }}
-            >
-              Minimal
-            </Typography>
-          </MotionInView>
-          <MotionInView variants={varFadeInDown}>
-            <Typography variant="h2" sx={{ textAlign: 'center' }}>
-              What minimal helps you?
-            </Typography>
-          </MotionInView>
-        </Box>
+        <Container maxWidth="md">
+          <Box sx={{ mb: { xs: 10, md: 25 }, textAlign: 'center' }}>
+            <MotionInView variants={varFadeInDown}>
+              <Typography variant="h3" sx={{ mb: 3 }}>
+                Direct-to-Consumer Digital Ordering Enhanced by Powerful Technology
+              </Typography>
+            </MotionInView>
+            <MotionInView variants={varFadeInUp}>
+              <Typography
+                sx={{
+                  color: isLight ? 'text.secondary' : 'text.primary'
+                }}
+              >
+                Streamline your digital ordering with a powerful platform that facilitates direct to
+                consumer sales.
+              </Typography>
+            </MotionInView>
+          </Box>
+        </Container>
 
         <Grid container spacing={isDesktop ? 10 : 5}>
           {CARDS.map((card, index) => (
-            <Grid key={card.title} item xs={12} md={4}>
+            <Grid key={`card-hero-${indexedDB}`} item xs={12} md={4}>
               <MotionInView variants={varFadeInUp}>
                 <CardStyle
                   className={(index === 0 && 'cardLeft') || (index === 1 && 'cardCenter') || ''}
                 >
                   <CardIconStyle
                     src={card.icon}
-                    alt={card.title}
                     sx={{
                       ...(index === 0 && {
-                        filter: (theme) => shadowIcon(theme.palette.info.main)
+                        filter: (theme) => shadowIcon(theme.palette.warning.main)
                       }),
                       ...(index === 1 && {
                         filter: (theme) => shadowIcon(theme.palette.error.main)
+                      }),
+                      ...(index === 2 && {
+                        filter: (theme) => shadowIcon(theme.palette.info.main)
                       })
                     }}
                   />

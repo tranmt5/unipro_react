@@ -52,10 +52,10 @@ export default function LandingAdvertisement() {
             textAlign: { xs: 'center', md: 'left' }
           }}
         >
-          <MotionInView variants={varFadeInDown} sx={{ color: 'common.white', mb: 5 }}>
-            <Typography variant="h2">
-              Get started with
-              <br /> minimal kit today
+          <MotionInView variants={varFadeInDown} sx={{ color: 'common.white', mb: 5, pr: 2 }}>
+            <Typography variant="h3">
+              Start, build, and grow your online business today with
+              <br /> Reso!
             </Typography>
           </MotionInView>
           <MotionInView variants={varFadeInDown}>

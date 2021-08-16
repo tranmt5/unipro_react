@@ -10,7 +10,9 @@ import {
   LandingPricingPlans,
   LandingAdvertisement,
   LandingCleanInterfaces,
-  LandingHugePackElements
+  LandingHugePackElements,
+  LandingPartner,
+  LandingWhitePlatform
 } from '../components/_external-pages/landing';
 
 // ----------------------------------------------------------------------
@@ -33,11 +35,13 @@ export default function LandingPage() {
       <LandingHero />
       <ContentStyle>
         <LandingMinimal />
-        <LandingHugePackElements />
+        <LandingPartner />
+        <LandingWhitePlatform />
+        {/* <LandingHugePackElements />
         <LandingDarkMode />
         <LandingThemeColor />
         <LandingCleanInterfaces />
-        <LandingPricingPlans />
+        <LandingPricingPlans /> */}
         <LandingAdvertisement />
       </ContentStyle>
     </RootStyle>

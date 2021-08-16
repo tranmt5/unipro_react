@@ -6,3 +6,5 @@ export { default as LandingPricingPlans } from './LandingPricingPlans';
 export { default as LandingAdvertisement } from './LandingAdvertisement';
 export { default as LandingCleanInterfaces } from './LandingCleanInterfaces';
 export { default as LandingHugePackElements } from './LandingHugePackElements';
+export { default as LandingPartner } from './LandingPartner';
+export { default as LandingWhitePlatform } from './LandingWhitePlatform';
