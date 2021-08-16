@@ -23,7 +23,7 @@ export default function Button(theme: Theme) {
           }
         },
         containedPrimary: {
-          color: theme.palette.getContrastText(theme.palette.warning.light),
+          color: '#fff',
           boxShadow: theme.customShadows.primary
         },
         containedSecondary: {

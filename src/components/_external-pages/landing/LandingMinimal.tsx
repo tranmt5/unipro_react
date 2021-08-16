@@ -1,6 +1,6 @@
 // material
 import { alpha, useTheme, styled } from '@material-ui/core/styles';
-import { Box, Grid, Card, Container, Typography, useMediaQuery } from '@material-ui/core';
+import { Box, Grid, Card, Container, Typography, useMediaQuery, Button } from '@material-ui/core';
 //
 import { varFadeInUp, MotionInView, varFadeInDown } from '../../animate';
 
@@ -155,6 +155,9 @@ export default function LandingMinimalHelps() {
                   <Typography sx={{ color: isLight ? 'text.secondary' : 'common.white' }}>
                     {card.description}
                   </Typography>
+                  <Button sx={{ marginTop: 2, marginBottom: 2 }} size="large" variant="contained">
+                    Learn more
+                  </Button>
                 </CardStyle>
               </MotionInView>
             </Grid>
