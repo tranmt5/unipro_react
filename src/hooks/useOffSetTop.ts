@@ -1,23 +1,19 @@
 import { useState, useEffect } from 'react';
-
+import { useScroll } from 'ahooks';
 // ----------------------------------------------------------------------
 
-export default function useOffSetTop(top: number) {
+export default function useOffSetTop(top: number, target?: HTMLElement) {
+  const { top: scrollTop } = useScroll(target);
+
   const [offsetTop, setOffSetTop] = useState(false);
-  const isTop = top || 100;
 
   useEffect(() => {
-    window.onscroll = () => {
-      if (window.pageYOffset > isTop) {
-        setOffSetTop(true);
-      } else {
-        setOffSetTop(false);
-      }
-    };
-    return () => {
-      window.onscroll = null;
-    };
-  }, [isTop]);
+    if (scrollTop > top) {
+      setOffSetTop(true);
+    } else {
+      setOffSetTop(false);
+    }
+  }, [scrollTop, top]);
 
   return offsetTop;
 }
