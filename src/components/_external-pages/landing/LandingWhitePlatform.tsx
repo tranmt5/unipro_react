@@ -46,6 +46,7 @@ const shadowIcon = (color: string) => `drop-shadow(2px 2px 2px ${alpha(color, 0.
 
 const RootStyle = styled('div')(({ theme }) => ({
   paddingTop: theme.spacing(15),
+  paddingBottom: theme.spacing(4),
   [theme.breakpoints.up('md')]: {
     paddingBottom: theme.spacing(15)
   }

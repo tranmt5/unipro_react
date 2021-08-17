@@ -71,7 +71,7 @@ export default function LandingAdvertisement() {
                 '&:hover': { bgcolor: 'grey.300' }
               }}
             >
-              Đặt hàng
+              Đăng ký ngay
             </Button>
           </MotionInView>
         </Box>

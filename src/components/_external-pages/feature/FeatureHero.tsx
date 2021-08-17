@@ -25,12 +25,9 @@ const RootStyle = styled(motion.div)(({ theme }) => ({
   position: 'relative',
   backgroundColor: theme.palette.background.default,
   [theme.breakpoints.up('md')]: {
-    top: 0,
-    left: 0,
     width: '100%',
     height: '100vh',
     display: 'flex',
-    position: 'fixed',
     alignItems: 'center'
   }
 }));
@@ -49,14 +46,6 @@ const ContentStyle = styled((props) => <Stack spacing={5} {...props} />)(({ them
   }
 }));
 
-const HeroOverlayStyle = styled(motion.img)({
-  zIndex: 9,
-  width: '100%',
-  height: '100%',
-  objectFit: 'cover',
-  position: 'absolute'
-});
-
 const HeroImgStyle = styled(motion.img)(({ theme }) => ({
   top: 0,
   right: 0,
@@ -74,7 +63,7 @@ const HeroImgStyle = styled(motion.img)(({ theme }) => ({
 
 // ----------------------------------------------------------------------
 
-export default function LandingHero() {
+export default function FeatureHero() {
   const theme = useTheme();
   const isDesktop = useMediaQuery(theme.breakpoints.up('lg'));
 
@@ -84,25 +73,22 @@ export default function LandingHero() {
         {/* <HeroOverlayStyle alt="overlay" src="/static/overlay.svg" variants={varFadeIn} /> */}
 
         <MHidden width="mdDown">
-          <HeroImgStyle alt="hero" src="/static/home/hero_img.svg" variants={varFadeInUp} />
+          <HeroImgStyle alt="hero" src="/static/feature/feature_hero.svg" variants={varFadeInUp} />
         </MHidden>
 
         <Container maxWidth="lg">
           <ContentStyle>
             <motion.div variants={varFadeInRight}>
               <Typography
-                component="span"
                 variant={isDesktop ? 'h2' : 'h3'}
-                sx={{ color: 'primary.main' }}
+                component="h1"
+                color="text.default"
+                sx={{ fontWeight: 'normal' }}
               >
-                Reso
-              </Typography>
-            </motion.div>
-
-            <motion.div variants={varFadeInRight}>
-              <Typography color="text.secondary" variant="h4">
-                Nền tảng Đặt hàng trực tuyến và giao nhận tích hợp chuyên sâu cho ngành Bán lẻ và
-                F&B.
+                <Typography component="span" variant={isDesktop ? 'h2' : 'h3'}>
+                  Tất cả tính năng{' '}
+                </Typography>
+                bạn cần để phát triển kinh doanh
               </Typography>
             </motion.div>
 
@@ -122,21 +108,10 @@ export default function LandingHero() {
                   Bắt đầu ngay
                 </Button>
               </motion.div>
-              <motion.div variants={varFadeInRight}>
-                <Button
-                  size="large"
-                  variant="outlined"
-                  component={RouterLink}
-                  to={PATH_DASHBOARD.root}
-                >
-                  Xem mẫu
-                </Button>
-              </motion.div>
             </Stack>
           </ContentStyle>
         </Container>
       </RootStyle>
-      <Box sx={{ height: { md: '100vh' } }} />
     </>
   );
 }

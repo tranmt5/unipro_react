@@ -108,7 +108,7 @@ export default function MainNavbar() {
               target="_blank"
               href="https://material-ui.com/store/items/minimal-dashboard/"
             >
-              Book a demo
+              Xem mẫu
             </Button>
           </MHidden>
 

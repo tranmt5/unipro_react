@@ -22,7 +22,7 @@ const SOCIALS = [
 
 const LINKS = [
   {
-    headline: 'Minimal',
+    headline: 'Reso',
     children: [
       { name: 'About us', href: '#' },
       { name: 'Contact us', href: '#' },
@@ -39,7 +39,7 @@ const LINKS = [
   {
     headline: 'Contact',
     children: [
-      { name: 'support@minimals.cc', href: '#' },
+      { name: 'reso-sale@support.cc', href: '#' },
       { name: 'Los Angeles, 359  Hidden Valley Road', href: '#' }
     ]
   }
@@ -69,8 +69,7 @@ export default function MainFooter() {
           </Grid>
           <Grid item xs={8} md={3}>
             <Typography variant="body2" sx={{ pr: { md: 5 } }}>
-              The starting point for your next project with Minimal UI Kit, built on the newest
-              version of Material-UI ©, ready to be customized to your style.
+              Nền tảng Đặt hàng trực tuyến và giao nhận tích hợp chuyên sâu cho ngành Bán lẻ và F&B.
             </Typography>
 
             <Stack

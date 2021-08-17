@@ -6,6 +6,7 @@ import DashboardLayout from '../layouts/dashboard';
 import LogoOnlyLayout from '../layouts/LogoOnlyLayout';
 // pages
 import LandingPage from '../pages/LandingPage';
+import FeaturesPage from '../pages/Features';
 // components
 import LoadingScreen from '../components/LoadingScreen';
 // ----------------------------------------------------------------------
@@ -68,13 +69,17 @@ export default function Router() {
       element: <LogoOnlyLayout />,
       children: [
         { path: '404', element: <NotFound /> },
-        { path: '*', element: <Navigate to="/404" replace /> }
+        { path: '*', element: <Navigate to="/coming-soon" replace /> }
       ]
     },
     {
       path: '/',
       element: <MainLayout />,
-      children: [{ path: '/', element: <LandingPage /> }]
+      children: [
+        { path: '/', element: <LandingPage /> },
+        { path: '/features', element: <FeaturesPage /> },
+        { path: '/coming-soon', element: <ComingSoon /> }
+      ]
     },
     { path: '*', element: <Navigate to="/404" replace /> }
   ]);
@@ -90,5 +95,6 @@ const PageFour = Loadable(lazy(() => import('../pages/PageFour')));
 const PageFive = Loadable(lazy(() => import('../pages/PageFive')));
 const PageSix = Loadable(lazy(() => import('../pages/PageSix')));
 const NotFound = Loadable(lazy(() => import('../pages/Page404')));
+const ComingSoon = Loadable(lazy(() => import('../pages/ComingSoon')));
 // Main
 // const LandingPage = Loadable(lazy(() => import('../pages/LandingPage')));

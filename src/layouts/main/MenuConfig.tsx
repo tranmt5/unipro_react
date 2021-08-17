@@ -1,9 +1,13 @@
+import { Box } from '@material-ui/core';
 import { Icon } from '@iconify/react';
 import homeFill from '@iconify/icons-eva/home-fill';
 import fileFill from '@iconify/icons-eva/file-fill';
+import AppsIcon from '@material-ui/icons/Apps';
+import ApartmentIcon from '@material-ui/icons/Apartment';
+import FormatListBulletedIcon from '@material-ui/icons/FormatListBulleted';
+import PeopleAltIcon from '@material-ui/icons/PeopleAlt';
 // routes
 import { PATH_DASHBOARD, PATH_PAGE } from '../../routes/paths';
-
 // ----------------------------------------------------------------------
 
 const ICON_SIZE = {
@@ -15,30 +19,38 @@ const menuConfig = [
   {
     title: 'Sản phẩm',
     path: '/products',
-    icon: <Icon icon={fileFill} {...ICON_SIZE} />,
+    icon: <AppsIcon {...ICON_SIZE} />,
     children: [
       {
-        subheader: 'Products',
+        subheader: 'Danh sách',
         items: [
-          { title: 'Direct-to-Consumer', path: PATH_PAGE.about },
-          { title: 'Hyperlocal Marketplace', path: PATH_PAGE.contact },
-          { title: 'Headless Commerce', path: PATH_PAGE.faqs }
+          { title: 'Trực tiếp tới người dùng', path: PATH_PAGE.about },
+          { title: 'Thị trường địa phương', path: PATH_PAGE.contact },
+          { title: 'Headless-Commerce', path: PATH_PAGE.faqs }
         ]
       }
     ]
   },
-  { title: 'Tính năng', path: PATH_DASHBOARD.root, icon: <Icon icon={fileFill} {...ICON_SIZE} /> }
+  { title: 'Tính năng', path: '/features', icon: <FormatListBulletedIcon {...ICON_SIZE} /> }
 ];
 
 export const rightMenuConfig = [
   {
     title: 'Doanh nghiệp',
     path: '/enterprise',
-    icon: <Icon icon={fileFill} {...ICON_SIZE} />
+    icon: <ApartmentIcon {...ICON_SIZE} />
   },
-  { title: 'Startup', path: '/startups', icon: <Icon icon={fileFill} {...ICON_SIZE} /> },
-  { title: 'Khách hàng', path: '/clients', icon: <Icon icon={fileFill} {...ICON_SIZE} /> },
-  { title: 'Bảng giá', path: '/pricing', icon: <Icon icon={fileFill} {...ICON_SIZE} /> }
+  {
+    title: 'Startup',
+    path: '/startups',
+    icon: <Box component="img" src="/static/icons/ic_rocket.svg" {...ICON_SIZE} />
+  },
+  { title: 'Khách hàng', path: '/clients', icon: <PeopleAltIcon {...ICON_SIZE} /> },
+  {
+    title: 'Theo yêu cầu',
+    path: '/on-demand',
+    icon: <Box component="img" src="/static/icons/ic_demand.svg" {...ICON_SIZE} />
+  }
 ];
 
 export default menuConfig;
