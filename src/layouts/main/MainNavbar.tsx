@@ -11,7 +11,7 @@ import { MHidden } from '../../components/@material-extend';
 //
 import MenuDesktop from './MenuDesktop';
 import MenuMobile from './MenuMobile';
-import navConfig from './MenuConfig';
+import navConfig, { rightMenuConfig } from './MenuConfig';
 
 // ----------------------------------------------------------------------
 
@@ -100,6 +100,9 @@ export default function MainNavbar() {
           <Box sx={{ flexGrow: 1 }} />
 
           <MHidden width="mdDown">
+            <MenuDesktop isOffset={isOffset} isHome={isHome} navConfig={rightMenuConfig} />
+          </MHidden>
+          <MHidden width="mdDown">
             <Button
               variant="contained"
               target="_blank"
@@ -110,7 +113,11 @@ export default function MainNavbar() {
           </MHidden>
 
           <MHidden width="mdUp">
-            <MenuMobile isOffset={isOffset} isHome={isHome} navConfig={navConfig} />
+            <MenuMobile
+              isOffset={isOffset}
+              isHome={isHome}
+              navConfig={[...navConfig, ...rightMenuConfig]}
+            />
           </MHidden>
         </Container>
       </ToolbarStyle>

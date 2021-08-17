@@ -89,8 +89,8 @@ export default function LandingPartner() {
         <Container maxWidth="lg">
           <Box sx={{ mb: { xs: 10, md: 25 } }}>
             <MotionInView variants={varFadeInDown}>
-              <Typography variant="h2" sx={{ textAlign: 'center', mb: 3 }}>
-                Empowering Businesses all over the World!
+              <Typography variant="h3" sx={{ textAlign: 'center', mb: 3 }}>
+                Được sử dụng bởi các chuỗi thương hiệu lớn
               </Typography>
             </MotionInView>
           </Box>

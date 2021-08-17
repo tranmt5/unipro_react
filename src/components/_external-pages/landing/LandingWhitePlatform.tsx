@@ -107,10 +107,31 @@ const FeatureCard = ({ feature }: { feature: Feature }) => {
 const features = [
   {
     icon: '/static/icons/ic_responsive.svg',
-    title: 'Custom & Responsive Themes',
-    description: 'Forget device responsiveness & focus on branding.',
+    title: 'Tùy chỉnh với nhiều đề tài',
+    description:
+      'Không cần lo về tương thích nhiều phương tiện và tập trung vào thương hiệu của bạn.',
     caption:
-      'Create a unique look and feel for your brand with Yelo’s customized, device responsive themes, or maintain your existing brand guidelines to stand out from your competitors.'
+      'Tạo giao diện độc đáo cho thương hiệu của bạn bằng các chủ đề tùy chỉnh, đáp ứng tất cả thiết bị hoặc sử dụng giao diện thương hiệu hiện có của bạn để nổi bật so với các đối thủ cạnh tranh.'
+  },
+  {
+    icon: '/static/icons/ic_customer.png',
+    title: 'Hỗ trợ khách hàng',
+    description: 'Đảm bảo việc giao tiếp ở thời gian thực với khách hàng',
+    caption: `Tương tác với khách hàng của bạn bằng cách sử dụng chatbot tích hợp của Reso. Cải thiện sự hài lòng của khách hàng bằng cách giảm thời gian chờ đợi và chi phí hoạt động với một nền tảng trò chuyện phù hợp tại chỗ.`
+  },
+  {
+    icon: '/static/icons/ic_delivery.gif',
+    title: 'Quản lý vận chuyển',
+    description: 'Nâng cao chất lượng dịch vụ vận chuyển bằng nền tảng đầu cuối.',
+    caption:
+      'Quản lý lập kế hoạch lộ trình, điều động tự động, theo dõi thời gian thực. Ngoài ra, tự động chỉ định đơn đặt hàng cho các nhóm giao hàng, dựa trên vị trí địa lý của họ và hơn thế nữa.'
+  },
+  {
+    icon: '/static/icons/ic_order.svg',
+    title: 'Quản lý đơn hàng',
+    description: 'Nhận nhiều đơn hàng hơn với chỉ vài bước.',
+    caption:
+      'Theo dõi tất cả các đơn đặt hàng từ một nền tảng. Cải thiện trải nghiệm của khách hàng bằng cách tự động hóa hệ thống đặt hàng của bạn, cho phép theo dõi đơn đặt hàng theo thời gian thực và cho phép khách hàng theo dõi đơn đặt hàng.'
   },
   {
     icon: '/static/icons/ic_multilang.svg',
@@ -118,26 +139,6 @@ const features = [
     description: 'Communicate in the language of your target audience.',
     caption:
       'Develop new markets, reach a global audience, and cater to different regions without having a language barrier on your website. Communicate in over 80 languages with your customers and ensure customer retention.'
-  },
-  {
-    icon: '/static/icons/ic_delivery.gif',
-    title: 'Delivery Management',
-    description: 'Enhance your delivery services with an end-to-end platform.',
-    caption:
-      'Manage route planning, automated dispatch, real-time tracking. Also, auto-assign orders to the delivery teams, based on their geolocation and more.'
-  },
-  {
-    icon: '/static/icons/ic_order.svg',
-    title: 'Order Management',
-    description: 'Get more orders closed with fewer steps.',
-    caption:
-      'Track all orders from one platform. Improve customer experience by automating your order system, enable real-time tracking of orders, and enable customers to track orders.'
-  },
-  {
-    icon: '/static/icons/ic_customer.png',
-    title: 'Customer Support',
-    description: 'Ensure real-time conversations with your customers.',
-    caption: `Interact with your customers using Yelo's integrated chatbot, solve their problems, and manage their orders seamlessly. Improve customer satisfaction by lowering wait times and operational costs with a right chat platform in place.`
   }
 ];
 
@@ -152,7 +153,7 @@ export default function LandingWhitePlatform() {
         <Box sx={{ mb: { xs: 10, md: 25 }, textAlign: 'center' }}>
           <MotionInView variants={varFadeInDown}>
             <Typography variant="h3" sx={{ textAlign: 'center', mb: 3 }}>
-              Launch A White-Label Platform For Your Business
+              Sử dụng nền tảng với thương hiệu do bạn làm chủ
             </Typography>
           </MotionInView>
           <MotionInView variants={varFadeInUp}>
@@ -161,8 +162,8 @@ export default function LandingWhitePlatform() {
                 color: isLight ? 'text.secondary' : 'text.primary'
               }}
             >
-              Give your business a push it lacks. Utilize numerous features provided by Yelo that
-              are apt for you to run a full-blown business.
+              Thúc đẩy cho doanh nghiệp của bạn với nhiều tính năng do Yelo cung cấp phù hợp để bạn
+              điều hành một công việc kinh doanh toàn diện.
             </Typography>
           </MotionInView>
         </Box>
@@ -202,7 +203,6 @@ export default function LandingWhitePlatform() {
             <MotionInView variants={varFadeInDown}>
               <Stack spacing={4}>
                 <FeatureCard feature={features[3]} />
-                <FeatureCard feature={features[4]} />
               </Stack>
             </MotionInView>
           </Grid>

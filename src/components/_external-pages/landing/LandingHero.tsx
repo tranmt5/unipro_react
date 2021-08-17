@@ -93,26 +93,25 @@ export default function LandingHero() {
               <Typography variant={isDesktop ? 'h2' : 'h3'} component="h1">
                 {isDesktop ? (
                   <>
-                    An End-to-End Direct to <br />
-                    Consumer Ordering Platform <br /> with
+                    Nền tảng đặt hàng cho người tiêu dùng <br />
                   </>
                 ) : (
-                  <>An End-to-End Direct to Consumer Ordering Platform with</>
+                  <>Nền tảng đặt hàng cho người tiêu dùng với </>
                 )}
                 <Typography
                   component="span"
                   variant={isDesktop ? 'h2' : 'h3'}
                   sx={{ color: 'primary.main' }}
                 >
-                  &nbsp;Reso Sale
+                  Reso Sale
                 </Typography>
               </Typography>
             </motion.div>
 
             <motion.div variants={varFadeInRight}>
               <Typography color="text.secondary" variant="h4">
-                Reso's comprehensive D2C ordering platform gives you the tools you need to
-                facilitate ordering and delivery from anywhere.
+                Nền tảng đặt hàng D2C toàn diện của Reso cung cấp cho bạn các công cụ cần thiết để
+                tạo điều kiện thuận lợi cho việc đặt hàng và giao hàng từ mọi nơi.
               </Typography>
             </motion.div>
 
@@ -129,7 +128,7 @@ export default function LandingHero() {
                   to={PATH_DASHBOARD.root}
                   startIcon={<Icon icon={flashFill} width={20} height={20} />}
                 >
-                  Start now
+                  Bắt đầu ngay
                 </Button>
               </motion.div>
               <motion.div variants={varFadeInRight}>
@@ -139,7 +138,7 @@ export default function LandingHero() {
                   component={RouterLink}
                   to={PATH_DASHBOARD.root}
                 >
-                  Book a demo
+                  Xem bản thử
                 </Button>
               </motion.div>
             </Stack>

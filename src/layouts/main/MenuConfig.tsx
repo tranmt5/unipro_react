@@ -13,12 +13,7 @@ const ICON_SIZE = {
 
 const menuConfig = [
   {
-    title: 'Home',
-    path: '/',
-    icon: <Icon icon={homeFill} {...ICON_SIZE} />
-  },
-  {
-    title: 'Products',
+    title: 'Sản phẩm',
     path: '/products',
     icon: <Icon icon={fileFill} {...ICON_SIZE} />,
     children: [
@@ -32,7 +27,18 @@ const menuConfig = [
       }
     ]
   },
-  { title: 'Features', path: PATH_DASHBOARD.root, icon: <Icon icon={fileFill} {...ICON_SIZE} /> }
+  { title: 'Tính năng', path: PATH_DASHBOARD.root, icon: <Icon icon={fileFill} {...ICON_SIZE} /> }
+];
+
+export const rightMenuConfig = [
+  {
+    title: 'Doanh nghiệp',
+    path: '/enterprise',
+    icon: <Icon icon={fileFill} {...ICON_SIZE} />
+  },
+  { title: 'Startup', path: '/startups', icon: <Icon icon={fileFill} {...ICON_SIZE} /> },
+  { title: 'Khách hàng', path: '/clients', icon: <Icon icon={fileFill} {...ICON_SIZE} /> },
+  { title: 'Bảng giá', path: '/pricing', icon: <Icon icon={fileFill} {...ICON_SIZE} /> }
 ];
 
 export default menuConfig;

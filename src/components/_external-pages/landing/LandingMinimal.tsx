@@ -11,31 +11,31 @@ const CARDS = [
     icon: '/static/icons/ic_customer.svg',
     title: (
       <>
-        Reso <br /> Direct-to-Consumer
+        Reso <br /> Trực tiếp tới người dùng
       </>
     ),
     description:
-      'Allow your brand to offer your customers a personalised buying experience. Go D2C and add a new distribution channel for your brand.'
+      'Cho phép thương hiệu của bạn cung cấp cho khách hàng trải nghiệm mua hàng được cá nhân hóa. Bắt đầu ngay và thêm một kênh phân phối mới cho thương hiệu của bạn.'
   },
   {
     icon: '/static/icons/ic_store.svg',
     title: (
       <>
-        Reso <br /> Hyperlocal Marketplace
+        Reso <br /> Thị trường địa phương
       </>
     ),
     description:
-      'Leverage your business with a hyperlocal marketplace platform and focus on your target audience, ensuring on-time delivery.'
+      'Tận dụng hoạt động kinh doanh của bạn với nền tảng thị trường siêu địa phương và tập trung vào đối tượng mục tiêu của bạn, đảm bảo giao hàng đúng hạn'
   },
   {
     icon: '/static/icons/ic_headless.svg',
     title: (
       <>
-        Reso <br /> Headless Commerce
+        Reso <br /> Headless-Commerce
       </>
     ),
     description:
-      'Scale your business with an event-driven platform. Build your own front-end and enhance your business without worrying about the infrastructure.'
+      'Mở rộng quy mô doanh nghiệp của bạn với nền tảng mở. Xây dựng giao diện người dùng của riêng bạn và nâng cao hoạt động kinh doanh của bạn mà không cần lo lắng về cơ sở hạ tầng.'
   }
 ];
 
@@ -70,29 +70,14 @@ const CardStyle = styled(Card)(({ theme }) => {
       [theme.breakpoints.up('md')]: {
         backgroundColor: theme.palette.background.paper,
         boxShadow: `0px 40px 80px 0 ${shadowCard(0.4)}`
-        // '&:before': {
-        //   top: 0,
-        //   left: 0,
-        //   right: 0,
-        //   bottom: 0,
-        //   zIndex: -1,
-        //   content: "''",
-        //   margin: 'auto',
-        //   position: 'absolute',
-        //   width: 'calc(100% - 40px)',
-        //   height: 'calc(100% - 40px)',
-        //   borderRadius: theme.shape.borderRadiusMd,
-        //   backgroundColor: theme.palette.background.paper,
-        //   boxShadow: `-20px 20px 40px 0 ${shadowCard(0.12)}`
-        // }
       }
     }
   };
 });
 
 const CardIconStyle = styled('img')(({ theme }) => ({
-  width: 40,
-  height: 40,
+  width: 54,
+  height: 54,
   margin: 'auto',
   marginBottom: theme.spacing(10),
   filter: shadowIcon(theme.palette.primary.main)
@@ -112,7 +97,7 @@ export default function LandingMinimalHelps() {
           <Box sx={{ mb: { xs: 10, md: 25 }, textAlign: 'center' }}>
             <MotionInView variants={varFadeInDown}>
               <Typography variant="h3" sx={{ mb: 3 }}>
-                Direct-to-Consumer Digital Ordering Enhanced by Powerful Technology
+                Tối ưu hóa quá trình đặt hàng với công nghệ tiên tiến
               </Typography>
             </MotionInView>
             <MotionInView variants={varFadeInUp}>
@@ -121,8 +106,8 @@ export default function LandingMinimalHelps() {
                   color: isLight ? 'text.secondary' : 'text.primary'
                 }}
               >
-                Streamline your digital ordering with a powerful platform that facilitates direct to
-                consumer sales.
+                Hợp lý hóa việc đặt hàng với một nền tảng mạnh mẽ tạo điều kiện thuận lợi cho việc
+                bán hàng trực tiếp của người tiêu dùng.
               </Typography>
             </MotionInView>
           </Box>
@@ -156,7 +141,7 @@ export default function LandingMinimalHelps() {
                     {card.description}
                   </Typography>
                   <Button sx={{ marginTop: 2, marginBottom: 2 }} size="large" variant="contained">
-                    Learn more
+                    Xem thêm
                   </Button>
                 </CardStyle>
               </MotionInView>

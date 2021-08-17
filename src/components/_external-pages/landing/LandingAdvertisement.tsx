@@ -54,8 +54,7 @@ export default function LandingAdvertisement() {
         >
           <MotionInView variants={varFadeInDown} sx={{ color: 'common.white', mb: 5, pr: 2 }}>
             <Typography variant="h3">
-              Start, build, and grow your online business today with
-              <br /> Reso!
+              Bắt đầu xây dựng và phát triển kinh doanh ngay bây giờ với Reso!
             </Typography>
           </MotionInView>
           <MotionInView variants={varFadeInDown}>
@@ -72,7 +71,7 @@ export default function LandingAdvertisement() {
                 '&:hover': { bgcolor: 'grey.300' }
               }}
             >
-              Purchase Now
+              Đặt hàng
             </Button>
           </MotionInView>
         </Box>
