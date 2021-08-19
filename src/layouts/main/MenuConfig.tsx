@@ -42,7 +42,7 @@ export const rightMenuConfig = [
   },
   {
     title: 'Startup',
-    path: '/startups',
+    path: '/start-up',
     icon: <Box component="img" src="/static/icons/ic_rocket.svg" {...ICON_SIZE} />
   },
   { title: 'Khách hàng', path: '/clients', icon: <PeopleAltIcon {...ICON_SIZE} /> },
