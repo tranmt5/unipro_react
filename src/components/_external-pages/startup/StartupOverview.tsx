@@ -71,14 +71,14 @@ export default function StatupOverview() {
 
   return (
     <>
-      <RootStyle initial="initial" animate="animate" variants={varWrapEnter}>
+      <RootStyle variants={varWrapEnter}>
         <WrapperStyle maxWidth="lg">
           <MotionInView variants={varFadeInDown}>
             <Card>
               <CardContent
                 sx={{
-                  paddingY: 8,
-                  paddingX: 4
+                  paddingX: 4,
+                  paddingY: 4
                 }}
               >
                 <Grid container spacing={[2, 8]}>

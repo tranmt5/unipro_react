@@ -9,33 +9,39 @@ import { varFadeInUp, MotionInView, varFadeInDown } from '../../animate';
 const CARDS = [
   {
     icon: '/static/icons/ic_customer.svg',
-    title: (
-      <>
-        Reso <br /> Trực tiếp tới người dùng
-      </>
-    ),
+    title: <>Trực tiếp tới người dùng</>,
     description:
       'Cho phép thương hiệu của bạn cung cấp cho khách hàng trải nghiệm mua hàng được cá nhân hóa. Bắt đầu ngay và thêm một kênh phân phối mới cho thương hiệu của bạn.'
   },
   {
     icon: '/static/icons/ic_store.svg',
-    title: (
-      <>
-        Reso <br /> Thị trường địa phương
-      </>
-    ),
+    title: <>Thị trường địa phương</>,
     description:
       'Tận dụng hoạt động kinh doanh của bạn với nền tảng thị trường siêu địa phương và tập trung vào đối tượng mục tiêu của bạn, đảm bảo giao hàng đúng hạn'
   },
   {
     icon: '/static/icons/ic_headless.svg',
-    title: (
-      <>
-        Reso <br /> Headless-Commerce
-      </>
-    ),
+    title: <>Headless-Commerce</>,
     description:
       'Mở rộng quy mô doanh nghiệp của bạn với nền tảng mở. Xây dựng giao diện người dùng của riêng bạn và nâng cao hoạt động kinh doanh của bạn mà không cần lo lắng về cơ sở hạ tầng.'
+  },
+  {
+    icon: '/static/icons/ic_star.svg',
+    title: <>Xây dựng mối quan hệ khách hàng tốt hơn</>,
+    description:
+      'Cải thiện lòng trung thành và giữ chân khách hàng bằng cách giảm giá, dịch vụ đăng ký và biểu ngữ khuyến mại.'
+  },
+  {
+    icon: '/static/icons/ic_franchise.svg',
+    title: <>Quản lý nhiều chi nhánh</>,
+    description:
+      'Tích hợp nhiều cửa hàng nhượng quyền hoặc đại lý của thương hiệu của bạn và cho phép chủ sở hữu đăng ký và đăng nhập vào trang tổng quan của bạn.'
+  },
+  {
+    icon: '/static/icons/ic_payment.svg',
+    title: <>Cổng thanh toán</>,
+    description:
+      'Tích hợp nhiều cổng thanh toán với các trang web của bạn. Cung cấp trải nghiệm thanh toán mượt mà cho khách hàng của bạn. Do đó nâng cao lòng tin & sự hài lòng của khách hàng.'
   }
 ];
 
@@ -57,6 +63,7 @@ const CardStyle = styled(Card)(({ theme }) => {
   return {
     maxWidth: 380,
     minHeight: 440,
+    height: '100%',
     margin: 'auto',
     textAlign: 'center',
     padding: theme.spacing(10, 2, 4),
@@ -94,7 +101,7 @@ export default function LandingMinimalHelps() {
     <RootStyle>
       <Container maxWidth="lg">
         <Container maxWidth="md">
-          <Box sx={{ mb: { xs: 10, md: 25 }, textAlign: 'center' }}>
+          <Box sx={{ mb: { xs: 10, md: 14 }, textAlign: 'center' }}>
             <MotionInView variants={varFadeInDown}>
               <Typography variant="h3" sx={{ mb: 3 }}>
                 Tối ưu hóa quá trình đặt hàng với công nghệ tiên tiến
@@ -113,23 +120,21 @@ export default function LandingMinimalHelps() {
           </Box>
         </Container>
 
-        <Grid container spacing={isDesktop ? 10 : 5}>
+        <Grid container spacing={isDesktop ? 10 : 5} alignItems="stretch">
           {CARDS.map((card, index) => (
             <Grid key={`card-hero-${indexedDB}`} item xs={12} md={4}>
-              <MotionInView variants={varFadeInUp}>
-                <CardStyle
-                  className={(index === 0 && 'cardLeft') || (index === 1 && 'cardCenter') || ''}
-                >
+              <MotionInView sx={{ height: '100%' }} variants={varFadeInUp}>
+                <CardStyle>
                   <CardIconStyle
                     src={card.icon}
                     sx={{
-                      ...(index === 0 && {
+                      ...(index % 3 === 0 && {
                         filter: (theme) => shadowIcon(theme.palette.warning.main)
                       }),
-                      ...(index === 1 && {
+                      ...(index % 3 === 1 && {
                         filter: (theme) => shadowIcon(theme.palette.error.main)
                       }),
-                      ...(index === 2 && {
+                      ...(index % 3 === 2 && {
                         filter: (theme) => shadowIcon(theme.palette.info.main)
                       })
                     }}

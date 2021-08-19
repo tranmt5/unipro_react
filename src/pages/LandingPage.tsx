@@ -1,6 +1,7 @@
 // material
 import { styled } from '@material-ui/core/styles';
 import ScrollToTop from 'components/ScrollToTopBtn';
+import LandingDomain from 'components/_external-pages/landing/LandingDomain';
 // components
 import Page from '../components/Page';
 import {
@@ -28,13 +29,17 @@ const ContentStyle = styled('div')(({ theme }) => ({
 
 export default function LandingPage() {
   return (
-    <RootStyle title="Best Direct-to-Consumer Ordering Platform | Sale reso" id="move_top">
+    <RootStyle
+      title="Nền tảng Đặt hàng trực tuyến và giao nhận tích hợp chuyên sâu cho ngành Bán lẻ và F&B. | Reso"
+      id="move_top"
+    >
       <LandingHero />
       <ScrollToTop />
       <ContentStyle>
         <LandingMinimal />
         <LandingPartner />
         <LandingWhitePlatform />
+        <LandingDomain />
         <LandingAdvertisement />
       </ContentStyle>
     </RootStyle>

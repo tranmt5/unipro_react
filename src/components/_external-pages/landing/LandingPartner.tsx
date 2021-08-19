@@ -87,10 +87,19 @@ export default function LandingPartner() {
     <RootStyle>
       <Container maxWidth="lg">
         <Container maxWidth="lg">
-          <Box sx={{ mb: { xs: 10, md: 25 } }}>
+          <Box sx={{ mb: { xs: 10, md: 25 }, textAlign: 'center' }}>
             <MotionInView variants={varFadeInDown}>
-              <Typography variant="h3" sx={{ textAlign: 'center', mb: 3 }}>
+              <Typography variant="h3" sx={{ mb: 3 }}>
                 Được sử dụng bởi các chuỗi thương hiệu lớn
+              </Typography>
+            </MotionInView>
+            <MotionInView variants={varFadeInUp}>
+              <Typography
+                sx={{
+                  color: isLight ? 'text.secondary' : 'text.primary'
+                }}
+              >
+                Cũng như các mô hình Khởi nghiệp bán lẻ kiểu mới
               </Typography>
             </MotionInView>
           </Box>
