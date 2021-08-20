@@ -57,7 +57,6 @@ const SlickStyle = styled(Container)(({ theme }) => ({
 }));
 
 const PartnerImageStyle = styled(motion.img)(({ theme }) => ({
-  filter: 'grayscale(100%)',
   width: 'auto',
   height: 56
 }));
@@ -87,9 +86,9 @@ export default function LandingPartner() {
     <RootStyle>
       <Container maxWidth="lg">
         <Container maxWidth="lg">
-          <Box sx={{ mb: { xs: 10, md: 25 }, textAlign: 'center' }}>
+          <Box sx={{ mb: { xs: 10, md: 15 }, textAlign: 'center' }}>
             <MotionInView variants={varFadeInDown}>
-              <Typography variant="h3" sx={{ mb: 3 }}>
+              <Typography variant="h2" sx={{ mb: 2 }}>
                 Được sử dụng bởi các chuỗi thương hiệu lớn
               </Typography>
             </MotionInView>

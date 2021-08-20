@@ -151,9 +151,9 @@ export default function LandingWhitePlatform() {
   return (
     <RootStyle>
       <Container maxWidth="lg">
-        <Box sx={{ mb: { xs: 10, md: 25 }, textAlign: 'center' }}>
+        <Box sx={{ mb: { xs: 10, md: 24 }, textAlign: 'center' }}>
           <MotionInView variants={varFadeInDown}>
-            <Typography variant="h3" sx={{ textAlign: 'center', mb: 3 }}>
+            <Typography variant="h2" sx={{ textAlign: 'center', mb: 2 }}>
               Sử dụng nền tảng với thương hiệu do bạn làm chủ
             </Typography>
           </MotionInView>

@@ -110,7 +110,7 @@ export default function LandingDomain() {
   return (
     <Container maxWidth="lg" sx={{ pb: 10, textAlign: 'center' }}>
       <MotionInView variants={varFadeInUp}>
-        <Typography variant="h2" sx={{ mb: 3 }}>
+        <Typography variant="h2" sx={{ mb: 2 }}>
           Một nền tảng cho mọi ngành kinh doanh
         </Typography>
       </MotionInView>

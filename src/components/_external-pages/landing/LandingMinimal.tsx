@@ -9,21 +9,9 @@ import { varFadeInUp, MotionInView, varFadeInDown } from '../../animate';
 const CARDS = [
   {
     icon: '/static/icons/ic_customer.svg',
-    title: <>Trực tiếp tới người dùng</>,
+    title: <>Tăng cường nhận diện thương hiệu của doanh nghiệp</>,
     description:
-      'Cho phép thương hiệu của bạn cung cấp cho khách hàng trải nghiệm mua hàng được cá nhân hóa. Bắt đầu ngay và thêm một kênh phân phối mới cho thương hiệu của bạn.'
-  },
-  {
-    icon: '/static/icons/ic_store.svg',
-    title: <>Thị trường địa phương</>,
-    description:
-      'Tận dụng hoạt động kinh doanh của bạn với nền tảng thị trường siêu địa phương và tập trung vào đối tượng mục tiêu của bạn, đảm bảo giao hàng đúng hạn'
-  },
-  {
-    icon: '/static/icons/ic_headless.svg',
-    title: <>Headless-Commerce</>,
-    description:
-      'Mở rộng quy mô doanh nghiệp của bạn với nền tảng mở. Xây dựng giao diện người dùng của riêng bạn và nâng cao hoạt động kinh doanh của bạn mà không cần lo lắng về cơ sở hạ tầng.'
+      'Đặt hàng trên website và ứng dụng di động sẽ giúp doanh số bán hàng của bạn luôn tăng trưởng và thương hiệu của bạn luôn gần với khách hàng tiềm năng.'
   },
   {
     icon: '/static/icons/ic_star.svg',
@@ -42,15 +30,27 @@ const CARDS = [
     title: <>Cổng thanh toán</>,
     description:
       'Tích hợp nhiều cổng thanh toán với các trang web của bạn. Cung cấp trải nghiệm thanh toán mượt mà cho khách hàng của bạn. Do đó nâng cao lòng tin & sự hài lòng của khách hàng.'
+  },
+  {
+    icon: '/static/icons/ic_api.svg',
+    title: <>Tích hợp đa nền tảng</>,
+    description:
+      'Với hệ thống API chuẩn hóa và mạnh mẽ chuyên sâu cho Thương mại điện tử cho phép Reso kết nối với nhiều hệ thống và nền tảng khác như các công cụ marketing,chatbot bán hàng, sàn thương mại điện tử khác.'
+  },
+  {
+    icon: '/static/icons/ic_architecture.svg',
+    title: <>Làm chủ hoàn toàn kiến trúc và thiết kế</>,
+    description:
+      'Hệ thống được thiết kế theo tiêu chuẩn để tách biệt Website và Mobile App với hệ thống quản trị . Mọi cập nhật thay đổi về giao diện hay trải nghiệm khách hàng sẽ dễ dàng được thực hiện.'
   }
 ];
 
 const shadowIcon = (color: string) => `drop-shadow(2px 2px 2px ${alpha(color, 0.48)})`;
 
 const RootStyle = styled('div')(({ theme }) => ({
-  paddingTop: theme.spacing(15),
+  paddingTop: theme.spacing(14),
   [theme.breakpoints.up('md')]: {
-    paddingBottom: theme.spacing(15)
+    paddingBottom: theme.spacing(14)
   }
 }));
 
@@ -62,12 +62,16 @@ const CardStyle = styled(Card)(({ theme }) => {
 
   return {
     maxWidth: 380,
-    minHeight: 440,
+    minHeight: 400,
     height: '100%',
     margin: 'auto',
     textAlign: 'center',
-    padding: theme.spacing(10, 2, 4),
+    padding: theme.spacing(4, 2, 4),
     boxShadow: `-40px 40px 80px 0 ${shadowCard(0.48)}`,
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+    justifyContent: 'space-between',
     [theme.breakpoints.up('md')]: {
       boxShadow: 'none'
       // backgroundColor: theme.palette.grey[theme.palette.mode === 'light' ? 200 : 800]
@@ -85,7 +89,7 @@ const CardStyle = styled(Card)(({ theme }) => {
 const CardIconStyle = styled('img')(({ theme }) => ({
   width: 54,
   height: 54,
-  margin: 'auto',
+  margin: '0 auto',
   marginBottom: theme.spacing(10),
   filter: shadowIcon(theme.palette.primary.main)
 }));
@@ -101,9 +105,9 @@ export default function LandingMinimalHelps() {
     <RootStyle>
       <Container maxWidth="lg">
         <Container maxWidth="md">
-          <Box sx={{ mb: { xs: 10, md: 14 }, textAlign: 'center' }}>
+          <Box sx={{ mb: { xs: 10, md: 15 }, textAlign: 'center' }}>
             <MotionInView variants={varFadeInDown}>
-              <Typography variant="h3" sx={{ mb: 3 }}>
+              <Typography variant="h2" sx={{ mb: 2 }}>
                 Tối ưu hóa quá trình đặt hàng với công nghệ tiên tiến
               </Typography>
             </MotionInView>
@@ -120,34 +124,33 @@ export default function LandingMinimalHelps() {
           </Box>
         </Container>
 
-        <Grid container spacing={isDesktop ? 10 : 5} alignItems="stretch">
+        <Grid container spacing={isDesktop ? 5 : 5} alignItems="stretch">
           {CARDS.map((card, index) => (
             <Grid key={`card-hero-${indexedDB}`} item xs={12} md={4}>
               <MotionInView sx={{ height: '100%' }} variants={varFadeInUp}>
-                <CardStyle>
-                  <CardIconStyle
-                    src={card.icon}
-                    sx={{
-                      ...(index % 3 === 0 && {
-                        filter: (theme) => shadowIcon(theme.palette.warning.main)
-                      }),
-                      ...(index % 3 === 1 && {
-                        filter: (theme) => shadowIcon(theme.palette.error.main)
-                      }),
-                      ...(index % 3 === 2 && {
-                        filter: (theme) => shadowIcon(theme.palette.info.main)
-                      })
-                    }}
-                  />
-                  <Typography variant="h5" paragraph>
-                    {card.title}
-                  </Typography>
-                  <Typography sx={{ color: isLight ? 'text.secondary' : 'common.white' }}>
-                    {card.description}
-                  </Typography>
-                  <Button sx={{ marginTop: 2, marginBottom: 2 }} size="large" variant="contained">
-                    Xem thêm
-                  </Button>
+                <CardStyle variant="outlined">
+                  <Box textAlign="center">
+                    <CardIconStyle
+                      src={card.icon}
+                      sx={{
+                        ...(index % 3 === 0 && {
+                          filter: (theme) => shadowIcon(theme.palette.warning.main)
+                        }),
+                        ...(index % 3 === 1 && {
+                          filter: (theme) => shadowIcon(theme.palette.error.main)
+                        }),
+                        ...(index % 3 === 2 && {
+                          filter: (theme) => shadowIcon(theme.palette.info.main)
+                        })
+                      }}
+                    />
+                    <Typography variant="h5" paragraph>
+                      {card.title}
+                    </Typography>
+                    <Typography sx={{ color: isLight ? 'text.secondary' : 'common.white' }}>
+                      {card.description}
+                    </Typography>
+                  </Box>
                 </CardStyle>
               </MotionInView>
             </Grid>

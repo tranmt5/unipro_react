@@ -28,7 +28,7 @@ const ContentStyle = styled('div')(({ theme }) => ({
 
 export default function LandingAdvertisement() {
   return (
-    <Container maxWidth="lg">
+    <Container maxWidth="lg" sx={{ paddingBottom: 8 }}>
       <ContentStyle>
         <MotionInView
           variants={varFadeInUp}

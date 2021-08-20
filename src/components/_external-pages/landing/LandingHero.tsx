@@ -25,12 +25,9 @@ const RootStyle = styled(motion.div)(({ theme }) => ({
   position: 'relative',
   backgroundColor: theme.palette.background.default,
   [theme.breakpoints.up('md')]: {
-    top: 0,
-    left: 0,
     width: '100%',
     height: '100vh',
     display: 'flex',
-    position: 'fixed',
     alignItems: 'center'
   }
 }));
@@ -95,14 +92,17 @@ export default function LandingHero() {
                 variant={isDesktop ? 'h2' : 'h3'}
                 sx={{ color: 'primary.main' }}
               >
-                Reso
+                Reso - Giải pháp số cho ngành bán lẻ
               </Typography>
             </motion.div>
 
             <motion.div variants={varFadeInRight}>
-              <Typography color="text.secondary" variant="h4">
-                Nền tảng Đặt hàng trực tuyến và giao nhận tích hợp chuyên sâu cho ngành Bán lẻ và
-                F&B.
+              <Typography fontWeight={500} variant="h4">
+                Nền tảng công nghệ{' '}
+                <Typography variant="h4" component="span">
+                  Đặt hàng trực tuyến và Giao nhận,
+                </Typography>
+                chuyên sâu cho ngành Bán lẻ và F&B.
               </Typography>
             </motion.div>
 
@@ -136,7 +136,6 @@ export default function LandingHero() {
           </ContentStyle>
         </Container>
       </RootStyle>
-      <Box sx={{ height: { md: '100vh' } }} />
     </>
   );
 }

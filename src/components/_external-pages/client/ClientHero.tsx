@@ -14,13 +14,13 @@ import { MHidden } from 'components/@material-extend';
 import { motion } from 'framer-motion';
 //
 import { varFadeInRight, varFadeInUp, varWrapEnter } from '../../animate';
-import { ContentStyle, HeroImgStyle, RootStyle } from './Startup.styles';
+import { ContentStyle, HeroImgStyle, RootStyle } from './Client.styles';
 
 // ----------------------------------------------------------------------
 
 // ----------------------------------------------------------------------
 
-export default function StartupHero() {
+export default function ClientHero() {
   const theme = useTheme();
   const isDesktop = useMediaQuery(theme.breakpoints.up('lg'));
 
@@ -31,7 +31,7 @@ export default function StartupHero() {
       <RootStyle initial="initial" animate="animate" variants={varWrapEnter}>
         <Box
           component="img"
-          src="/static/startup/wave.svg"
+          src="/static/client/wave.svg"
           sx={{
             position: 'absolute',
             top: 74,
@@ -59,18 +59,8 @@ export default function StartupHero() {
             }}
           >
             <motion.div variants={varFadeInRight}>
-              <Typography variant="caption" sx={{ pb: 4 }}>
-                Tối ưu cho khởi nghiệp
-              </Typography>
               <Typography component="h1" variant={isDesktop ? 'h3' : 'h4'}>
-                Bắt đầu thị trường của bạn trong một vài bước với công nghệ tốt nhất.
-              </Typography>
-            </motion.div>
-
-            <motion.div variants={varFadeInRight}>
-              <Typography>
-                Bắt đầu thị trường của bạn hoặc một doanh nghiệp trực tuyến trong vòng chưa đầy 24
-                giờ.
+                Xem những sản phẩm từ khách hàng của chúng tôi.
               </Typography>
             </motion.div>
 

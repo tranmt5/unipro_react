@@ -80,6 +80,7 @@ export default function Router() {
         { path: '/features', element: <FeaturesPage /> },
         { path: '/enterprise', element: <EnterprisePage /> },
         { path: '/start-up', element: <StartupPage /> },
+        { path: '/client', element: <ClientPage /> },
         { path: '/coming-soon', element: <ComingSoon /> }
       ]
     },
@@ -101,3 +102,4 @@ const ComingSoon = Loadable(lazy(() => import('../pages/ComingSoon')));
 // Main
 const EnterprisePage = Loadable(lazy(() => import('../pages/Enterprise')));
 const StartupPage = Loadable(lazy(() => import('../pages/Startup')));
+const ClientPage = Loadable(lazy(() => import('../pages/Client')));
