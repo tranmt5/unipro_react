@@ -32,7 +32,7 @@ const RootStyle = styled(Page)({
 const ContentStyle = styled('div')(({ theme }) => ({
   // overflow: 'hidden',
   // position: 'relative',
-  backgroundColor: theme.palette.background.neutral,
+  backgroundColor: theme.palette.background.default,
   padding: theme.spacing(4, 0, 8)
 }));
 
@@ -87,10 +87,11 @@ const FeatureCard = ({ feature }: { feature: Feature }) => {
         zIndex: 1,
         p: 5,
         boxShadow: (theme) =>
-          `0px 48px 80px ${alpha(
+          `0px 48px 48px ${alpha(
             isLight ? theme.palette.grey[500] : theme.palette.common.black,
             0.12
-          )}`
+          )}`,
+        height: '100%'
       }}
     >
       <Stack spacing={5}>
@@ -111,31 +112,156 @@ const FeatureCard = ({ feature }: { feature: Feature }) => {
 
 const navigations = [
   {
-    title: 'Marketplace',
-    to: 'marketplace',
+    title: 'Quản lý cửa hàng',
+    to: 'store-management',
     items: [
       {
-        icon: '',
-        titlte: '',
-        description: ''
+        title: 'Lịch trình của nhà hàng',
+        description: 'Thiết lập giờ mở cửa và đóng cửa nhà hàng của bạn.',
+        icon: '/static/feature/ic_schedule.png'
+      },
+      {
+        title: 'Bảng giá theo thời gian',
+        description:
+          'Thiết kế bảng giá khác nhau dựa trên thời gian trong ngày của tuần và các dịp lễ hội.',
+        icon: '/static/feature/ic_menu.png'
+      },
+      {
+        title: 'Cấu hình sản phẩm với nhiều thuộc tính',
+        description:
+          'Cung cấp các biến thể cho sản phẩm của bạn bằng cách thêm các tiện ích bổ sung vào sản phẩm của bạn, chẳng hạn như nhiều kích cỡ, màu sắc, chất liệu, v.v.',
+        icon: '/static/feature/ic_product_variant.png'
+      },
+      {
+        title: 'Không giới hạn loại sản phẩm',
+        description:
+          'Tự do thiết lập số lượng hoặc loại sản phẩm / dịch vụ bạn có thể bán trên cửa hàng của mình',
+        icon: '/static/feature/ic_unlimited.png'
+      },
+      {
+        title: 'Bộ sưu tập sản phẩm',
+        description:
+          'Cho phép bạn tạo các bộ sưu tập như sản phẩm mới, sản phẩm bán chạy, bộ sưu tập thu đông,... ',
+        icon: '/static/feature/ic_unlimited.png'
       }
     ]
   },
   {
-    title: 'Ordering Features',
-    to: 'ordering'
+    title: 'Thanh toán',
+    to: 'ordering',
+    items: [
+      {
+        title: 'Tích hợp nhiều cổng thanh toán',
+        description:
+          'Hệ thống hỗ trợ tích hợp nhiều phương thức thanh toán như Momo, Zalo Pay, v.v',
+        icon: '/static/feature/ic_payment.png'
+      },
+      {
+        title: 'Upsell đơn hàng',
+        description:
+          'Gợi ý người dùng những món hàng tương tự, hoặc các sản phẩm được cấu hình. Từ đó tăng giá trị đơn hàng.',
+        icon: '/static/feature/ic_upsell.png'
+      }
+    ]
   },
   {
-    title: 'Fulfillment and Delivery',
-    to: 'fulfill'
+    title: 'Phân tích',
+    to: 'analytics',
+    items: [
+      {
+        title: 'Trực quan hóa dữ liệu',
+        description:
+          'Tạo báo cáo và trang tổng quan hấp dẫn và sâu sắc với giao diện kéo và thả đơn giản để khám phá thông tin chi tiết về doanh nghiệp.',
+        icon: '/static/feature/ic_visualization.png'
+      },
+      {
+        title: 'Xuất báo cáo',
+        description:
+          'Báo cáo có thể được xuất ra để bạn có thể ghi lại và sử dụng cho mục đích khác.',
+        icon: '/static/feature/ic_export.png'
+      },
+      {
+        title: 'Bảng điều khiển tương tác',
+        description: 'Tạo trang tổng quan nhiều thông tin và đẹp mắt về mặt thẩm mỹ.',
+        icon: '/static/feature/ic_interactive.png'
+      }
+    ]
   },
   {
-    title: 'Store management',
-    to: 'store'
+    title: 'Marketing & SEO',
+    to: 'marketing-seo',
+    items: [
+      {
+        title: 'Tùy chỉnh từ khóa',
+        description:
+          'Liệt kê từ khóa phù hợp mà khách hàng có thể của bạn đang tìm kiếm trên google và đảm bảo rằng doanh nghiệp của bạn đang hiển thị trên các liên kết hàng đầu.',
+        icon: '/static/feature/ic_keyword.png'
+      },
+      {
+        title: 'Meta Description',
+        description:
+          'Chọn những từ phù hợp để mô tả cho doanh nghiệp của bạn, mô tả này sẽ hiển thị bất cứ khi nào bạn chia sẻ URL doanh nghiệp của mình.',
+        icon: '/static/feature/ic_description.png'
+      },
+      {
+        title: 'Khuyến mãi',
+        description:
+          'Thu hút đơn đặt hàng của khách hàng bằng cách giảm giá cho các sản phẩm cụ thể hoặc cho toàn bộ danh mục sản phẩm.',
+        icon: '/static/feature/ic_discount.png'
+      },
+      {
+        title: 'Bài viết',
+        description:
+          'Thêm các banner khuyến mãi, quảng cáo hoặc các bài viết về tin tức, các sản phẩm mới.',
+        icon: '/static/feature/ic_blog.png'
+      }
+    ]
   },
   {
-    title: 'Payments',
-    to: 'payment'
+    title: 'Web Hosting',
+    to: 'web-hosting',
+    items: [
+      {
+        title: 'Tùy chọn tên miền',
+        description: 'Bạn có thể sử dụng tên miền của riêng bạn cho trang web.',
+        icon: '/static/feature/ic_domain.png'
+      },
+      // {
+      //   title: 'Sử dụng dịch vụ AWS',
+      //   description:
+      //     'Trang web của bạn sẽ được triển khai với dịch vụ của AWS, đảm bảo tốc độ, tối ưu.',
+      //   icon: '/static/feature/ic_upsell.png'
+      // },
+      {
+        title: '99.99998% Uptime',
+        description: 'Đảm bảo doanh nghiệp của bạn phải luôn hoạt động, ngay cả khi bạn đang ngủ.',
+        icon: '/static/feature/ic_worktime.png'
+      },
+      {
+        title: 'Chứng chỉ SSL',
+        description:
+          'Trang web của bạn sẽ có chứng chỉ SSL để giữ an toàn cho thông tin khách hàng và dữ liệu kinh doanh của bạn.',
+        icon: '/static/feature/ic_ssl.png'
+      },
+      {
+        title: 'Cập nhật lập tức',
+        description:
+          'Tất cả các thay đổi của bạn đều tự động, vì vậy bạn sẽ nhận được các tính năng mới nhất ngay lập tức mà không gặp bất kỳ rắc rối nào.',
+        icon: '/static/feature/ic_upgrade.png'
+      }
+    ]
+  },
+  {
+    title: 'Hỗ trợ',
+    to: 'support',
+    items: [
+      {
+        title: 'Đội ngũ hỗ trợ tận tâm',
+        icon: '/static/feature/ic_support.png',
+        description:
+          'Nhóm hỗ trợ Reso làm việc 24 giờ một ngày, 7 ngày một tuần, qua email, trò chuyện trực tiếp và điện thoại để đảm bảo luôn giải quyết các vấn đề cho bạn.'
+      }
+    ]
   }
 ];
 
@@ -202,26 +328,19 @@ const FeaturesPage = () => {
                           {nav.title}
                         </Typography>
 
-                        <Grid container spacing={2} sx={{ paddingLeft: [0, 0, 2] }}>
-                          {[...new Array(4)].map((_, index) => (
-                            <Grid key={`features-item-${nav.title}-${index}`} item xs={12} md={6}>
-                              <FeatureCard
-                                feature={{
-                                  icon: '/static/icons/ic_multilang.svg',
-                                  title: 'Multi-Lingual',
-                                  description:
-                                    'Communicate in the language of your target audience.'
-                                }}
-                              />
+                        <Grid container spacing={6} sx={{ paddingLeft: [0, 0, 2] }}>
+                          {nav.items?.map((feat, index) => (
+                            <Grid
+                              alignSelf="stretch"
+                              key={`features-item-${nav.title}-${index}`}
+                              item
+                              xs={12}
+                              md={6}
+                            >
+                              <FeatureCard feature={feat} />
                             </Grid>
                           ))}
                         </Grid>
-
-                        <Box py={4} textAlign="right">
-                          <Button variant="text" endIcon={<ArrowRightAltIcon />}>
-                            Xem thêm
-                          </Button>
-                        </Box>
                       </Box>
                     </InView>
                   ))}
