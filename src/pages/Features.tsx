@@ -198,7 +198,7 @@ const navigations = [
         icon: '/static/feature/ic_keyword.png'
       },
       {
-        title: 'Meta Description',
+        title: 'Miêu tả cho trang web',
         description:
           'Chọn những từ phù hợp để mô tả cho doanh nghiệp của bạn, mô tả này sẽ hiển thị bất cứ khi nào bạn chia sẻ URL doanh nghiệp của mình.',
         icon: '/static/feature/ic_description.png'
@@ -218,7 +218,7 @@ const navigations = [
     ]
   },
   {
-    title: 'Web Hosting',
+    title: 'Hosting',
     to: 'web-hosting',
     items: [
       {
