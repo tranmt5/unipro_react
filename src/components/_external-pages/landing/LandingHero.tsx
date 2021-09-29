@@ -100,9 +100,8 @@ export default function LandingHero() {
               <Typography fontWeight={500} variant="h4">
                 Nền tảng công nghệ{' '}
                 <Typography variant="h4" component="span">
-                  Đặt hàng trực tuyến và Giao nhận,
+                  tối ưu hóa khu vực kinh doanh - làm chủ hoạt động giao hàng.
                 </Typography>
-                chuyên sâu cho ngành Bán lẻ và F&B.
               </Typography>
             </motion.div>
 
