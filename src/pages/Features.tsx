@@ -16,6 +16,7 @@ import { alpha, styled, Theme, useTheme } from '@material-ui/core/styles';
 import ArrowRightAltIcon from '@material-ui/icons/ArrowRightAlt';
 import { makeStyles } from '@material-ui/styles';
 import { MHidden } from 'components/@material-extend';
+import Label from 'components/Label';
 // components
 import ScrollToTop from 'components/ScrollToTopBtn';
 import FeatureHero from 'components/_external-pages/feature/FeatureHero';
@@ -111,6 +112,23 @@ const FeatureCard = ({ feature }: { feature: Feature }) => {
 };
 
 const navigations = [
+  {
+    title: 'Mini app',
+    to: 'mini-app',
+    items: [
+      {
+        title: 'Tích hợp mini app',
+        description: 'Cho phép trang web của bạn tích hợp vào các ứng dụng điện tử như Momo, Zalo',
+        icon: '/static/feature/ic-miniapp.png.'
+      },
+      {
+        title: 'Mở rộng kênh bán hàng',
+        description:
+          'Người dùng dễ dàng thao tác trên các ứng dụng quen thuộc, góp phần mở rộng thêm kênh bán hàng của bạn.',
+        icon: '/static/feature/ic-channel.png'
+      }
+    ]
+  },
   {
     title: 'Quản lý cửa hàng',
     to: 'store-management',
@@ -296,7 +314,9 @@ const FeaturesPage = () => {
                         smooth
                         to={`/features#${nav.to}`}
                       >
-                        <ListItemStyle>
+                        <ListItemStyle
+                          secondaryAction={idx === 0 && <Label color="error">Mới</Label>}
+                        >
                           <ListItemButton
                             classes={{ selected: classes.selected }}
                             selected={currentInviewIdx === idx}
