@@ -63,13 +63,13 @@ export default function StartupHero() {
                 Tối ưu cho khởi nghiệp
               </Typography>
               <Typography component="h1" variant={isDesktop ? 'h3' : 'h4'}>
-                Bắt đầu thị trường của bạn trong một vài bước với công nghệ tốt nhất.
+                Bắt đầu thị trường của bạn chỉ trong một vài bước cùng với những công nghệ tốt nhất.
               </Typography>
             </motion.div>
 
             <motion.div variants={varFadeInRight}>
               <Typography>
-                Bắt đầu thị trường của bạn hoặc một doanh nghiệp trực tuyến trong vòng chưa đầy 24
+                Bắt đầu trực tuyến thị trường của bạn hoặc một doanh nghiệp trong vòng chưa đầy 24
                 giờ.
               </Typography>
             </motion.div>

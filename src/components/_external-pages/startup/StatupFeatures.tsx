@@ -47,8 +47,7 @@ const FEATURES = [
       },
       {
         title: 'Cá nhân hóa theo nhu cầu của bạn',
-        descripiton:
-          'Trang web sẽ như những gì bạn muốn. Không ai cần biết ai đang ở trong hậu trường.'
+        descripiton: 'Trang web sẽ được thiết kế và tối ưu như những gì bạn muốn.'
       },
       {
         title: 'Thể hiện phong cách của bạn',
@@ -65,7 +64,7 @@ const FEATURES = [
       {
         title: 'Tình trạng đặt hàng',
         descripiton:
-          'Luôn cập nhật cho mọi người, thay đổi trạng thái trên tất cả các đơn hàng chỉ trong vài cú nhấp chuột, khách hàng sẽ nhận được thông báo về mọi thay đổi.'
+          'Luôn cập nhật trên nền tảng quản lý, thay đổi trạng thái trên tất cả các đơn hàng chỉ trong vài cú nhấp chuột, khách hàng sẽ nhận được thông báo về mọi thay đổi.'
       },
       {
         title: 'Chi tiết đơn hàng',
@@ -86,8 +85,7 @@ const FEATURES = [
       },
       {
         title: 'Phiếu giảm giá',
-        descripiton:
-          'Cho phép khách hàng của bạn đăng ký các ưu đãi sản phẩm nhất định bằng cách sử dụng mã phiếu giảm giá khi thanh toán'
+        descripiton: 'Cho phép khách hàng của bạn sử dụng mã phiếu giảm giá khi thanh toán.'
       }
     ]
   },
@@ -104,7 +102,7 @@ const FEATURES = [
       {
         title: 'Upselling',
         descripiton:
-          'Ngay trước khi thanh toán, hãy cho phép khách hàng thêm thứ khác mà họ có thể bỏ lỡ vào giỏ hàng của mình chỉ bằng một cú nhấp chuột và nhận được nhiều doanh số hơn.'
+          'Ngay trước khi thanh toán, gợi ý cho khách hàng những sản phẩm khác mà họ có thể bỏ lỡ vào giỏ hàng của mình chỉ bằng một cú nhấp chuột và gia tăng doanh sô.'
       }
     ]
   }

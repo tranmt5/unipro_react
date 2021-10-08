@@ -11,7 +11,7 @@ const CARDS = [
     icon: '/static/icons/ic_customer.svg',
     title: <>Lên kế hoạch</>,
     description:
-      'Tham gia cùng với kế hoạch của bạn, tinh chỉnh để có thể giúp bạn để đạt được kết quả tốt nhất. Nếu bạn chưa có, chúng tôi sẽ giúp bạn lập kế hoạch cho dự án của bạn.'
+      'Tham gia cùng với kế hoạch của bạn, tinh chỉnh để có thể giúp bạn để đạt được kết quả tốt nhất. Đừng lo nếu bạn chưa biết bắt đầu từ đâu, chúng tôi sẽ giúp bạn lập kế hoạch cho dự án của bạn.'
   },
   {
     icon: '/static/icons/ic_store.svg',
@@ -96,7 +96,7 @@ export default function EnterpriseHIW() {
                 }}
               >
                 Với Reso, một trong những chuyên gia của chúng tôi sẽ cộng tác với bạn trong suốt
-                quá trình cho đến khi bạn khởi chạy và hơn nữa. Bên cạnh đó, chúng tôi sẽ hỗ trợ và
+                quá trình lên ý tưởng đến khi được vận hành. Bên cạnh đó, chúng tôi sẽ hỗ trợ và
                 hướng dẫn để đối tác có thể sử dụng dễ dàng.
               </Typography>
             </MotionInView>

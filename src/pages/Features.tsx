@@ -129,7 +129,7 @@ const navigations = [
       {
         title: 'Cấu hình sản phẩm với nhiều thuộc tính',
         description:
-          'Cung cấp các biến thể cho sản phẩm của bạn bằng cách thêm các tiện ích bổ sung vào sản phẩm của bạn, chẳng hạn như nhiều kích cỡ, màu sắc, chất liệu, v.v.',
+          'Cung cấp các biến thể cho sản phẩm bằng cách thêm các thuôc tính vào sản phẩm, chẳng hạn như nhiều kích cỡ, màu sắc, chất liệu, v.v.',
         icon: '/static/feature/ic_product_variant.png'
       },
       {
