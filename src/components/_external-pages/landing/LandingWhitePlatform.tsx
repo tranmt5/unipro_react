@@ -132,7 +132,7 @@ const features = [
     title: 'Quản lý đơn hàng',
     description: 'Nhận nhiều đơn hàng hơn với chỉ vài bước.',
     caption:
-      'Theo dõi tất cả các đơn đặt hàng từ một nền tảng. Cải thiện trải nghiệm của khách hàng bằng cách tự động hóa hệ thống đặt hàng của bạn, cho phép theo dõi đơn đặt hàng theo thời gian thực và cho phép khách hàng theo dõi đơn đặt hàng.'
+      'Theo dõi tất cả các đơn đặt hàng từ một nền tảng. Cải thiện trải nghiệm của khách hàng bằng cách tự động hóa hệ thống đặt hàng của bạn, cho phép theo dõi đơn đặt hàng theo thời gian thực.'
   },
   {
     icon: '/static/icons/ic_multilang.svg',

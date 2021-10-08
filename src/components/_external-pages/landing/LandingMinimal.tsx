@@ -11,37 +11,37 @@ const CARDS = [
     icon: '/static/icons/ic_customer.svg',
     title: <>Tăng cường nhận diện thương hiệu của doanh nghiệp</>,
     description:
-      'Đặt hàng trên website và ứng dụng di động sẽ giúp doanh số bán hàng của bạn luôn tăng trưởng và thương hiệu của bạn luôn gần với khách hàng tiềm năng.'
+      'Đặt hàng trên hai nền tảng website và ứng dụng di động sẽ giúp doanh số bán hàng của bạn luôn tăng trưởng và thương hiệu luôn được tiếp cận với khách hàng tiềm năng.'
   },
   {
     icon: '/static/icons/ic_star.svg',
     title: <>Xây dựng mối quan hệ khách hàng tốt hơn</>,
     description:
-      'Cải thiện lòng trung thành và giữ chân khách hàng bằng cách giảm giá, dịch vụ đăng ký và biểu ngữ khuyến mại.'
+      'Tăng lòng trung thành và giữ chân khách hàng bằng các chương trình giảm giá, dịch vụ đăng ký và biểu ngữ khuyến mại.'
   },
   {
     icon: '/static/icons/ic_franchise.svg',
     title: <>Quản lý nhiều chi nhánh</>,
     description:
-      'Tích hợp nhiều cửa hàng nhượng quyền hoặc đại lý của thương hiệu của bạn và cho phép chủ sở hữu đăng ký và đăng nhập vào trang tổng quan của bạn.'
+      'Tích hợp nhiều cửa hàng nhượng quyền hoặc đại lý cho thương hiệu của bạn và chủ sở hữu có thể quản lý ở trang tổng quan của cho người điều hành.'
   },
   {
     icon: '/static/icons/ic_payment.svg',
     title: <>Cổng thanh toán</>,
     description:
-      'Tích hợp nhiều cổng thanh toán với các trang web của bạn. Cung cấp trải nghiệm thanh toán mượt mà cho khách hàng của bạn. Do đó nâng cao lòng tin & sự hài lòng của khách hàng.'
+      'Tích hợp nhiều cổng thanh toán với các trang web của bạn. Cung cấp trải nghiệm thanh toán mượt mà. Từ đó nâng cao lòng tin & sự hài lòng của khách hàng.'
   },
   {
     icon: '/static/icons/ic_api.svg',
     title: <>Tích hợp đa nền tảng</>,
     description:
-      'Với hệ thống API chuẩn hóa và mạnh mẽ chuyên sâu cho Thương mại điện tử cho phép Reso kết nối với nhiều hệ thống và nền tảng khác như các công cụ marketing,chatbot bán hàng, sàn thương mại điện tử khác.'
+      'Với hệ thống API chuẩn hóa và mạnh mẽ chuyên sâu cho Thương mại điện tử, cho phép Reso kết nối với nhiều hệ thống và nền tảng khác như các công cụ marketing,chatbot bán hàng hay sàn thương mại điện tử khác.'
   },
   {
     icon: '/static/icons/ic_architecture.svg',
     title: <>Làm chủ hoàn toàn kiến trúc và thiết kế</>,
     description:
-      'Hệ thống được thiết kế theo tiêu chuẩn để tách biệt Website và Mobile App với hệ thống quản trị . Mọi cập nhật thay đổi về giao diện hay trải nghiệm khách hàng sẽ dễ dàng được thực hiện.'
+      'Hệ thống được thiết kế theo tiêu chuẩn để tách biệt Website và Mobile App với hệ thống quản trị. Cùng với sự tự động hóa trong quá trình phát triển sẽ giúp những thay đổi của bạn được áp dụng nhanh chóng.'
   }
 ];
 
