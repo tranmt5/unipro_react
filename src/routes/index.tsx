@@ -78,7 +78,7 @@ export default function Router() {
       children: [
         { path: '/', element: <LandingPage /> },
         { path: '/features', element: <FeaturesPage /> },
-        { path: '/enterprise', element: <EnterprisePage /> },
+        { path: '/home', element: <HomePage /> },
         { path: '/start-up', element: <StartupPage /> },
         { path: '/client', element: <ClientPage /> },
         { path: '/coming-soon', element: <ComingSoon /> }
@@ -100,6 +100,6 @@ const PageSix = Loadable(lazy(() => import('../pages/PageSix')));
 const NotFound = Loadable(lazy(() => import('../pages/Page404')));
 const ComingSoon = Loadable(lazy(() => import('../pages/ComingSoon')));
 // Main
-const EnterprisePage = Loadable(lazy(() => import('../pages/Enterprise')));
+const HomePage = Loadable(lazy(() => import('../pages/Home')));
 const StartupPage = Loadable(lazy(() => import('../pages/Startup')));
 const ClientPage = Loadable(lazy(() => import('../pages/Client')));

@@ -1,7 +1,8 @@
 import { NavLink as RouterLink, useLocation } from 'react-router-dom';
 // material
 import { styled } from '@material-ui/core/styles';
-import { Box, Button, AppBar, Toolbar, Container } from '@material-ui/core';
+import { Box, Button, AppBar, Toolbar, Container, Typography } from '@material-ui/core';
+import CssBaseline from '@material-ui/core/CssBaseline';
 // hooks
 import useOffSetTop from '../../hooks/useOffSetTop';
 // components
@@ -87,15 +88,18 @@ export default function MainNavbar() {
             justifyContent: 'space-between'
           }}
         >
-          <Box mr={4}>
+          <Box mr={4} className="d-flex">
             <RouterLink to="/">
               <Logo />
             </RouterLink>
+            <Typography variant="h3" px={2}>
+              UniPro Training Center
+            </Typography>
           </Box>
 
-          <MHidden width="mdDown">
+          {/* <MHidden width="mdDown">
             <MenuDesktop isOffset={isOffset} isHome={isHome} navConfig={navConfig} />
-          </MHidden>
+          </MHidden> */}
 
           <Box sx={{ flexGrow: 1 }} />
 
@@ -113,11 +117,7 @@ export default function MainNavbar() {
           </MHidden>
 
           <MHidden width="mdUp">
-            <MenuMobile
-              isOffset={isOffset}
-              isHome={isHome}
-              navConfig={[...navConfig, ...rightMenuConfig]}
-            />
+            <MenuMobile isOffset={isOffset} isHome={isHome} navConfig={[...rightMenuConfig]} />
           </MHidden>
         </Container>
       </ToolbarStyle>

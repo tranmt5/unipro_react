@@ -39,8 +39,8 @@ const LINKS = [
   {
     headline: 'Contact',
     children: [
-      { name: 'reso-sale@support.cc', href: '#' },
-      { name: 'Los Angeles, 359  Hidden Valley Road', href: '#' }
+      { name: 'unipro@support.cc', href: '#' },
+      { name: 'TP. HCM, đường 447 Tăng Nhơn Phú A', href: '#' }
     ]
   }
 ];
@@ -69,7 +69,7 @@ export default function MainFooter() {
           </Grid>
           <Grid item xs={8} md={3}>
             <Typography variant="body2" sx={{ pr: { md: 5 } }}>
-              Nền tảng Đặt hàng trực tuyến và giao nhận tích hợp chuyên sâu cho ngành Bán lẻ và F&B.
+              Nơi đào tạo và phát triển chuyên sâu cho học viên lĩnh vực phần mềm.
             </Typography>
 
             <Stack

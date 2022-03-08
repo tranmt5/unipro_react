@@ -36,8 +36,8 @@ const menuConfig = [
 
 export const rightMenuConfig = [
   {
-    title: 'Doanh nghiệp',
-    path: '/enterprise',
+    title: 'Trang chủ',
+    path: '/home',
     icon: <ApartmentIcon {...ICON_SIZE} />
   },
   {

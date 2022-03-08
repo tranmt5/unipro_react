@@ -6,8 +6,6 @@ import { MotionInView, varFadeInLeft, varFadeInRight, varWrapEnter } from '../..
 
 // ----------------------------------------------------------------------
 
-// ----------------------------------------------------------------------
-
 const RootStyle = styled(motion.div)(({ theme }) => ({
   paddingTop: theme.spacing(10),
   paddingBottom: theme.spacing(10)
