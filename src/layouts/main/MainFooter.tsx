@@ -22,7 +22,7 @@ const SOCIALS = [
 
 const LINKS = [
   {
-    headline: 'Reso',
+    headline: 'UniPro',
     children: [
       { name: 'About us', href: '#' },
       { name: 'Contact us', href: '#' },

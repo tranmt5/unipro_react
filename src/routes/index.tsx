@@ -2,10 +2,8 @@ import { Suspense, lazy } from 'react';
 import { Navigate, useRoutes, useLocation } from 'react-router-dom';
 // layouts
 import MainLayout from '../layouts/main';
-import DashboardLayout from '../layouts/dashboard';
 import LogoOnlyLayout from '../layouts/LogoOnlyLayout';
 // pages
-import LandingPage from '../pages/LandingPage';
 import FeaturesPage from '../pages/Features';
 // components
 import LoadingScreen from '../components/LoadingScreen';
@@ -39,30 +37,6 @@ const Loadable = (Component: any) => (props: any) => {
 
 export default function Router() {
   return useRoutes([
-    // Dashboard Routes
-    {
-      path: 'dashboard',
-      element: <DashboardLayout />,
-      children: [
-        { path: '/', element: <Navigate to="/dashboard/one" replace /> },
-        { path: 'one', element: <PageOne /> },
-        { path: 'two', element: <PageTwo /> },
-        { path: 'three', element: <PageThree /> },
-        {
-          path: 'app',
-          children: [
-            {
-              path: '/',
-              element: <Navigate to="/dashboard/app/four" replace />
-            },
-            { path: 'four', element: <PageFour /> },
-            { path: 'five', element: <PageFive /> },
-            { path: 'six', element: <PageSix /> }
-          ]
-        }
-      ]
-    },
-
     // Main Routes
     {
       path: '*',
@@ -76,10 +50,9 @@ export default function Router() {
       path: '/',
       element: <MainLayout />,
       children: [
-        { path: '/', element: <LandingPage /> },
         { path: '/features', element: <FeaturesPage /> },
-        { path: '/home', element: <HomePage /> },
-        { path: '/start-up', element: <StartupPage /> },
+        { path: '/', element: <HomePage /> },
+        { path: '/khoa-hoc', element: <CoursePage /> },
         { path: '/client', element: <ClientPage /> },
         { path: '/coming-soon', element: <ComingSoon /> }
       ]
@@ -91,15 +64,9 @@ export default function Router() {
 // IMPORT COMPONENTS
 
 // Dashboard
-const PageOne = Loadable(lazy(() => import('../pages/PageOne')));
-const PageTwo = Loadable(lazy(() => import('../pages/PageTwo')));
-const PageThree = Loadable(lazy(() => import('../pages/PageThree')));
-const PageFour = Loadable(lazy(() => import('../pages/PageFour')));
-const PageFive = Loadable(lazy(() => import('../pages/PageFive')));
-const PageSix = Loadable(lazy(() => import('../pages/PageSix')));
 const NotFound = Loadable(lazy(() => import('../pages/Page404')));
 const ComingSoon = Loadable(lazy(() => import('../pages/ComingSoon')));
 // Main
 const HomePage = Loadable(lazy(() => import('../pages/Home')));
-const StartupPage = Loadable(lazy(() => import('../pages/Startup')));
+const CoursePage = Loadable(lazy(() => import('../pages/Course')));
 const ClientPage = Loadable(lazy(() => import('../pages/Client')));

@@ -12,11 +12,11 @@ import { MHidden } from '../../components/@material-extend';
 //
 import MenuDesktop from './MenuDesktop';
 import MenuMobile from './MenuMobile';
-import navConfig, { rightMenuConfig } from './MenuConfig';
+import { rightMenuConfig } from './MenuConfig';
 
 // ----------------------------------------------------------------------
 
-const APP_BAR_MOBILE = 64;
+const APP_BAR_MOBILE = 88;
 const APP_BAR_DESKTOP = 88;
 
 const ToolbarStyle = styled(Toolbar)(({ theme }) => ({
@@ -88,13 +88,31 @@ export default function MainNavbar() {
             justifyContent: 'space-between'
           }}
         >
-          <Box mr={4} className="d-flex">
+          <Box mr={4} className="d-flex" sx={{ alignItems: 'center' }}>
             <RouterLink to="/">
               <Logo />
             </RouterLink>
-            <Typography variant="h3" px={2}>
-              UniPro Training Center
-            </Typography>
+            <MHidden width="smDown">
+              <Typography
+                variant="h4"
+                px={2}
+                sx={{ color: 'rgba(241, 90, 34, 1)' }}
+                textAlign="center"
+              >
+                UniPro Training Center
+                <Typography
+                  variant="h6"
+                  sx={{
+                    color: 'rgba(10, 10, 90, 1)',
+                    borderTop: '2px solid',
+                    borderImage: 'linear-gradient(to right, darkblue, darkorchid) 1'
+                  }}
+                  textAlign="center"
+                >
+                  Đào tạo lập trình chuyên sâu
+                </Typography>
+              </Typography>
+            </MHidden>
           </Box>
 
           {/* <MHidden width="mdDown">
@@ -106,7 +124,7 @@ export default function MainNavbar() {
           <MHidden width="mdDown">
             <MenuDesktop isOffset={isOffset} isHome={isHome} navConfig={rightMenuConfig} />
           </MHidden>
-          <MHidden width="mdDown">
+          {/* <MHidden width="mdDown">
             <Button
               variant="contained"
               target="_blank"
@@ -114,7 +132,7 @@ export default function MainNavbar() {
             >
               Xem mẫu
             </Button>
-          </MHidden>
+          </MHidden> */}
 
           <MHidden width="mdUp">
             <MenuMobile isOffset={isOffset} isHome={isHome} navConfig={[...rightMenuConfig]} />

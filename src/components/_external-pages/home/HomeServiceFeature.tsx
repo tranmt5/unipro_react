@@ -1,4 +1,4 @@
-import { alpha, Container, Stack, Typography, useMediaQuery, Box, Grid } from '@material-ui/core';
+import { alpha, Container, Stack, Typography, useMediaQuery, Box } from '@material-ui/core';
 import { styled, useTheme } from '@material-ui/core/styles';
 import { motion } from 'framer-motion';
 //
@@ -7,15 +7,16 @@ import {
   varFadeInLeft,
   varFadeInRight,
   varWrapEnter,
-  varFadeInDown
+  varFadeInDown,
+  varFadeInUp
 } from '../../animate';
 
 // ----------------------------------------------------------------------
 
 const RootStyle = styled(motion.div)(({ theme }) => ({
-  paddingTop: theme.spacing(8),
+  paddingTop: theme.spacing(10),
   background: theme.palette.background.default,
-  paddingBottom: theme.spacing(4)
+  paddingBottom: theme.spacing(6)
 }));
 
 const HeroImgStyle = styled(motion.img)(({ theme }) => {
@@ -39,12 +40,12 @@ const HeroImgStyle = styled(motion.img)(({ theme }) => {
   };
 });
 
-const FEATURES = [
+const SERVICES = [
   {
     title: 'Hình ảnh học viên tại UNIPRO',
     caption: 'Hoạt động khóa học',
     image: '/static/home/home_service_learning.jpg',
-    featureDetails: [
+    serviceDetails: [
       {
         title: 'Tiêu chí hướng tới',
         descripiton:
@@ -66,21 +67,24 @@ const FEATURES = [
     title: 'Xây dựng mô hình Bootcamp',
     caption: 'Coding Bootcamp',
     image: '/static/home/home_service_bootcamp.jpg',
-    featureDetails: [
-      {
-        title: 'Mục đích',
-        descripiton:
-          'Coding Bootcamp được xây dựng nhằm mục đích đào tạo lập trình viên thực chiến, đáp ứng nhu cầu thực tế của doanh nghiệp và học viên về một khóa học cung cấp đủ kiến thức, kỹ năng nhưng thời gian học ngắn.'
-      },
+    serviceDetails: [
       {
         title: 'Thời gian',
         descripiton:
-          'Một khóa Coding Bootcamp có giá chỉ bằng 30% so với chi phí học đại học vì tiết kiệm được phí sinh hoạt, lược bỏ các môn học, hoạt động ngoại khóa.'
+          'Chỉ mất khoảng thời gian từ 6-8 tháng, học viên tham gia khóa học Cording Bootcamp tại Unipro Center sẽ trở thành một lập trình viên thực chiến.'
       },
       {
-        title: 'Nội dung chương trình và mức độ tập trung',
-        descripiton:
-          'Học viên Coding Bootcamp dành toàn bộ thời gian để học lập trình, giúp hiệu quả học tập tăng lên. Nội dung học cũng được cô đọng, chỉ giảng dạy các môn học đáp ứng nhu cầu công việc thực tế của doanh nghiệp. Các môn kiến thức nền tảng như ở giáo trình đại cương của Đại học và Cao đẳng thường bị lược bỏ.'
+        title: 'Chi phí',
+        descripiton: 'Rất thấp, chỉ bằng 1/4 chi phí tại các giảng đường Đại học.'
+      },
+      {
+        title: 'Kiến thức',
+        descripiton: (
+          <>
+            Các môn học tập trung chuyên sâu
+            <b> vừa học-vừa hành</b>.
+          </>
+        )
       }
     ]
   },
@@ -88,7 +92,7 @@ const FEATURES = [
     title: 'Thực hành tại phòng Lab',
     caption: 'Lab office',
     image: '/static/home/home_service_lab.jpg',
-    featureDetails: [
+    serviceDetails: [
       {
         title: 'Mục tiêu',
         descripiton: 'Tạo ra các ứng dụng, phần mềm có thể mang tới giá trị cho xã hội.'
@@ -105,20 +109,36 @@ const FEATURES = [
 export default function HomeServiceFeature() {
   const theme = useTheme();
   const isDesktop = useMediaQuery(theme.breakpoints.up('lg'));
+  const isLight = theme.palette.mode === 'light';
 
   return (
     <>
       <RootStyle initial="initial" animate="animate" variants={varWrapEnter}>
-        <Container maxWidth="lg">
-          <Stack spacing={10}>
+        <Container maxWidth="md">
+          <Box sx={{ mb: { xs: 5, md: 8 }, textAlign: 'center' }}>
             <MotionInView variants={varFadeInDown}>
-              <Typography variant="h3" sx={{ textAlign: 'left', mb: 1 }}>
-                Dịch vụ
+              <Typography variant="h3" sx={{ mb: 3 }}>
+                Giới thiệu
               </Typography>
             </MotionInView>
-          </Stack>
+            <MotionInView variants={varFadeInUp}>
+              <Typography
+                sx={{
+                  color: isLight ? 'text.secondary' : 'text.primary'
+                }}
+                variant="h6"
+              >
+                Với sứ mệnh đào tạo ra các kỹ sư CNTT trong tương lai, cung cấp nguồn nhân lực IT
+                cho các dự án lớn, mở rộng cơ hội nghề nghiệp thích ứng với sự biến đổi của thị
+                trường, Unipro Center tạo mọi điều kiện tốt nhất để học viên được học tập trong một
+                môi trường chuyền nghiệp, hiện đại và thực tế cùng với giáo trình được biên soạn
+                theo tiêu chuẩn Quốc tế dưới sự giảng dạy của các chuyên gia đầu ngành trong lĩnh
+                vực CNTT.
+              </Typography>
+            </MotionInView>
+          </Box>
         </Container>
-        {FEATURES.map((feature, index) => {
+        {SERVICES.map((service, index) => {
           const secondary = index % 2 !== 0;
           return (
             <MotionInView
@@ -127,7 +147,7 @@ export default function HomeServiceFeature() {
                   ? theme.palette.background.neutral
                   : theme.palette.background.default
               }}
-              key={`features-${index}`}
+              key={`service-${index}`}
               variants={secondary ? varFadeInRight : varFadeInLeft}
             >
               <Container maxWidth="lg">
@@ -137,26 +157,31 @@ export default function HomeServiceFeature() {
                   spacing={10}
                   alignItems="center"
                 >
-                  <Stack spacing={6} sx={{ flex: 1 }} textAlign={['center', 'left']}>
+                  <Stack spacing={6} sx={{ flex: 1, px: 2 }} textAlign={['center', 'left']}>
                     <Box>
-                      <Typography mb={1} variant="subtitle1">
-                        {feature.caption}
+                      <Typography mb={1} variant="h6">
+                        {service.caption}
                       </Typography>
-                      <Typography variant="h4">{feature.title}</Typography>
+                      <Typography variant="h4">{service.title}</Typography>
                     </Box>
                     <Stack spacing={4}>
-                      {feature.featureDetails.map((fetureDetail) => (
-                        <Box key={`featureDetail-${fetureDetail.title}`}>
+                      {service.serviceDetails.map((serviceDetail) => (
+                        <Box key={`serviceDetail-${serviceDetail.title}`}>
                           <Stack spacing={1}>
-                            <Typography variant="h5">{fetureDetail.title}</Typography>
-                            <Typography>{fetureDetail.descripiton}</Typography>
+                            <Typography variant="h5">{serviceDetail.title}</Typography>
+                            <Typography
+                              sx={{ color: isLight ? 'text.secondary' : 'common.white' }}
+                              variant="h6"
+                            >
+                              {serviceDetail.descripiton}
+                            </Typography>
                           </Stack>
                         </Box>
                       ))}
                     </Stack>
                   </Stack>
                   <Box>
-                    <HeroImgStyle alt="feature-1" src={feature.image} />
+                    <HeroImgStyle alt="service-1" src={service.image} />
                   </Box>
                 </Stack>
               </Container>

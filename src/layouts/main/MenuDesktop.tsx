@@ -5,7 +5,7 @@ import { NavLink as RouterLink, useLocation } from 'react-router-dom';
 import arrowIosUpwardFill from '@iconify/icons-eva/arrow-ios-upward-fill';
 import arrowIosDownwardFill from '@iconify/icons-eva/arrow-ios-downward-fill';
 // material
-import { styled } from '@material-ui/core/styles';
+import { styled, alpha } from '@material-ui/core/styles';
 import {
   Box,
   Link,
@@ -184,8 +184,15 @@ function MenuDesktopItem({ item, pathname, isHome, isOffset }: MenuDesktopItemPr
       component={RouterLink}
       sx={{
         color: 'text.primary',
+        fontSize: '16px',
         ...(isOffset && {}),
-        ...(openPopper && { opacity: 0.48 })
+        ...(openPopper && { opacity: 0.48 }),
+        ...(isActive && {
+          color: 'primary.main',
+          fontWeight: 'fontWeightMedium'
+          // bgcolor: (theme) =>
+          //   alpha(theme.palette.primary.main, theme.palette.action.selectedOpacity)
+        })
       }}
     >
       {title}

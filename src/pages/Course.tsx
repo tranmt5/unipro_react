@@ -9,6 +9,9 @@ import StartupInspiration from 'components/_external-pages/startup/StartupInspir
 import StatupOverview from 'components/_external-pages/startup/StartupOverview';
 import StartupPartner from 'components/_external-pages/startup/StartupPartner';
 import StatupFeatures from 'components/_external-pages/startup/StatupFeatures';
+import GreetingBootcamp from 'components/_external-pages/course/GreetingBootcamp';
+import BootcampServive from 'components/_external-pages/course/BootcampService';
+import TuitionComponent from 'components/_external-pages/course/TuitionComponent';
 // components
 import Page from '../components/Page';
 
@@ -28,16 +31,18 @@ const ContentStyle = styled('div')(({ theme }) => ({
 
 // ----------------------------------------------------------------------
 
-export default function StartupPage() {
+export default function CoursePage() {
   return (
-    <RootStyle title="Khởi nghiệp | Reso" id="move_top">
-      <StartupHero />
+    <RootStyle title="Course | UniPro" id="move_top">
+      <GreetingBootcamp />
       <ScrollToTop />
       <ContentStyle>
-        <StatupOverview />
+        <BootcampServive />
+        <TuitionComponent />
+        {/* <StatupOverview />
         <StartupPartner />
         <StatupFeatures />
-        <StartupInspiration />
+        <StartupInspiration /> */}
         <EnterpriseContact />
       </ContentStyle>
     </RootStyle>

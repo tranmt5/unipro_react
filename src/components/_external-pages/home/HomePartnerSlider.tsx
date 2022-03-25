@@ -9,11 +9,12 @@ import { MotionInView, varFadeInDown, varFadeInUp } from '../../animate';
 // ----------------------------------------------------------------------
 
 const RootStyle = styled('div')(({ theme }) => ({
-  paddingTop: theme.spacing(4),
+  paddingTop: theme.spacing(10),
   backgroundColor: theme.palette.background.neutral,
-  [theme.breakpoints.up('lg')]: {
-    paddingBottom: theme.spacing(8)
-  }
+  paddingBottom: theme.spacing(6)
+  // [theme.breakpoints.up('lg')]: {
+  //   paddingBottom: theme.spacing(8)
+  // }
 }));
 
 const SlickStyle = styled(Container)(({ theme }) => ({
@@ -24,7 +25,8 @@ const SlickStyle = styled(Container)(({ theme }) => ({
 
 const UniImageStyle = styled(motion.img)(({ theme }) => ({
   width: 'auto',
-  height: '25vh'
+  height: '25vh',
+  objectFit: 'cover'
 }));
 
 // ----------------------------------------------------------------------
@@ -50,18 +52,17 @@ export default function HomePartnerSlider() {
   const isDesktop = useMediaQuery(theme.breakpoints.up('md'));
   const sliderRef = useRef<Slider>(null);
   const [useSettings, setUseSetting] = useState(settings);
-  console.log(isDesktop);
 
   useEffect(() => {
     if (isDesktop) {
       setUseSetting({
         ...useSettings,
-        slidesToShow: 2
+        slidesToShow: 3
       });
     } else {
       setUseSetting({
         ...useSettings,
-        slidesToShow: 1
+        slidesToShow: 2
       });
     }
   }, [isDesktop]);
@@ -80,6 +81,7 @@ export default function HomePartnerSlider() {
               sx={{
                 color: isLight ? 'text.secondary' : 'text.primary'
               }}
+              variant="h6"
             >
               UniPro rất vinh dự hợp tác và đồng hành cùng với các doanh nghiệp
             </Typography>

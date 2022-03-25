@@ -3,11 +3,11 @@ import { styled } from '@material-ui/core/styles';
 import ScrollToTop from 'components/ScrollToTopBtn';
 import EnterpriseContact from 'components/_external-pages/enterprise/EnterpriseContact';
 import HomeServiceFeature from 'components/_external-pages/home/HomeServiceFeature';
-import SliderImageUniPro from 'components/_external-pages/home/SliderImageUniPro';
 import HomeThreeModels from 'components/_external-pages/home/HomeThreeModels';
 import HomeFiveMethods from 'components/_external-pages/home/HomeFiveMethods';
-import HomeFeedbackMantee from 'components/_external-pages/home/HomeFeedbackMantee';
+import HomeFeedbackMentee from 'components/_external-pages/home/HomeFeedbackMentee';
 import HomePartnerSlider from 'components/_external-pages/home/HomePartnerSlider';
+import HomeImageSlider from 'components/_external-pages/home/HomeImageSlider';
 // components
 import Page from '../components/Page';
 
@@ -30,15 +30,13 @@ const ContentStyle = styled('div')(({ theme }) => ({
 export default function HomePage() {
   return (
     <RootStyle title="Trang chủ | UniPro" id="move_top">
-      <SliderImageUniPro />
-      {/* <EnterpriseHero /> */}
+      <HomeImageSlider />
       <ScrollToTop />
       <ContentStyle>
         <HomeServiceFeature />
         <HomeThreeModels />
         <HomeFiveMethods />
-        <HomeFeedbackMantee />
-        {/* <EnterpriseScale /> */}
+        <HomeFeedbackMentee />
         <HomePartnerSlider />
         <EnterpriseContact />
       </ContentStyle>

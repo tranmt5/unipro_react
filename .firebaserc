@@ -1,5 +1,7 @@
 {
   "projects": {
-    "default": "sale-landingpage"
-  }
+    "default": "uniprocenter",
+    "n": "uniprocenter"
+  },
+  "targets": {}
 }

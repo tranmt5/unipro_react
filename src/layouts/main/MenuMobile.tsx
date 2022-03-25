@@ -225,14 +225,6 @@ export default function MenuMobile({ isOffset, isHome, navConfig }: MenuProps) {
                 isActive={pathname === link.path}
               />
             ))}
-            <Button
-              sx={{ ml: 4, mt: 2 }}
-              variant="contained"
-              target="_blank"
-              href="https://material-ui.com/store/items/minimal-dashboard/"
-            >
-              Book a demo
-            </Button>
           </List>
         </Scrollbar>
       </Drawer>

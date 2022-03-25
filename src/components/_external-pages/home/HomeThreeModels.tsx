@@ -6,35 +6,74 @@ import { varFadeInUp, MotionInView, varFadeInDown } from '../../animate';
 
 // ----------------------------------------------------------------------
 
+const CA = [
+  '/static/icons/browser-edge.svg',
+  '/static/icons/elephant.svg',
+  '/static/icons/ic_api.svg',
+  '/static/icons/ic_architecture.svg',
+  '/static/icons/ic_chrome.svg',
+  '/static/icons/ic_code.svg',
+  '/static/icons/ic_customer.svg',
+  '/static/icons/ic_delivery.gif',
+  '/static/icons/ic_demand.svg',
+  '/static/icons/ic_design.svg',
+  '/static/icons/ic_drive.svg',
+  '/static/icons/ic_dropbox.svg',
+  '/static/icons/ic_evernote.svg',
+  '/static/icons/ic_flag_de.svg',
+  '/static/icons/ic_franchise.svg',
+  '/static/icons/ic_github.svg',
+  '/static/icons/ic_headless.svg',
+  '/static/icons/ic_mastercard.svg',
+  '/static/icons/ic_multilang.svg',
+  '/static/icons/ic_notification_chat.svg',
+  '/static/icons/ic_notification_mail.svg',
+  '/static/icons/ic_notification_package.svg',
+  '/static/icons/ic_notification_shipping.svg',
+  '/static/icons/ic_order.svg',
+  '/static/icons/ic_payment.svg',
+  '/static/icons/ic_paypal.svg',
+  '/static/icons/ic_responsive.svg',
+  '/static/icons/ic_rocket.svg',
+  '/static/icons/ic_star.svg',
+  '/static/icons/ic_store.svg',
+  '/static/icons/ic_visa.svg',
+  '/static/icons/json-logo.svg',
+  '/static/icons/love-camera.svg',
+  '/static/icons/shape-avatar.svg',
+  '/static/icons/shield.svg'
+];
+
 const CARDS = [
   {
     icon: '/static/icons/ic_customer.svg',
-    title: <>Mantee</>,
+    title: <>Mentee</>,
     description:
-      'Tham gia cùng với kế hoạch của bạn, tinh chỉnh để có thể giúp bạn để đạt được kết quả tốt nhất. Đừng lo nếu bạn chưa biết bắt đầu từ đâu, chúng tôi sẽ giúp bạn lập kế hoạch cho dự án của bạn.'
+      'Mentee là những học viên mới, chưa có nhiều trải nghiệm. Họ muốn học tập và chuyển sang lĩnh vực IT.'
   },
   {
     icon: '/static/icons/ic_store.svg',
-    title: <>Manter</>,
+    title: <>Mentor</>,
     description:
-      'Sau khi lập kế hoạch xong, chúng tôi phát triển các bản mẫu của dự án để có thể đảm bảo ứng dụng giống như bạn mong đợi trước khi bắt đầu.'
+      'Mentor đóng vai trò cố vấn, hướng dẫn cho mentee trong quá trình học tập và phát triển.'
   },
   {
     icon: '/static/icons/ic_headless.svg',
     title: <>Master</>,
     description:
-      'Sau khi kế hoạch và bản mẫu đã hoàn tất, một nhóm nhà phát triển sẽ được chỉ định cho dự án của bạn và quá trình phát triển bắt đầu.'
+      'Master là người có chuyên môn sâu, kinh nghiệm lâu năm trong lĩnh vực IT, sẽ là người định hướng học viên kỹ năng và con đường đến với nhà tuyển dụng.'
   }
 ];
 
 const shadowIcon = (color: string) => `drop-shadow(2px 2px 2px ${alpha(color, 0.48)})`;
 
 const RootStyle = styled('div')(({ theme }) => ({
-  paddingTop: theme.spacing(15),
-  background: theme.palette.background.default,
-  [theme.breakpoints.up('md')]: {
-    paddingBottom: theme.spacing(15)
-  }
+  paddingTop: theme.spacing(10),
+  background: theme.palette.background.neutral,
+  paddingBottom: theme.spacing(6)
+  // [theme.breakpoints.up('md')]: {
+  //   paddingBottom: theme.spacing(15)
+  // }
 }));
 
 const CardStyle = styled(Card)(({ theme }) => {
@@ -45,10 +84,10 @@ const CardStyle = styled(Card)(({ theme }) => {
 
   return {
     maxWidth: 380,
-    minHeight: 440,
+    minHeight: 340,
     margin: 'auto',
     textAlign: 'center',
-    padding: theme.spacing(10, 2, 4),
+    padding: theme.spacing(4, 2, 4),
     boxShadow: `-40px 40px 80px 0 ${shadowCard(0.48)}`,
     [theme.breakpoints.up('md')]: {
       boxShadow: 'none'
@@ -68,7 +107,7 @@ const CardIconStyle = styled('img')(({ theme }) => ({
   width: 54,
   height: 54,
   margin: 'auto',
-  marginBottom: theme.spacing(10),
+  marginBottom: theme.spacing(5),
   filter: shadowIcon(theme.palette.primary.main)
 }));
 
@@ -94,8 +133,9 @@ export default function HomeThreeModels() {
                 sx={{
                   color: isLight ? 'text.secondary' : 'text.primary'
                 }}
+                variant="h6"
               >
-                Đến với UniPro, manter(người hướng dẫn) của chúng tôi sẽ hướng dẫn bạn(mantee) trong
+                Đến với UniPro, mentor(người hướng dẫn) của chúng tôi sẽ hướng dẫn bạn(mentee) trong
                 suốt quá trình học tập, lên ý tưởng và phát triển dự án. Bên cạnh đó, chúng tôi còn
                 có đội ngũ chuyên gia(master) có nhiều năm kinh nghiệm giảng dạy và làm việc tại FPT
                 sẽ bổ sung kiến thức chuyên sâu, định hướng con đường ngắn nhất và hiệu quả để bạn
@@ -104,10 +144,9 @@ export default function HomeThreeModels() {
             </MotionInView>
           </Box>
         </Container>
-
-        <Grid container spacing={isDesktop ? 10 : 5}>
+        <Grid container spacing={isDesktop ? 6 : 4}>
           {CARDS.map((card, index) => (
-            <Grid key={`card-hero-${indexedDB}`} item xs={12} md={4}>
+            <Grid key={`card-hero-${index}`} item xs={12} md={4}>
               <MotionInView variants={varFadeInUp}>
                 <CardStyle
                   className={(index === 0 && 'cardLeft') || (index === 1 && 'cardCenter') || ''}
@@ -129,7 +168,10 @@ export default function HomeThreeModels() {
                   <Typography variant="h5" paragraph>
                     {card.title}
                   </Typography>
-                  <Typography sx={{ color: isLight ? 'text.secondary' : 'common.white' }}>
+                  <Typography
+                    sx={{ color: isLight ? 'text.secondary' : 'common.white' }}
+                    variant="h6"
+                  >
                     {card.description}
                   </Typography>
                 </CardStyle>
