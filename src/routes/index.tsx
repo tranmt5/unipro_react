@@ -53,8 +53,9 @@ export default function Router() {
         { path: '/features', element: <FeaturesPage /> },
         { path: '/', element: <HomePage /> },
         { path: '/khoa-hoc', element: <CoursePage /> },
-        { path: '/client', element: <ClientPage /> },
-        { path: '/coming-soon', element: <ComingSoon /> }
+        { path: '/gioi-thieu', element: <IntroductionPage /> },
+        { path: '/coming-soon', element: <ComingSoon /> },
+        { path: '/lien-he', element: <ContactPage /> }
       ]
     },
     { path: '*', element: <Navigate to="/404" replace /> }
@@ -70,3 +71,5 @@ const ComingSoon = Loadable(lazy(() => import('../pages/ComingSoon')));
 const HomePage = Loadable(lazy(() => import('../pages/Home')));
 const CoursePage = Loadable(lazy(() => import('../pages/Course')));
 const ClientPage = Loadable(lazy(() => import('../pages/Client')));
+const IntroductionPage = Loadable(lazy(() => import('../pages/IntroductionPage')));
+const ContactPage = Loadable(lazy(() => import('../pages/ContactPage')));

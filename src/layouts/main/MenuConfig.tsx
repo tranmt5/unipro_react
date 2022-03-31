@@ -19,10 +19,10 @@ export const rightMenuConfig = [
     path: '/khoa-hoc',
     icon: <Box component="img" src="/static/icons/ic_rocket.svg" {...ICON_SIZE} />
   },
-  { title: 'Khách hàng', path: '/client', icon: <PeopleAltIcon {...ICON_SIZE} /> },
+  { title: 'Giới thiệu', path: '/gioi-thieu', icon: <PeopleAltIcon {...ICON_SIZE} /> },
   {
-    title: 'Theo yêu cầu',
-    path: '/on-demand',
+    title: 'Liên hệ',
+    path: '/lien-he',
     icon: <Box component="img" src="/static/icons/ic_demand.svg" {...ICON_SIZE} />
   }
 ];

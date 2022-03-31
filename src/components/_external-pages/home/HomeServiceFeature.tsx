@@ -112,83 +112,82 @@ export default function HomeServiceFeature() {
   const isLight = theme.palette.mode === 'light';
 
   return (
-    <>
-      <RootStyle initial="initial" animate="animate" variants={varWrapEnter}>
-        <Container maxWidth="md">
-          <Box sx={{ mb: { xs: 5, md: 8 }, textAlign: 'center' }}>
-            <MotionInView variants={varFadeInDown}>
-              <Typography variant="h3" sx={{ mb: 3 }}>
-                Giới thiệu
-              </Typography>
-            </MotionInView>
-            <MotionInView variants={varFadeInUp}>
-              <Typography
-                sx={{
-                  color: isLight ? 'text.secondary' : 'text.primary'
-                }}
-                variant="h6"
-              >
-                Với sứ mệnh đào tạo ra các kỹ sư CNTT trong tương lai, cung cấp nguồn nhân lực IT
-                cho các dự án lớn, mở rộng cơ hội nghề nghiệp thích ứng với sự biến đổi của thị
-                trường, Unipro Center tạo mọi điều kiện tốt nhất để học viên được học tập trong một
-                môi trường chuyền nghiệp, hiện đại và thực tế cùng với giáo trình được biên soạn
-                theo tiêu chuẩn Quốc tế dưới sự giảng dạy của các chuyên gia đầu ngành trong lĩnh
-                vực CNTT.
-              </Typography>
-            </MotionInView>
-          </Box>
-        </Container>
-        {SERVICES.map((service, index) => {
-          const secondary = index % 2 !== 0;
-          return (
-            <MotionInView
+    <RootStyle initial="initial" animate="animate" variants={varWrapEnter}>
+      <Container maxWidth="md">
+        <Box sx={{ mb: { xs: 5, md: 8 }, textAlign: 'center' }}>
+          <MotionInView variants={varFadeInDown}>
+            <Typography variant="h3" sx={{ mb: 3 }}>
+              GIỚI THIỆU
+            </Typography>
+          </MotionInView>
+          <MotionInView variants={varFadeInUp}>
+            <Typography
               sx={{
-                backgroundColor: secondary
-                  ? theme.palette.background.neutral
-                  : theme.palette.background.default
+                color: isLight ? 'text.secondary' : 'text.primary',
+                textAlign: 'justify',
+                px: 2
               }}
-              key={`service-${index}`}
-              variants={secondary ? varFadeInRight : varFadeInLeft}
+              variant="h6"
             >
-              <Container maxWidth="lg">
-                <Stack
-                  py={5}
-                  direction={{ xs: 'column-reverse', md: secondary ? 'row' : 'row-reverse' }}
-                  spacing={10}
-                  alignItems="center"
-                >
-                  <Stack spacing={6} sx={{ flex: 1, px: 2 }} textAlign={['center', 'left']}>
-                    <Box>
-                      <Typography mb={1} variant="h6">
-                        {service.caption}
-                      </Typography>
-                      <Typography variant="h4">{service.title}</Typography>
-                    </Box>
-                    <Stack spacing={4}>
-                      {service.serviceDetails.map((serviceDetail) => (
-                        <Box key={`serviceDetail-${serviceDetail.title}`}>
-                          <Stack spacing={1}>
-                            <Typography variant="h5">{serviceDetail.title}</Typography>
-                            <Typography
-                              sx={{ color: isLight ? 'text.secondary' : 'common.white' }}
-                              variant="h6"
-                            >
-                              {serviceDetail.descripiton}
-                            </Typography>
-                          </Stack>
-                        </Box>
-                      ))}
-                    </Stack>
-                  </Stack>
-                  <Box>
-                    <HeroImgStyle alt="service-1" src={service.image} />
+              Với sứ mệnh đào tạo ra các kỹ sư CNTT trong tương lai, cung cấp nguồn nhân lực IT cho
+              các dự án lớn, mở rộng cơ hội nghề nghiệp thích ứng với sự biến đổi của thị trường,
+              Unipro Center tạo mọi điều kiện tốt nhất để học viên được học tập trong một môi trường
+              chuyên nghiệp, hiện đại và thực tế cùng với giáo trình được biên soạn theo tiêu chuẩn
+              Quốc tế dưới sự giảng dạy của các chuyên gia đầu ngành trong lĩnh vực CNTT.
+            </Typography>
+          </MotionInView>
+        </Box>
+      </Container>
+      {SERVICES.map((service, index) => {
+        const secondary = index % 2 !== 0;
+        return (
+          <MotionInView
+            sx={{
+              backgroundColor: secondary
+                ? theme.palette.background.neutral
+                : theme.palette.background.default
+            }}
+            key={`service-${index}`}
+            variants={secondary ? varFadeInRight : varFadeInLeft}
+          >
+            <Container maxWidth="lg">
+              <Stack
+                py={5}
+                direction={{ xs: 'column-reverse', md: secondary ? 'row' : 'row-reverse' }}
+                spacing={10}
+                alignItems="center"
+              >
+                <Stack spacing={6} sx={{ flex: 1, px: 2 }}>
+                  <Box textAlign={['center', 'left']}>
+                    <Typography mb={1} variant="h6">
+                      {service.caption}
+                    </Typography>
+                    <Typography variant="h4">{service.title}</Typography>
                   </Box>
+                  <Stack spacing={4} textAlign={['justify', 'left']}>
+                    {service.serviceDetails.map((serviceDetail) => (
+                      <Box key={`serviceDetail-${serviceDetail.title}`}>
+                        <Stack spacing={1}>
+                          <Typography variant="h5">{serviceDetail.title}</Typography>
+                          <Typography
+                            sx={{ color: isLight ? 'text.secondary' : 'text.primary' }}
+                            variant="h6"
+                          >
+                            {serviceDetail.descripiton}
+                          </Typography>
+                        </Stack>
+                      </Box>
+                    ))}
+                  </Stack>
                 </Stack>
-              </Container>
-            </MotionInView>
-          );
-        })}
-      </RootStyle>
-    </>
+                <Box>
+                  <HeroImgStyle alt="service-1" src={service.image} />
+                </Box>
+              </Stack>
+            </Container>
+          </MotionInView>
+        );
+      })}
+    </RootStyle>
   );
 }

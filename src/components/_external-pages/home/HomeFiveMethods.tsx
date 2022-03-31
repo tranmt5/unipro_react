@@ -12,13 +12,15 @@ import DoneOutlineIcon from '@material-ui/icons/DoneOutline';
 import PoolIcon from '@material-ui/icons/Pool';
 import TrendingUpIcon from '@material-ui/icons/TrendingUp';
 import { useTheme, styled } from '@material-ui/core/styles';
+import { motion } from 'framer-motion';
 import { Typography, Container, Box, useMediaQuery } from '@material-ui/core';
 import {
   varFadeInUp,
   MotionInView,
   varFadeInDown,
   varFadeInRight,
-  varFadeInLeft
+  varFadeInLeft,
+  varWrapEnter
 } from '../../animate';
 
 const METHODS = [
@@ -54,7 +56,7 @@ const METHODS = [
   }
 ];
 
-const RootStyle = styled('div')(({ theme }) => ({
+const RootStyle = styled(motion.div)(({ theme }) => ({
   paddingTop: theme.spacing(10),
   background: theme.palette.background.default,
   paddingBottom: theme.spacing(6)
@@ -67,18 +69,20 @@ export default function HomeFiveMethods() {
   console.log(`međia + ${isDesktop}`);
 
   return (
-    <RootStyle>
+    <RootStyle initial="initial" animate="animate" variants={varWrapEnter}>
       <Container maxWidth="md">
         <Box sx={{ mb: { xs: 5, md: 8 }, textAlign: 'center' }}>
           <MotionInView variants={varFadeInDown}>
             <Typography variant="h3" sx={{ mb: 3 }}>
-              Phương pháp 5P
+              PHƯƠNG PHÁP 5P
             </Typography>
           </MotionInView>
           <MotionInView variants={varFadeInUp}>
             <Typography
               sx={{
-                color: isLight ? 'text.secondary' : 'text.primary'
+                color: isLight ? 'text.secondary' : 'text.primary',
+                textAlign: 'justify',
+                px: 2
               }}
               variant="h6"
             >
@@ -115,7 +119,7 @@ export default function HomeFiveMethods() {
                     {method.title}
                   </Typography>
                   <Typography
-                    sx={{ color: isLight ? 'text.secondary' : 'common.white' }}
+                    sx={{ color: isLight ? 'text.secondary' : 'text.primary' }}
                     variant="h6"
                   >
                     {method.description}

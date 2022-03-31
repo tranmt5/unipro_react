@@ -1,48 +1,49 @@
 // material
 import { alpha, useTheme, styled } from '@material-ui/core/styles';
 import { Box, Grid, Card, Container, Typography, useMediaQuery, Button } from '@material-ui/core';
+import { motion } from 'framer-motion';
 //
-import { varFadeInUp, MotionInView, varFadeInDown } from '../../animate';
+import { varFadeInUp, MotionInView, varFadeInDown, varWrapEnter } from '../../animate';
 
 // ----------------------------------------------------------------------
 
-const CA = [
-  '/static/icons/browser-edge.svg',
-  '/static/icons/elephant.svg',
-  '/static/icons/ic_api.svg',
-  '/static/icons/ic_architecture.svg',
-  '/static/icons/ic_chrome.svg',
-  '/static/icons/ic_code.svg',
-  '/static/icons/ic_customer.svg',
-  '/static/icons/ic_delivery.gif',
-  '/static/icons/ic_demand.svg',
-  '/static/icons/ic_design.svg',
-  '/static/icons/ic_drive.svg',
-  '/static/icons/ic_dropbox.svg',
-  '/static/icons/ic_evernote.svg',
-  '/static/icons/ic_flag_de.svg',
-  '/static/icons/ic_franchise.svg',
-  '/static/icons/ic_github.svg',
-  '/static/icons/ic_headless.svg',
-  '/static/icons/ic_mastercard.svg',
-  '/static/icons/ic_multilang.svg',
-  '/static/icons/ic_notification_chat.svg',
-  '/static/icons/ic_notification_mail.svg',
-  '/static/icons/ic_notification_package.svg',
-  '/static/icons/ic_notification_shipping.svg',
-  '/static/icons/ic_order.svg',
-  '/static/icons/ic_payment.svg',
-  '/static/icons/ic_paypal.svg',
-  '/static/icons/ic_responsive.svg',
-  '/static/icons/ic_rocket.svg',
-  '/static/icons/ic_star.svg',
-  '/static/icons/ic_store.svg',
-  '/static/icons/ic_visa.svg',
-  '/static/icons/json-logo.svg',
-  '/static/icons/love-camera.svg',
-  '/static/icons/shape-avatar.svg',
-  '/static/icons/shield.svg'
-];
+// const CA = [
+//   '/static/icons/browser-edge.svg',
+//   '/static/icons/elephant.svg',
+//   '/static/icons/ic_api.svg',
+//   '/static/icons/ic_architecture.svg',
+//   '/static/icons/ic_chrome.svg',
+//   '/static/icons/ic_code.svg',
+//   '/static/icons/ic_customer.svg',
+//   '/static/icons/ic_delivery.gif',
+//   '/static/icons/ic_demand.svg',
+//   '/static/icons/ic_design.svg',
+//   '/static/icons/ic_drive.svg',
+//   '/static/icons/ic_dropbox.svg',
+//   '/static/icons/ic_evernote.svg',
+//   '/static/icons/ic_flag_de.svg',
+//   '/static/icons/ic_franchise.svg',
+//   '/static/icons/ic_github.svg',
+//   '/static/icons/ic_headless.svg',
+//   '/static/icons/ic_mastercard.svg',
+//   '/static/icons/ic_multilang.svg',
+//   '/static/icons/ic_notification_chat.svg',
+//   '/static/icons/ic_notification_mail.svg',
+//   '/static/icons/ic_notification_package.svg',
+//   '/static/icons/ic_notification_shipping.svg',
+//   '/static/icons/ic_order.svg',
+//   '/static/icons/ic_payment.svg',
+//   '/static/icons/ic_paypal.svg',
+//   '/static/icons/ic_responsive.svg',
+//   '/static/icons/ic_rocket.svg',
+//   '/static/icons/ic_star.svg',
+//   '/static/icons/ic_store.svg',
+//   '/static/icons/ic_visa.svg',
+//   '/static/icons/json-logo.svg',
+//   '/static/icons/love-camera.svg',
+//   '/static/icons/shape-avatar.svg',
+//   '/static/icons/shield.svg'
+// ];
 
 const CARDS = [
   {
@@ -67,13 +68,10 @@ const CARDS = [
 
 const shadowIcon = (color: string) => `drop-shadow(2px 2px 2px ${alpha(color, 0.48)})`;
 
-const RootStyle = styled('div')(({ theme }) => ({
+const RootStyle = styled(motion.div)(({ theme }) => ({
   paddingTop: theme.spacing(10),
   background: theme.palette.background.neutral,
   paddingBottom: theme.spacing(6)
-  // [theme.breakpoints.up('md')]: {
-  //   paddingBottom: theme.spacing(15)
-  // }
 }));
 
 const CardStyle = styled(Card)(({ theme }) => {
@@ -84,7 +82,7 @@ const CardStyle = styled(Card)(({ theme }) => {
 
   return {
     maxWidth: 380,
-    minHeight: 340,
+    minHeight: 400,
     margin: 'auto',
     textAlign: 'center',
     padding: theme.spacing(4, 2, 4),
@@ -119,31 +117,33 @@ export default function HomeThreeModels() {
   const isDesktop = useMediaQuery(theme.breakpoints.up('lg'));
 
   return (
-    <RootStyle>
-      <Container maxWidth="lg">
-        <Container maxWidth="md">
-          <Box sx={{ mb: { xs: 5, md: 8 }, textAlign: 'center' }}>
-            <MotionInView variants={varFadeInDown}>
-              <Typography variant="h3" sx={{ mb: 3 }}>
-                Mô hình 3M
-              </Typography>
-            </MotionInView>
-            <MotionInView variants={varFadeInUp}>
-              <Typography
-                sx={{
-                  color: isLight ? 'text.secondary' : 'text.primary'
-                }}
-                variant="h6"
-              >
-                Đến với UniPro, mentor(người hướng dẫn) của chúng tôi sẽ hướng dẫn bạn(mentee) trong
-                suốt quá trình học tập, lên ý tưởng và phát triển dự án. Bên cạnh đó, chúng tôi còn
-                có đội ngũ chuyên gia(master) có nhiều năm kinh nghiệm giảng dạy và làm việc tại FPT
-                sẽ bổ sung kiến thức chuyên sâu, định hướng con đường ngắn nhất và hiệu quả để bạn
-                đạt được thành công.
-              </Typography>
-            </MotionInView>
-          </Box>
-        </Container>
+    <RootStyle initial="initial" animate="animate" variants={varWrapEnter}>
+      <Container maxWidth="md">
+        <Box sx={{ mb: { xs: 5, md: 8 }, textAlign: 'center' }}>
+          <MotionInView variants={varFadeInDown}>
+            <Typography variant="h3" sx={{ mb: 3 }}>
+              MÔ HÌNH 3M
+            </Typography>
+          </MotionInView>
+          <MotionInView variants={varFadeInUp}>
+            <Typography
+              sx={{
+                color: isLight ? 'text.secondary' : 'text.primary',
+                textAlign: 'justify',
+                px: 2
+              }}
+              variant="h6"
+            >
+              Đến với UniPro, người hướng dẫn(mentor) của chúng tôi sẽ hướng dẫn bạn(mentee) trong
+              suốt quá trình học tập, lên ý tưởng và phát triển dự án. Bên cạnh đó, chúng tôi còn có
+              đội ngũ chuyên gia(master) có nhiều năm kinh nghiệm giảng dạy và làm việc tại FPT sẽ
+              bổ sung kiến thức chuyên sâu, định hướng con đường ngắn nhất và hiệu quả để bạn đạt
+              được thành công.
+            </Typography>
+          </MotionInView>
+        </Box>
+      </Container>
+      <Container maxWidth="md">
         <Grid container spacing={isDesktop ? 6 : 4}>
           {CARDS.map((card, index) => (
             <Grid key={`card-hero-${index}`} item xs={12} md={4}>
@@ -165,11 +165,14 @@ export default function HomeThreeModels() {
                       })
                     }}
                   />
-                  <Typography variant="h5" paragraph>
+                  <Typography variant="h4" paragraph>
                     {card.title}
                   </Typography>
                   <Typography
-                    sx={{ color: isLight ? 'text.secondary' : 'common.white' }}
+                    sx={{
+                      color: isLight ? 'text.secondary' : 'text.primary',
+                      textAlign: 'justify'
+                    }}
                     variant="h6"
                   >
                     {card.description}
@@ -180,6 +183,16 @@ export default function HomeThreeModels() {
           ))}
         </Grid>
       </Container>
+      {/* <Grid>
+          {CA.map((ca, index) => (
+            <Grid key={`card-hero-${index}`} item xs={12} md={4}>
+              <CardIconStyle
+                src={ca}
+                sx={{ filter: (theme) => shadowIcon(theme.palette.info.main) }}
+              />
+            </Grid>
+          ))}
+        </Grid> */}
     </RootStyle>
   );
 }

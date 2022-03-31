@@ -4,7 +4,6 @@ import { useScroll } from 'ahooks';
 import Grid from '@material-ui/core/Grid';
 // material
 import { useEffect, useState } from 'react';
-//
 import {
   MotionInView,
   varFadeInDownDesktopSmDown,
@@ -61,7 +60,7 @@ const FADE_IN_DOWN = [
   }
 ];
 
-export default function GreetingBootcamp() {
+export default function GreetingIntroduction() {
   const theme = useTheme();
   const isDesktopSm = useMediaQuery(theme.breakpoints.down('sm'));
   const isDesktopMd = useMediaQuery(theme.breakpoints.down('md'));
@@ -82,7 +81,7 @@ export default function GreetingBootcamp() {
   return (
     <RootStyle>
       <Box textAlign={['justify', 'left']}>
-        <BoxImg src="/static/course/course_greeting_bootcamp.jpg" />
+        <BoxImg src="/static/introduction/introduction_center.jpg" />
         <div style={{ height: isDesktopSm ? 'auto' : '0px' }}>
           <MotionInView variants={fadeInDown.fadeTitle}>
             <Grid container spacing={2}>
@@ -92,21 +91,22 @@ export default function GreetingBootcamp() {
                   color={isDesktopSm ? '#00000' : '#ffff'}
                   sx={{ ml: { sm: 10, md: 10, lg: 10 }, pl: { md: 4, lg: 3 }, mx: { xs: 4 } }}
                 >
-                  Lợi thế chương trình tại UniPro
+                  Giới thiệu về UniPro
                 </Typography>
               </Grid>
             </Grid>
           </MotionInView>
           <MotionInView variants={fadeInDown.fadeTitle} sx={{ py: 4 }}>
-            <Grid container spacing={2}>
+            <Grid container spacing={4}>
               <Grid item xs={12} md={8}>
                 <Typography
                   variant={isDesktopSm ? 'h3' : 'h3'}
                   color={isDesktopSm ? '#00000' : '#ffff'}
                   sx={{ ml: { sm: 10, md: 10, lg: 10 }, pl: { md: 4, lg: 3 }, mx: { xs: 4 } }}
                 >
-                  Tham gia khóa học với những bước đi vững chắc trên nền tảng cốt lõi của công nghệ
-                  mới nhất.
+                  UniPro cung cấp một nền tảng vững chắc để bạn tiếp cận với các kiến thức trong
+                  lĩnh vực công nghệ thông tin một cách dễ dàng nhất, từ đó có thêm nhiều cơ hội
+                  việc làm trong tương lai.
                 </Typography>
               </Grid>
             </Grid>
@@ -119,7 +119,8 @@ export default function GreetingBootcamp() {
                   color={isDesktopSm ? '#00000' : '#ffff'}
                   sx={{ ml: { sm: 10, md: 10, lg: 10 }, pl: { md: 4, lg: 3 }, mx: { xs: 4 } }}
                 >
-                  Ngay bây giờ, hãy hiện thực hóa thành web developer trong vòng chưa đầy 6 tháng.
+                  Với nhiều năm kinh nghiệm cùng phương pháp đào tạo hiệu quả, UniPro đào tạo học
+                  viên theo từng cấp độ, tạo môi trường học tập phù hợp nhất cho từng người.
                 </Typography>
               </Grid>
             </Grid>

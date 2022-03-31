@@ -85,6 +85,7 @@ const FEEDBACKS = [
 export default function HomeFeedbackMentee() {
   const theme = useTheme();
   const isDesktop = useMediaQuery(theme.breakpoints.up('lg'));
+  const isLight = theme.palette.mode === 'light';
   const sliderRef = useRef<Slider>(null);
   const settings = {
     dots: true,
@@ -102,71 +103,72 @@ export default function HomeFeedbackMentee() {
   };
 
   return (
-    <>
-      <RootStyle initial="initial" animate="animate" variants={varWrapEnter}>
-        <Container maxWidth="md">
-          <Box sx={{ mb: { xs: 2, md: 2 }, textAlign: 'center' }}>
-            <MotionInView variants={varFadeInDown}>
-              <Typography variant="h3" sx={{ mb: 1 }}>
-                Cảm nhận học viên tại UNIPRO
-              </Typography>
-            </MotionInView>
-          </Box>
-        </Container>
-        <Slider ref={sliderRef} {...settings}>
-          {FEEDBACKS.map((feedback, index) => {
-            const secondary = index % 2 !== 0;
-            return (
-              <MotionInView
-                sx={{
-                  backgroundColor: secondary
-                    ? theme.palette.background.default
-                    : theme.palette.background.neutral
-                }}
-                key={`features-${index}`}
-                variants={secondary ? varFadeInRight : varFadeInLeft}
-              >
-                <Container maxWidth="lg">
-                  <Stack
-                    py={5}
-                    direction={{ xs: 'column-reverse', md: secondary ? 'row' : 'row-reverse' }}
-                    spacing={10}
-                    alignItems="center"
-                  >
-                    <Stack spacing={3} sx={{ flex: 1, px: 2 }} textAlign={['center', 'left']}>
-                      <Box>
-                        <Typography mb={2} variant="h3">
-                          {feedback.title}
-                        </Typography>
-                        <Typography variant="h6"> Học viên: {feedback.mentee}</Typography>
-                      </Box>
-                      <Box>
-                        <Typography component="legend" variant="h6">
-                          Đánh giá
-                        </Typography>
-                        <Rating name="read-only" value={feedback.rating} readOnly />
-                      </Box>
-                      <Stack spacing={4}>
-                        {feedback.feedbackDetails.map((feedbackDetail) => (
-                          <Box key={`feedbackDetail-${feedbackDetail.title}`}>
-                            <Stack spacing={1}>
-                              <Typography variant="h5">{feedbackDetail.title}</Typography>
-                              <Typography variant="h6">{feedbackDetail.descripiton}</Typography>
-                            </Stack>
-                          </Box>
-                        ))}
-                      </Stack>
-                    </Stack>
-                    <Box>
-                      <HeroImgStyle alt="feature-1" src={feedback.image} />
+    <RootStyle initial="initial" animate="animate" variants={varWrapEnter}>
+      <Container maxWidth="md">
+        <Box sx={{ mb: { xs: 5, md: 8 }, textAlign: 'center' }}>
+          <MotionInView variants={varFadeInDown}>
+            <Typography variant="h3" sx={{ mb: 3 }}>
+              CẢM NHẬN HỌC VIÊN UNIPRO
+            </Typography>
+          </MotionInView>
+        </Box>
+      </Container>
+      <Slider ref={sliderRef} {...settings}>
+        {FEEDBACKS.map((feedback, index) => {
+          const secondary = index % 2 !== 0;
+          return (
+            <MotionInView
+              sx={{
+                backgroundColor: secondary
+                  ? theme.palette.background.default
+                  : theme.palette.background.neutral
+              }}
+              key={`features-${index}`}
+              variants={secondary ? varFadeInRight : varFadeInLeft}
+            >
+              <Container maxWidth="lg">
+                <Stack
+                  py={5}
+                  direction={{ xs: 'column-reverse', md: secondary ? 'row' : 'row-reverse' }}
+                  spacing={10}
+                  alignItems="center"
+                >
+                  <Stack spacing={3} sx={{ flex: 1, px: 2 }}>
+                    <Box textAlign={['center', 'left']}>
+                      <Typography mb={2} variant="h3">
+                        {feedback.title}
+                      </Typography>
+                      <Typography variant="h6"> Học viên: {feedback.mentee}</Typography>
+                      <Typography component="legend" variant="h6" sx={{ mt: 2 }}>
+                        Đánh giá
+                      </Typography>
+                      <Rating name="read-only" value={feedback.rating} readOnly />
                     </Box>
+                    <Stack spacing={4} textAlign={['justify', 'left']}>
+                      {feedback.feedbackDetails.map((feedbackDetail) => (
+                        <Box key={`feedbackDetail-${feedbackDetail.title}`}>
+                          <Stack spacing={1}>
+                            <Typography variant="h5">{feedbackDetail.title}</Typography>
+                            <Typography
+                              variant="h6"
+                              sx={{ color: isLight ? 'text.secondary' : 'text.primary' }}
+                            >
+                              {feedbackDetail.descripiton}
+                            </Typography>
+                          </Stack>
+                        </Box>
+                      ))}
+                    </Stack>
                   </Stack>
-                </Container>
-              </MotionInView>
-            );
-          })}
-        </Slider>
-      </RootStyle>
-    </>
+                  <Box>
+                    <HeroImgStyle alt="feature-1" src={feedback.image} />
+                  </Box>
+                </Stack>
+              </Container>
+            </MotionInView>
+          );
+        })}
+      </Slider>
+    </RootStyle>
   );
 }

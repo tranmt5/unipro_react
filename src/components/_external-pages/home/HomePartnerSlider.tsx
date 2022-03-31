@@ -50,6 +50,7 @@ export default function HomePartnerSlider() {
   const theme = useTheme();
   const isLight = theme.palette.mode === 'light';
   const isDesktop = useMediaQuery(theme.breakpoints.up('md'));
+  const isDesktopSmUp = useMediaQuery(theme.breakpoints.up('sm'));
   const sliderRef = useRef<Slider>(null);
   const [useSettings, setUseSetting] = useState(settings);
 
@@ -70,16 +71,18 @@ export default function HomePartnerSlider() {
   return (
     <RootStyle>
       <SlickStyle maxWidth="lg" style={{ position: 'relative' }}>
-        <Box sx={{ mb: { xs: 2, md: 2 }, textAlign: 'center' }}>
+        <Box sx={{ mb: { xs: 5, md: 8 }, textAlign: 'center' }}>
           <MotionInView variants={varFadeInDown}>
-            <Typography variant="h3" sx={{ mb: 2 }}>
-              Bạn đồng hành
+            <Typography variant="h3" sx={{ mb: 3 }}>
+              BẠN ĐỒNG HÀNH
             </Typography>
           </MotionInView>
           <MotionInView variants={varFadeInUp}>
             <Typography
               sx={{
-                color: isLight ? 'text.secondary' : 'text.primary'
+                color: isLight ? 'text.secondary' : 'text.primary',
+                textAlign: isDesktopSmUp ? 'center' : 'justify',
+                px: 2
               }}
               variant="h6"
             >

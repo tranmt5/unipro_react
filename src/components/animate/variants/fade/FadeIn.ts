@@ -1,6 +1,6 @@
 // ----------------------------------------------------------------------
 
-const DISTANCE = 120;
+const DISTANCE = 100;
 
 const TRANSITION_ENTER = {
   duration: 0.64,

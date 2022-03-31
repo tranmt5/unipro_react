@@ -182,6 +182,7 @@ export default function HomeImageSlider() {
                 variant={isDesktopSm ? 'h6' : 'h4'}
                 color="#FF6600"
                 sx={{ ml: { sm: 10, md: 10, lg: 10 }, pl: { md: 4, lg: 3 }, mx: { xs: 4 } }}
+                textAlign={['justify', 'left']}
               >
                 {SLIDERS[indexTitle].caption}
               </Typography>
@@ -204,6 +205,7 @@ export default function HomeImageSlider() {
                 variant={isDesktopSm ? 'h6' : 'h4'}
                 color="#FF6600"
                 sx={{ ml: { sm: 10, md: 10, lg: 10 }, pl: { md: 4, lg: 3 }, mx: { xs: 4 } }}
+                textAlign={['justify', 'left']}
               >
                 {SLIDERS[indexTitle].caption}
               </Typography>
