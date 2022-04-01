@@ -66,7 +66,6 @@ export default function HomeFiveMethods() {
   const theme = useTheme();
   const isLight = theme.palette.mode === 'light';
   const isDesktop = useMediaQuery('(min-width: 350px)', { noSsr: true });
-  console.log(`međia + ${isDesktop}`);
 
   return (
     <RootStyle initial="initial" animate="animate" variants={varWrapEnter}>

@@ -2,11 +2,9 @@
 import { styled } from '@material-ui/core/styles';
 import ScrollToTop from 'components/ScrollToTopBtn';
 import EnterpriseContact from 'components/_external-pages/enterprise/EnterpriseContact';
-import GreetingIntroduction from 'components/_external-pages/introduction/GreetingIntroduction';
-import CoreValues from 'components/_external-pages/introduction/CoreValues';
-import LecturersComponent from 'components/_external-pages/introduction/LecturersComponent';
-import AdvisoryComponent from 'components/_external-pages/introduction/AdvisoryComponent';
 import RegisterForm from 'components/_external-pages/contact/RegisterForm';
+import GoogleMapComponent from 'components/_external-pages/contact/GoogleMapComponent';
+import ContactIntroduction from 'components/_external-pages/contact/ContactIntroduction';
 
 // components
 import Page from '../components/Page';
@@ -26,13 +24,11 @@ const ContentStyle = styled('div')(({ theme }) => ({
 export default function ContactPage() {
   return (
     <RootStyle title="Liên hệ | UniPro" id="move_top">
-      <GreetingIntroduction />
+      <ContactIntroduction />
       <ScrollToTop />
       <ContentStyle>
+        <GoogleMapComponent />
         <RegisterForm />
-        <LecturersComponent />
-        <AdvisoryComponent />
-        {/* <StartupInspiration /> */}
         <EnterpriseContact />
       </ContentStyle>
     </RootStyle>

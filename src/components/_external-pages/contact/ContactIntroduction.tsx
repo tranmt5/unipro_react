@@ -60,7 +60,7 @@ const FADE_IN_DOWN = [
   }
 ];
 
-export default function GreetingIntroduction() {
+export default function ContactIntroduction() {
   const theme = useTheme();
   const isDesktopSm = useMediaQuery(theme.breakpoints.down('sm'));
   const isDesktopMd = useMediaQuery(theme.breakpoints.down('md'));
@@ -81,7 +81,7 @@ export default function GreetingIntroduction() {
   return (
     <RootStyle>
       <Box textAlign={['justify', 'left']}>
-        <BoxImg src="/static/introduction/introduction_center.jpg" />
+        <BoxImg src="/static/contact/outside_center.jpg" />
         <div style={{ height: isDesktopSm ? 'auto' : '0px' }}>
           <MotionInView variants={fadeInDown.fadeTitle}>
             <Grid container spacing={2}>
@@ -91,7 +91,7 @@ export default function GreetingIntroduction() {
                   color={isDesktopSm ? '#00000' : '#ffff'}
                   sx={{ ml: { sm: 10, md: 10, lg: 10 }, pl: { md: 4, lg: 3 }, mx: { xs: 4 } }}
                 >
-                  Giới thiệu về UniPro
+                  Không gian bên ngoài UniPro
                 </Typography>
               </Grid>
             </Grid>
@@ -104,23 +104,8 @@ export default function GreetingIntroduction() {
                   color={isDesktopSm ? '#00000' : '#ffff'}
                   sx={{ ml: { sm: 10, md: 10, lg: 10 }, pl: { md: 4, lg: 3 }, mx: { xs: 4 } }}
                 >
-                  UniPro cung cấp một nền tảng vững chắc để bạn tiếp cận với các kiến thức trong
-                  lĩnh vực công nghệ thông tin một cách dễ dàng nhất, từ đó có thêm nhiều cơ hội
-                  việc làm trong tương lai.
-                </Typography>
-              </Grid>
-            </Grid>
-          </MotionInView>
-          <MotionInView variants={fadeInDown.fadeCaption}>
-            <Grid container spacing={2}>
-              <Grid item xs={12} md={8}>
-                <Typography
-                  variant={isDesktopSm ? 'h6' : 'h5'}
-                  color={isDesktopSm ? '#00000' : '#ffff'}
-                  sx={{ ml: { sm: 10, md: 10, lg: 10 }, pl: { md: 4, lg: 3 }, mx: { xs: 4 } }}
-                >
-                  Với nhiều năm kinh nghiệm cùng phương pháp đào tạo hiệu quả, UniPro đào tạo học
-                  viên theo từng cấp độ, tạo môi trường học tập phù hợp nhất cho từng người.
+                  Với vị trí đẹp, gần các trường đại học, cao đẳng hàng đầu, UniPro là nơi lý tưởng
+                  cho bạn khởi tạo đam mê công nghệ của mình.
                 </Typography>
               </Grid>
             </Grid>

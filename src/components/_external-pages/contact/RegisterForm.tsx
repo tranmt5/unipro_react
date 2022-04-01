@@ -22,7 +22,7 @@ import { varFadeInUp, MotionInView, varFadeInDown } from '../../animate';
 
 const RootStyle = styled('div')(({ theme }) => ({
   paddingTop: theme.spacing(10),
-  background: theme.palette.background.neutral,
+  background: theme.palette.background.default,
   paddingBottom: theme.spacing(6)
 }));
 

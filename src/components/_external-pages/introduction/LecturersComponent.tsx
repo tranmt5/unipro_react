@@ -12,21 +12,21 @@ import { varFadeInUp, MotionInView, varFadeInDown, varWrapEnter } from '../../an
 
 const CARDS = [
   {
-    icon: '/static/introduction/lecturer_avatar_1.jpg',
+    icon: '/static/introduction/lecturer_avatar_4.jpg',
     title: <>Lê Sỹ Việt</>,
     description:
       'Tham gia các hoạt động giảng dạy và nghiên cứu các ngành Công nghệ thông tin tại trường Đại học FPT.'
   },
   {
-    icon: '/static/introduction/lecturer_avatar_2.jpg',
+    icon: '/static/introduction/lecturer_avatar_5.jpg',
     title: <>Lý Dạ Thảo Quyên</>,
     description: 'Thực hiện các nhiệm vụ trong các dự án công nghệ của Tập đoàn FPT.'
   },
   {
-    icon: '/static/introduction/lecturer_avatar_3.jpg',
+    icon: '/static/introduction/lecturer_avatar_6.jpg',
     title: <>Phùng Thanh Thiết</>,
     description:
-      'Tham gia giảng dạy các môn học thuộc chuyên ngành Công nghệ thông tin: Lập trình máy tính và thiết bị di động, lập trình website.'
+      'Tham gia giảng dạy các môn học thuộc chuyên ngành Công nghệ thông tin: Lập trình máy tính, thiết bị di động và lập trình website.'
   }
 ];
 
@@ -50,11 +50,11 @@ const CardStyle = styled(Card)(({ theme }) => {
     margin: 'auto',
     textAlign: 'center',
     padding: theme.spacing(4, 2, 4),
-    boxShadow: `-40px 40px 80px 0 ${shadowCard(0.48)}`,
+    boxShadow: `0px 0px 10px 5px ${shadowCard(0.48)}`,
     '&.cardItem': {
       [theme.breakpoints.up('md')]: {
         backgroundColor: theme.palette.background.paper,
-        boxShadow: `0px 40px 80px 0 ${shadowCard(0.4)}`
+        boxShadow: `0px 0px 8px 4px ${shadowCard(0.4)}`
       }
     }
   };
@@ -64,6 +64,7 @@ const CardIconStyle = styled('img')(({ theme }) => ({
   width: 54,
   height: 54,
   margin: 'auto',
+  objectFit: 'cover',
   marginBottom: theme.spacing(5),
   filter: shadowIcon(theme.palette.primary.main)
 }));
@@ -85,7 +86,7 @@ export default function LecturersComponent() {
               <Stack sx={{ flex: 0 }}>
                 <motion.div
                   animate={{ rotateY: [0, 180] }}
-                  transition={{ duration: 2, repeat: Infinity, repeatType: 'reverse' }}
+                  transition={{ duration: 3, repeat: Infinity, repeatType: 'reverse' }}
                 >
                   <GroupIcon color="secondary" style={{ fontSize: isDesktop ? '58px' : '30px' }} />
                 </motion.div>

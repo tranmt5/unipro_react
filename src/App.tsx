@@ -7,6 +7,7 @@ import Settings from './components/settings';
 import RtlLayout from './components/RtlLayout';
 import ScrollToTop from './components/ScrollToTop';
 import ThemePrimaryColor from './components/ThemePrimaryColor';
+import './App.css';
 
 // ----------------------------------------------------------------------
 

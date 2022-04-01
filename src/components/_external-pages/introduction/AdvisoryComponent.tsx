@@ -68,7 +68,7 @@ const DETAILS = [
 
 const RootStyle = styled(motion.div)(({ theme }) => ({
   paddingTop: theme.spacing(10),
-  background: theme.palette.background.default,
+  background: theme.palette.background.neutral,
   paddingBottom: theme.spacing(6)
 }));
 
@@ -101,7 +101,7 @@ export default function AdvisoryComponent() {
             <Stack direction="row" justifyContent="center">
               <Stack sx={{ flex: 0 }}>
                 <motion.div
-                  animate={{ rotateY: [-180, 180] }}
+                  animate={{ rotateY: [0, 90] }}
                   transition={{ duration: 2, repeat: Infinity, repeatType: 'reverse' }}
                 >
                   <HelpOutline
