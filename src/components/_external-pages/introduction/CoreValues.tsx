@@ -4,30 +4,33 @@ import { styled, useTheme } from '@material-ui/core/styles';
 import Rating from '@material-ui/core/Rating';
 import { motion } from 'framer-motion';
 import { useEffect, useRef, useState } from 'react';
-import { Doughnut, Pie, Bar } from 'react-chartjs-2';
-import { Chart, ArcElement, registerables } from 'chart.js';
-import FavoriteIcon from '@material-ui/icons/Favorite';
-import FavoriteBorderIcon from '@material-ui/icons/FavoriteBorder';
+import { Doughnut } from 'react-chartjs-2';
+import { Chart, registerables } from 'chart.js';
 import AccountTreeIcon from '@material-ui/icons/AccountTree';
 import AppRegistrationIcon from '@material-ui/icons/AppRegistration';
 import UpcomingIcon from '@material-ui/icons/Upcoming';
 import DesignServicesIcon from '@material-ui/icons/DesignServices';
+import VpnKeyIcon from '@material-ui/icons/VpnKey';
 import VerifiedUserIcon from '@material-ui/icons/VerifiedUser';
 import {
   MotionInView,
   varFadeInLeft,
   varFadeInRight,
   varWrapEnter,
-  varFadeInDown
+  varFadeInDown,
+  varFadeInUp
 } from '../../animate';
+import TitleCard from '../../TitleCard';
 
 Chart.register(...registerables);
 // ----------------------------------------------------------------------
 
 const RootStyle = styled(motion.div)(({ theme }) => ({
-  paddingTop: theme.spacing(10),
+  paddingTop: theme.spacing(5),
   background: theme.palette.background.neutral,
-  paddingBottom: theme.spacing(6)
+  paddingBottom: theme.spacing(16),
+  position: 'relative',
+  borderTop: '2px solid rgb(255, 165, 0)'
 }));
 
 const HeroImgStyle = styled(motion.img)(({ theme }) => {
@@ -202,121 +205,134 @@ export default function CoreValues() {
   });
 
   return (
-    <>
-      <RootStyle initial="initial" animate="animate" variants={varWrapEnter}>
-        <Container maxWidth="lg">
-          <Stack direction={{ xs: 'column', md: 'row' }}>
-            <Stack
-              sx={{ flex: 1 }}
-              textAlign="center"
-              style={{ width: 'auto', height: '25vh', margin: '0px auto' }}
-            >
-              <MotionInView variants={varFadeInDown}>
-                <Typography variant="h3" sx={{ mb: 1 }}>
-                  GIÁ TRỊ CỐT LÕI
-                </Typography>
-                <MotionInView variants={varFadeInDown}>
-                  <Typography
-                    sx={{
-                      color: 'text.black',
-                      textAlign: 'justify',
-                      px: 2
-                    }}
-                    variant="h6"
-                  >
-                    Những giá trị nòng cốt, trọng yếu của UniPro
-                  </Typography>
-                </MotionInView>
-                <Stack textAlign="center" style={{ width: '250px', height: '250px' }}>
-                  <Doughnut
-                    data={COREVALUES}
-                    options={{
-                      onClick: () => {
-                        console.log('fsdf');
-                      },
-                      plugins: {
-                        // title: {
-                        //   display: true,
-                        //   text: 'Những nguyên tắc nòng cốt, trọng yếu của UniPro'
-                        // },
-                        legend: {
-                          display: true,
-                          position: 'right'
-                        },
-                        tooltip: {
-                          enabled: false
-                        }
-                      }
-                    }}
-                  />
-                </Stack>
-              </MotionInView>
+    <RootStyle initial="initial" animate="animate" variants={varWrapEnter}>
+      <TitleCard>
+        <MotionInView>
+          <Stack direction="row" justifyContent="center" alignItems="center">
+            <Stack sx={{ flex: 0 }}>
+              <motion.div
+                animate={{ rotateX: [-45, 45] }}
+                transition={{ duration: 3, repeat: Infinity, repeatType: 'reverse' }}
+              >
+                <VpnKeyIcon color="secondary" style={{ fontSize: isDesktop ? '40px' : '30px' }} />
+              </motion.div>
             </Stack>
-            <Stack sx={{ flex: 6 }} style={{ width: isDesktop ? '65vw' : 'auto' }}>
-              <Slider ref={sliderRef} {...settings}>
-                {FEEDBACKS.map((feedback, index) => {
-                  const secondary = index % 2 !== 0;
-                  return (
-                    <MotionInView
-                      sx={{
-                        backgroundColor: secondary
-                          ? theme.palette.background.neutral
-                          : theme.palette.background.neutral
-                      }}
-                      key={`features-${index}`}
-                      variants={varFadeInRight}
+            &nbsp;
+            <Typography variant={isDesktop ? 'h4' : 'h5'} style={{ color: 'white' }}>
+              GIÁ TRỊ CỐT LÕI
+            </Typography>
+          </Stack>
+        </MotionInView>
+      </TitleCard>
+      <Container maxWidth="lg">
+        <Stack direction={{ xs: 'column', md: 'row' }}>
+          <Stack
+            sx={{ flex: 1 }}
+            textAlign="center"
+            style={{ width: 'auto', height: '25vh', margin: '0px auto' }}
+          >
+            <MotionInView variants={varFadeInDown}>
+              <MotionInView variants={varFadeInDown}>
+                <Typography
+                  sx={{
+                    color: 'text.black',
+                    textAlign: 'justify',
+                    px: 2
+                  }}
+                  variant="h6"
+                >
+                  Những giá trị nòng cốt, trọng yếu của UniPro
+                </Typography>
+              </MotionInView>
+              <Stack textAlign="center" style={{ width: '250px', height: '250px' }}>
+                <Doughnut
+                  data={COREVALUES}
+                  options={{
+                    onClick: () => {
+                      console.log('fsdf');
+                    },
+                    plugins: {
+                      // title: {
+                      //   display: true,
+                      //   text: 'Những nguyên tắc nòng cốt, trọng yếu của UniPro'
+                      // },
+                      legend: {
+                        display: true,
+                        position: 'right'
+                      },
+                      tooltip: {
+                        enabled: false
+                      }
+                    }
+                  }}
+                />
+              </Stack>
+            </MotionInView>
+          </Stack>
+          <Stack sx={{ flex: 6 }} style={{ width: isDesktop ? '65vw' : 'auto' }}>
+            <Slider ref={sliderRef} {...settings}>
+              {FEEDBACKS.map((feedback, index) => {
+                const secondary = index % 2 !== 0;
+                return (
+                  <MotionInView
+                    sx={{
+                      backgroundColor: secondary
+                        ? theme.palette.background.neutral
+                        : theme.palette.background.neutral
+                    }}
+                    key={`features-${index}`}
+                    variants={varFadeInRight}
+                  >
+                    <Stack
+                      direction={{ xs: 'column-reverse', md: 'row' }}
+                      spacing={1}
+                      alignItems="center"
+                      sx={{ flex: 1 }}
                     >
                       <Stack
-                        direction={{ xs: 'column-reverse', md: 'row' }}
                         spacing={1}
-                        alignItems="center"
-                        sx={{ flex: 1 }}
+                        sx={{ flex: 1, px: isDesktopSmDown ? 2 : 5, py: 4 }}
+                        textAlign={['justify', 'left']}
                       >
-                        <Stack
-                          spacing={1}
-                          sx={{ flex: 1, px: isDesktopSmDown ? 2 : 5, py: 4 }}
-                          textAlign={['justify', 'left']}
-                        >
-                          <Box mb={1}>
-                            <Typography variant="h3">{feedback.title}</Typography>
-                          </Box>
-                          <Grid item xs={12} md={1}>
-                            {/* <CardIconStyle src={feedback.icon} /> */}
-                            <CircleStyle>{feedback.icon}</CircleStyle>
-                          </Grid>
-                          <Stack mb={1}>
-                            {feedback.feedbackDetails.map((feedbackDetail) => (
-                              <Box key={`feedbackDetail-${feedbackDetail.title}`}>
-                                <Stack>
-                                  <Typography variant="h6">{feedbackDetail.descripiton}</Typography>
-                                </Stack>
-                              </Box>
-                            ))}
-                          </Stack>
-                          <StyledRating
-                            name="customized-color"
-                            value={heart}
-                            // getLabelText={(value: number) =>
-                            //   `${value} Heart${value !== 1 ? 's' : ''}`
-                            // }
-                            // precision={0.5}
-                            // icon={<FavoriteIcon fontSize="inherit" />}
-                            // emptyIcon={<FavoriteBorderIcon fontSize="inherit" />}
-                            max={5}
-                          />
-                        </Stack>
-                        <Box>
-                          <HeroImgStyle alt="feature-1" src={feedback.image} />
+                        <Box mb={1}>
+                          <Typography variant="h3">{feedback.title}</Typography>
                         </Box>
+                        <Grid item xs={12} md={1}>
+                          {/* <CardIconStyle src={feedback.icon} /> */}
+                          <CircleStyle>{feedback.icon}</CircleStyle>
+                        </Grid>
+                        <Stack mb={1}>
+                          {feedback.feedbackDetails.map((feedbackDetail) => (
+                            <Box key={`feedbackDetail-${feedbackDetail.title}`}>
+                              <Stack>
+                                <Typography variant="h6">{feedbackDetail.descripiton}</Typography>
+                              </Stack>
+                            </Box>
+                          ))}
+                        </Stack>
+                        <StyledRating
+                          name="customized-color"
+                          value={heart}
+                          // getLabelText={(value: number) =>
+                          //   `${value} Heart${value !== 1 ? 's' : ''}`
+                          // }
+                          // precision={0.5}
+                          // icon={<FavoriteIcon fontSize="inherit" />}
+                          // emptyIcon={<FavoriteBorderIcon fontSize="inherit" />}
+                          max={5}
+                        />
                       </Stack>
-                    </MotionInView>
-                  );
-                })}
-              </Slider>
-            </Stack>
+                      <Box>
+                        <HeroImgStyle alt="feature-1" src={feedback.image} />
+                      </Box>
+                    </Stack>
+                  </MotionInView>
+                );
+              })}
+            </Slider>
           </Stack>
-        </Container>
-      </RootStyle>
-    </>
+        </Stack>
+      </Container>
+    </RootStyle>
   );
 }

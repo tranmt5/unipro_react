@@ -1,18 +1,9 @@
-import { useEffect, useRef, useState } from 'react';
+import { useRef, useState } from 'react';
 import Slider from 'react-slick';
-// material
 import { useTheme, styled } from '@material-ui/core/styles';
-import { Box, useMediaQuery, Typography } from '@material-ui/core';
-// utils
-import {
-  MotionInView,
-  varFadeInDownDesktopSmDown,
-  varFadeInDownDesktopSmDownSlowly,
-  varFadeInDownDesktopMdDown,
-  varFadeInDownDesktopMdDownSlowly,
-  varFadeInDownDesktopMdUp,
-  varFadeInDownDesktopMdUpSlowly
-} from '../../animate';
+import { Box, useMediaQuery, Typography, Container, Grid } from '@material-ui/core';
+import { motion } from 'framer-motion';
+import { MotionInView, varFadeInDown, varWrapEnter } from '../../animate';
 import { CarouselControlsArrowsBasic2 } from '../../carousel';
 
 // ----------------------------------------------------------------------
@@ -50,18 +41,9 @@ type MemberCardProps = {
   };
 };
 
-const RootStyle = styled('div')(({ theme }) => ({
-  paddingTop: theme.spacing(9),
-  backgroundColor: theme.palette.background.neutral,
-  [theme.breakpoints.up('sm')]: {
-    paddingBottom: theme.spacing(0)
-  },
-  [theme.breakpoints.down('sm')]: {
-    paddingBottom: theme.spacing(10)
-  },
-  [theme.breakpoints.up('sm')]: {
-    backgroundColor: theme.palette.background.default
-  }
+const RootStyle = styled(motion.div)(({ theme }) => ({
+  paddingTop: theme.spacing(10),
+  background: theme.palette.background.default
 }));
 
 const BoxImg = styled('img')(({ theme }) => ({
@@ -82,21 +64,6 @@ const BoxImg = styled('img')(({ theme }) => ({
   }
 }));
 
-const FADE_IN_DOWN = [
-  {
-    fadeTitle: varFadeInDownDesktopSmDown,
-    fadeCaption: varFadeInDownDesktopSmDownSlowly
-  },
-  {
-    fadeTitle: varFadeInDownDesktopMdDown,
-    fadeCaption: varFadeInDownDesktopMdDownSlowly
-  },
-  {
-    fadeTitle: varFadeInDownDesktopMdUp,
-    fadeCaption: varFadeInDownDesktopMdUpSlowly
-  }
-];
-
 function MemberCard({ member }: MemberCardProps) {
   const { title: name, image: avatar } = member;
   return (
@@ -112,9 +79,8 @@ export default function HomeImageSlider() {
   const [indexTitle, setIndexTitle] = useState(0);
   const isDesktopSm = useMediaQuery(theme.breakpoints.down('sm'));
   const isDesktopMd = useMediaQuery(theme.breakpoints.down('md'));
-  const [fadeInDown, setFadeInDown] = useState(FADE_IN_DOWN[0]);
   const settings = {
-    dots: true,
+    dots: false,
     infinite: true,
     slidesToShow: 1,
     slidesToScroll: 1,
@@ -141,19 +107,9 @@ export default function HomeImageSlider() {
     setIndexTitle(currentSlide);
   };
 
-  useEffect(() => {
-    if (isDesktopSm) {
-      setFadeInDown(FADE_IN_DOWN[0]);
-    } else if (isDesktopMd) {
-      setFadeInDown(FADE_IN_DOWN[1]);
-    } else {
-      setFadeInDown(FADE_IN_DOWN[2]);
-    }
-  }, [isDesktopSm, isDesktopMd]);
-
   return (
-    <RootStyle>
-      <Box sx={{ position: 'relative' }}>
+    <RootStyle initial="initial" animate="animate" variants={varWrapEnter}>
+      <Box textAlign="justify" style={{ position: 'relative' }}>
         <Slider ref={carouselRef} {...settings}>
           {SLIDERS.map((slider) => (
             <div key={slider.title}>
@@ -167,50 +123,76 @@ export default function HomeImageSlider() {
           sx={{ transform: 'translateY(-10px)' }}
         />
         {indexTitle % 2 == 0 && (
-          <div>
-            <MotionInView variants={fadeInDown.fadeTitle}>
-              <Typography
-                variant={isDesktopSm ? 'h3' : 'h2'}
-                color={isDesktopSm ? '#00000' : '#ffff'}
-                sx={{ ml: { sm: 10, md: 10, lg: 10 }, pl: { md: 4, lg: 3 }, mx: { xs: 4 } }}
-              >
-                {SLIDERS[indexTitle].title}
-              </Typography>
+          <Container
+            style={{
+              height: isDesktopSm ? 'auto' : '0px',
+              position: isDesktopSm ? 'relative' : 'absolute',
+              top: isDesktopSm ? '0px' : '5vh'
+            }}
+          >
+            <MotionInView variants={varFadeInDown}>
+              <Grid container>
+                <Grid item xs={12} sm={9} md={8}>
+                  <Typography
+                    variant={isDesktopMd ? 'h3' : 'h2'}
+                    color={isDesktopSm ? '#00000' : '#ffff'}
+                    sx={{ ml: { sm: 6, lg: 8 }, px: 2, py: 2 }}
+                  >
+                    {SLIDERS[indexTitle].title}
+                  </Typography>
+                </Grid>
+              </Grid>
             </MotionInView>
-            <MotionInView variants={fadeInDown.fadeCaption}>
-              <Typography
-                variant={isDesktopSm ? 'h6' : 'h4'}
-                color="#FF6600"
-                sx={{ ml: { sm: 10, md: 10, lg: 10 }, pl: { md: 4, lg: 3 }, mx: { xs: 4 } }}
-                textAlign={['justify', 'left']}
-              >
-                {SLIDERS[indexTitle].caption}
-              </Typography>
+            <MotionInView variants={varFadeInDown}>
+              <Grid container>
+                <Grid item xs={12} sm={9} md={8}>
+                  <Typography
+                    variant="h4"
+                    color={isDesktopSm ? '#00000' : '#FF6600'}
+                    sx={{ ml: { sm: 6, lg: 8 }, px: 2, py: 2 }}
+                  >
+                    {SLIDERS[indexTitle].caption}
+                  </Typography>
+                </Grid>
+              </Grid>
             </MotionInView>
-          </div>
+          </Container>
         )}
         {indexTitle % 2 !== 0 && (
-          <div>
-            <MotionInView variants={fadeInDown.fadeTitle}>
-              <Typography
-                variant={isDesktopSm ? 'h3' : 'h2'}
-                color={isDesktopSm ? '#00000' : '#ffff'}
-                sx={{ ml: { sm: 10, md: 10, lg: 10 }, pl: { md: 4, lg: 3 }, mx: { xs: 4 } }}
-              >
-                {SLIDERS[indexTitle].title}
-              </Typography>
+          <Container
+            style={{
+              height: isDesktopSm ? 'auto' : '0px',
+              position: isDesktopSm ? 'relative' : 'absolute',
+              top: isDesktopSm ? '0px' : '5vh'
+            }}
+          >
+            <MotionInView variants={varFadeInDown}>
+              <Grid container>
+                <Grid item xs={12} sm={9} md={8}>
+                  <Typography
+                    variant={isDesktopMd ? 'h3' : 'h2'}
+                    color={isDesktopSm ? '#00000' : '#ffff'}
+                    sx={{ ml: { sm: 6, lg: 8 }, px: 2, py: 2 }}
+                  >
+                    {SLIDERS[indexTitle].title}
+                  </Typography>
+                </Grid>
+              </Grid>
             </MotionInView>
-            <MotionInView variants={fadeInDown.fadeCaption}>
-              <Typography
-                variant={isDesktopSm ? 'h6' : 'h4'}
-                color="#FF6600"
-                sx={{ ml: { sm: 10, md: 10, lg: 10 }, pl: { md: 4, lg: 3 }, mx: { xs: 4 } }}
-                textAlign={['justify', 'left']}
-              >
-                {SLIDERS[indexTitle].caption}
-              </Typography>
+            <MotionInView variants={varFadeInDown}>
+              <Grid container>
+                <Grid item xs={12} sm={9} md={8}>
+                  <Typography
+                    variant="h4"
+                    color={isDesktopSm ? '#00000' : '#FF6600'}
+                    sx={{ ml: { sm: 6, lg: 8 }, px: 2, py: 2 }}
+                  >
+                    {SLIDERS[indexTitle].caption}
+                  </Typography>
+                </Grid>
+              </Grid>
             </MotionInView>
-          </div>
+          </Container>
         )}
       </Box>
     </RootStyle>

@@ -7,6 +7,7 @@ import GroupIcon from '@material-ui/icons/Group';
 import { motion } from 'framer-motion';
 //
 import { varFadeInUp, MotionInView, varFadeInDown, varWrapEnter } from '../../animate';
+import TitleCard from '../../TitleCard';
 
 // ----------------------------------------------------------------------
 
@@ -33,9 +34,11 @@ const CARDS = [
 const shadowIcon = (color: string) => `drop-shadow(2px 2px 2px ${alpha(color, 0.48)})`;
 
 const RootStyle = styled(motion.div)(({ theme }) => ({
-  paddingTop: theme.spacing(10),
+  paddingTop: theme.spacing(5),
   background: theme.palette.background.default,
-  paddingBottom: theme.spacing(6)
+  paddingBottom: theme.spacing(16),
+  position: 'relative',
+  borderTop: '2px solid rgb(255, 165, 0)'
 }));
 
 const CardStyle = styled(Card)(({ theme }) => {
@@ -74,28 +77,31 @@ const CardIconStyle = styled('img')(({ theme }) => ({
 export default function LecturersComponent() {
   const theme = useTheme();
   const isLight = theme.palette.mode === 'light';
-  const isDesktop = useMediaQuery(theme.breakpoints.up('lg'));
+  const isDesktop = useMediaQuery(theme.breakpoints.up('md'));
   const isDesktopSmDown = useMediaQuery(theme.breakpoints.down('sm'));
 
   return (
     <RootStyle initial="initial" animate="animate" variants={varWrapEnter}>
-      <Container maxWidth="md">
-        <Box sx={{ mb: { xs: 5, md: 8 }, textAlign: 'center' }}>
-          <MotionInView variants={varFadeInDown}>
-            <Stack direction="row" justifyContent="center">
-              <Stack sx={{ flex: 0 }}>
-                <motion.div
-                  animate={{ rotateY: [0, 180] }}
-                  transition={{ duration: 3, repeat: Infinity, repeatType: 'reverse' }}
-                >
-                  <GroupIcon color="secondary" style={{ fontSize: isDesktop ? '58px' : '30px' }} />
-                </motion.div>
-              </Stack>
-              <Typography variant="h3" sx={{ mb: 3 }}>
-                ĐỘI NGŨ CỦA UNIPRO
-              </Typography>
+      <TitleCard>
+        <MotionInView variants={varFadeInDown}>
+          <Stack direction="row" justifyContent="center">
+            <Stack sx={{ flex: 0 }}>
+              <motion.div
+                animate={{ rotateY: [0, 180] }}
+                transition={{ duration: 3, repeat: Infinity, repeatType: 'reverse' }}
+              >
+                <GroupIcon color="secondary" style={{ fontSize: isDesktop ? '40px' : '30px' }} />
+              </motion.div>
             </Stack>
-          </MotionInView>
+            &nbsp;
+            <Typography variant={isDesktop ? 'h4' : 'h5'} style={{ color: 'white' }}>
+              ĐỘI NGŨ UNIPRO
+            </Typography>
+          </Stack>
+        </MotionInView>
+      </TitleCard>
+      <Container maxWidth="md">
+        <Box sx={{ mb: { xs: 4, md: 5 }, textAlign: 'center' }}>
           <MotionInView variants={varFadeInUp}>
             <Typography
               sx={{

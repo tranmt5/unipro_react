@@ -60,15 +60,15 @@ export const varFadeInRight = {
 };
 
 export const varFadeInDownDesktopSmDown = {
-  initial: { y: 0, opacity: 0 },
-  animate: { y: 50, opacity: 1, transition: TRANSITION_ENTER_MEDIUM },
-  exit: { y: 0, opacity: 0, transition: TRANSITION_EXIT_MEDIUM }
+  initial: { y: -100, opacity: 0 },
+  animate: { y: 0, opacity: 1, transition: TRANSITION_ENTER_MEDIUM },
+  exit: { y: -100, opacity: 0, transition: TRANSITION_EXIT_MEDIUM }
 };
 
 export const varFadeInDownDesktopSmDownSlowly = {
-  initial: { y: 0, opacity: 0 },
-  animate: { y: 50, opacity: 1, transition: TRANSITION_ENTER_SLOW },
-  exit: { y: 0, opacity: 0, transition: TRANSITION_EXIT_SLOW }
+  initial: { y: -100, opacity: 0 },
+  animate: { y: 0, opacity: 1, transition: TRANSITION_ENTER_SLOW },
+  exit: { y: -100, opacity: 0, transition: TRANSITION_EXIT_SLOW }
 };
 
 export const varFadeInDownDesktopMdDown = {

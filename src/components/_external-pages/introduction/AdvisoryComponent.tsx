@@ -1,5 +1,5 @@
 // material
-import { alpha, useTheme, styled } from '@material-ui/core/styles';
+import { useTheme, styled } from '@material-ui/core/styles';
 import {
   Box,
   AccordionDetails,
@@ -13,11 +13,10 @@ import {
 import { motion } from 'framer-motion';
 import { useState } from 'react';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
-import LabelIcon from '@material-ui/icons/Label';
 import HelpOutline from '@material-ui/icons/HelpOutline';
-import ArrowForwardIosIcon from '@material-ui/icons/ArrowForwardIos';
 //
 import { varFadeInUp, MotionInView, varFadeInDown, varWrapEnter } from '../../animate';
+import TitleCard from '../../TitleCard';
 
 // ----------------------------------------------------------------------
 
@@ -67,20 +66,12 @@ const DETAILS = [
 ];
 
 const RootStyle = styled(motion.div)(({ theme }) => ({
-  paddingTop: theme.spacing(10),
+  paddingTop: theme.spacing(5),
   background: theme.palette.background.neutral,
-  paddingBottom: theme.spacing(6)
+  paddingBottom: theme.spacing(16),
+  position: 'relative',
+  borderTop: '2px solid rgb(255, 165, 0)'
 }));
-
-const CardIconStyle = styled('img')(({ theme }) => ({
-  width: 54,
-  height: 54,
-  margin: 'auto',
-  marginBottom: theme.spacing(5),
-  filter: shadowIcon(theme.palette.primary.main)
-}));
-
-const shadowIcon = (color: string) => `drop-shadow(2px 2px 2px ${alpha(color, 0.48)})`;
 
 // ----------------------------------------------------------------------
 
@@ -88,6 +79,7 @@ export default function AdvisoryComponent() {
   const theme = useTheme();
   const isLight = theme.palette.mode === 'light';
   const isDesktop = useMediaQuery(theme.breakpoints.up('md'));
+  const isDesktopSmUp = useMediaQuery(theme.breakpoints.up('sm'));
   const [expanded, setExpanded] = useState<number | false>(false);
   const handleChange = (panel: number) => (event: React.SyntheticEvent, isExpanded: boolean) => {
     setExpanded(isExpanded ? panel : false);
@@ -95,26 +87,26 @@ export default function AdvisoryComponent() {
 
   return (
     <RootStyle initial="initial" animate="animate" variants={varWrapEnter}>
-      <Container maxWidth="md">
-        <Box sx={{ mb: { xs: 5, md: 8 }, textAlign: 'center' }}>
-          <MotionInView variants={varFadeInDown}>
-            <Stack direction="row" justifyContent="center">
-              <Stack sx={{ flex: 0 }}>
-                <motion.div
-                  animate={{ rotateY: [0, 90] }}
-                  transition={{ duration: 2, repeat: Infinity, repeatType: 'reverse' }}
-                >
-                  <HelpOutline
-                    color="secondary"
-                    style={{ fontSize: isDesktop ? '58px' : '30px' }}
-                  />
-                </motion.div>
-              </Stack>
-              <Typography variant="h3" sx={{ mb: 3 }}>
-                CÂU HỎI THƯỜNG GẶP?
-              </Typography>
+      <TitleCard>
+        <MotionInView variants={varFadeInDown}>
+          <Stack direction="row" justifyContent="center" alignItems="center">
+            <Stack sx={{ flex: 0 }}>
+              <motion.div
+                animate={{ rotateY: [0, 90] }}
+                transition={{ duration: 2, repeat: Infinity, repeatType: 'reverse' }}
+              >
+                <HelpOutline color="secondary" style={{ fontSize: isDesktop ? '40px' : '30px' }} />
+              </motion.div>
             </Stack>
-          </MotionInView>
+            &nbsp;
+            <Typography variant={isDesktop ? 'h4' : 'h5'} style={{ color: 'white' }}>
+              CÂU HỎI THƯỜNG GẶP
+            </Typography>
+          </Stack>
+        </MotionInView>
+      </TitleCard>
+      <Container maxWidth="md">
+        <Box sx={{ mb: { xs: 4, md: 5 }, textAlign: 'center' }}>
           <MotionInView variants={varFadeInDown}>
             <Typography
               sx={{
