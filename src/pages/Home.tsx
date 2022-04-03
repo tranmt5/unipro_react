@@ -22,7 +22,7 @@ const ContentStyle = styled('div')(({ theme }) => ({
   overflowX: 'hidden',
   position: 'relative',
   backgroundColor: theme.palette.background.neutral,
-  padding: theme.spacing(4, 0, 0)
+  padding: theme.spacing(16, 0, 0, 0)
 }));
 
 // ----------------------------------------------------------------------

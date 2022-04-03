@@ -22,6 +22,7 @@ import {
   varFadeInLeft,
   varWrapEnter
 } from '../../animate';
+import { TitleCardTrapezoidRight } from '../../TitleCard';
 
 const METHODS = [
   {
@@ -57,25 +58,33 @@ const METHODS = [
 ];
 
 const RootStyle = styled(motion.div)(({ theme }) => ({
-  paddingTop: theme.spacing(10),
+  paddingTop: theme.spacing(5),
   background: theme.palette.background.default,
-  paddingBottom: theme.spacing(6)
+  paddingBottom: theme.spacing(16),
+  position: 'relative',
+  borderTop: '2px solid rgb(255, 165, 0)'
 }));
 
 export default function HomeFiveMethods() {
   const theme = useTheme();
   const isLight = theme.palette.mode === 'light';
   const isDesktop = useMediaQuery('(min-width: 350px)', { noSsr: true });
+  const isDesktopMdUp = useMediaQuery(theme.breakpoints.up('md'));
 
   return (
     <RootStyle initial="initial" animate="animate" variants={varWrapEnter}>
+      <TitleCardTrapezoidRight>
+        <MotionInView variants={varFadeInDown}>
+          <Typography
+            variant={isDesktopMdUp ? 'h4' : 'h5'}
+            style={{ color: 'white', paddingTop: '8px' }}
+          >
+            PHƯƠNG PHÁP 5P
+          </Typography>
+        </MotionInView>
+      </TitleCardTrapezoidRight>
       <Container maxWidth="md">
         <Box sx={{ mb: { xs: 5, md: 8 }, textAlign: 'center' }}>
-          <MotionInView variants={varFadeInDown}>
-            <Typography variant="h3" sx={{ mb: 3 }}>
-              PHƯƠNG PHÁP 5P
-            </Typography>
-          </MotionInView>
           <MotionInView variants={varFadeInUp}>
             <Typography
               sx={{

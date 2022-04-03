@@ -1,27 +1,18 @@
-import {
-  alpha,
-  Container,
-  Stack,
-  Typography,
-  useMediaQuery,
-  Box,
-  Card,
-  CardContent
-} from '@material-ui/core';
+import { alpha, Container, Stack, Typography, useMediaQuery, Box, Card } from '@material-ui/core';
 import { styled, useTheme } from '@material-ui/core/styles';
 import { motion } from 'framer-motion';
 import FunctionsIcon from '@material-ui/icons/Functions';
 import CurrencyExchangeIcon from '@material-ui/icons/PriceCheck';
-import { style } from '@material-ui/system';
+import ShutterSpeedIcon from '@material-ui/icons/ShutterSpeed';
 //
 import {
   MotionInView,
-  varFadeInLeft,
   varFadeInRight,
   varWrapEnter,
   varFadeInDown,
   varFadeInUp
 } from '../../animate';
+import { TitleCardCircle } from '../../TitleCard';
 
 // ----------------------------------------------------------------------
 
@@ -49,9 +40,11 @@ const TUITIONS = [
 ];
 
 const RootStyle = styled(motion.div)(({ theme }) => ({
-  paddingTop: theme.spacing(10),
+  paddingTop: theme.spacing(5),
   background: theme.palette.background.neutral,
-  paddingBottom: theme.spacing(6)
+  paddingBottom: theme.spacing(16),
+  position: 'relative',
+  borderTop: '2px solid rgb(255, 165, 0)'
 }));
 
 const HeroImgStyle = styled(motion.img)(({ theme }) => {
@@ -87,6 +80,28 @@ export default function TuitionComponent() {
 
   return (
     <RootStyle initial="initial" animate="animate" variants={varWrapEnter}>
+      <div
+        style={{
+          top: '0px',
+          position: 'absolute',
+          borderTop: '10px solid rgb(255, 165, 0)',
+          borderRight: '50vw solid transparent',
+          borderLeft: '50vw solid transparent'
+        }}
+      />
+      <TitleCardCircle>
+        <MotionInView variants={varFadeInDown}>
+          <motion.div
+            animate={{ rotateY: [0, 360] }}
+            transition={{ duration: 3, repeat: Infinity }}
+          >
+            <ShutterSpeedIcon
+              color="secondary"
+              style={{ fontSize: '40px', paddingBottom: '2px' }}
+            />
+          </motion.div>
+        </MotionInView>
+      </TitleCardCircle>
       <Container maxWidth="md">
         <Box sx={{ mb: { xs: 5, md: 8 }, textAlign: 'center' }}>
           <MotionInView variants={varFadeInDown}>

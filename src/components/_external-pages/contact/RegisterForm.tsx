@@ -1,10 +1,9 @@
 // material
-import React, { useEffect, useRef, useState } from 'react';
-import { alpha, useTheme, styled, Theme } from '@material-ui/core/styles';
+import React, { useState } from 'react';
+import { useTheme, styled } from '@material-ui/core/styles';
 import { Box, Grid, Container, Typography, useMediaQuery, Stack, Button } from '@material-ui/core';
-import KeyboardVoiceIcon from '@material-ui/icons/KeyboardVoice';
-import TtyIcon from '@material-ui/icons/Tty';
 import PhoneIcon from '@material-ui/icons/Phone';
+import SendIcon from '@material-ui/icons/Send';
 import MobileDatePicker from '@material-ui/lab/MobileDatePicker';
 import AdapterDateFns from '@material-ui/lab/AdapterDateFns';
 import LocalizationProvider from '@material-ui/lab/LocalizationProvider';
@@ -13,17 +12,19 @@ import MobileDateTimePicker from '@material-ui/lab/MobileDateTimePicker';
 import DesktopDateTimePicker from '@material-ui/lab/DesktopDateTimePicker';
 import MenuItem from '@material-ui/core/MenuItem';
 import { motion } from 'framer-motion';
-// import TextField from 'material-ui/core/TextField';
 import TextField from '@material-ui/core/TextField';
 //
-import { varFadeInUp, MotionInView, varFadeInDown } from '../../animate';
+import { varFadeInUp, MotionInView, varFadeInDown, varWrapEnter } from '../../animate';
+import { TitleCardCircle } from '../../TitleCard';
 
 // ----------------------------------------------------------------------
 
-const RootStyle = styled('div')(({ theme }) => ({
-  paddingTop: theme.spacing(10),
+const RootStyle = styled(motion.div)(({ theme }) => ({
+  paddingTop: theme.spacing(5),
   background: theme.palette.background.default,
-  paddingBottom: theme.spacing(6)
+  paddingBottom: theme.spacing(16),
+  position: 'relative',
+  borderTop: '2px solid rgb(255, 165, 0)'
 }));
 
 const ValidationTextField = styled(TextField)({
@@ -95,23 +96,33 @@ export default function RegisterForm() {
   // };
 
   return (
-    <RootStyle>
+    <RootStyle initial="initial" animate="animate" variants={varWrapEnter}>
+      <div
+        style={{
+          top: '1px',
+          width: '100%',
+          position: 'absolute',
+          borderTop: '5px solid rgb(255, 165, 0)',
+          borderRight: '50px solid transparent',
+          borderLeft: '50px solid transparent'
+        }}
+      />
+      <TitleCardCircle>
+        <MotionInView variants={varFadeInDown}>
+          <Stack sx={{ flex: 0 }} style={{ transform: 'rotate(30deg)' }}>
+            <PhoneIcon
+              className="vibrate"
+              color="secondary"
+              style={{ fontSize: isDesktop ? '40px' : '30px' }}
+            />
+          </Stack>
+        </MotionInView>
+      </TitleCardCircle>
       <Container maxWidth="lg">
         <Container maxWidth="md">
           <Box sx={{ mb: { xs: 5, md: 8 }, textAlign: 'center' }}>
             <MotionInView variants={varFadeInDown}>
               <Stack direction="row" justifyContent="center">
-                <Stack sx={{ flex: 0 }}>
-                  <motion.div
-                    animate={{ rotateZ: [30, 45] }}
-                    transition={{ duration: 0.05, repeat: Infinity, repeatType: 'reverse' }}
-                  >
-                    <PhoneIcon
-                      color="secondary"
-                      style={{ fontSize: isDesktop ? '58px' : '30px' }}
-                    />
-                  </motion.div>
-                </Stack>
                 <Typography variant="h3" sx={{ mb: 3 }}>
                   Đăng ký tư vấn
                 </Typography>
@@ -235,8 +246,15 @@ export default function RegisterForm() {
                 </LocalizationProvider>
               </Grid>
               <Grid item xs={12} container justifyContent="center">
-                <Button variant="contained" color="success">
-                  Gửi
+                <Button
+                  variant="contained"
+                  color="primary"
+                  style={{ padding: ' 10px 20px', fontSize: '18px' }}
+                >
+                  <SendIcon
+                    style={{ color: 'white', transform: 'rotate(-45deg)', marginBottom: '10px' }}
+                  />
+                  &nbsp; Gửi
                 </Button>
               </Grid>
             </Grid>

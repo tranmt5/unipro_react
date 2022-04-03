@@ -5,16 +5,16 @@ import { Container, Typography, useMediaQuery, Box } from '@material-ui/core';
 import { motion } from 'framer-motion';
 import Slider from 'react-slick';
 //
-import { MotionInView, varFadeInDown, varFadeInUp } from '../../animate';
+import { MotionInView, varFadeInDown, varFadeInUp, varWrapEnter } from '../../animate';
+import TitleCard from '../../TitleCard';
 // ----------------------------------------------------------------------
 
-const RootStyle = styled('div')(({ theme }) => ({
-  paddingTop: theme.spacing(10),
-  backgroundColor: theme.palette.background.neutral,
-  paddingBottom: theme.spacing(6)
-  // [theme.breakpoints.up('lg')]: {
-  //   paddingBottom: theme.spacing(8)
-  // }
+const RootStyle = styled(motion.div)(({ theme }) => ({
+  paddingTop: theme.spacing(5),
+  background: theme.palette.background.default,
+  paddingBottom: theme.spacing(16),
+  position: 'relative',
+  borderTop: '2px solid rgb(255, 165, 0)'
 }));
 
 const SlickStyle = styled(Container)(({ theme }) => ({
@@ -26,13 +26,16 @@ const SlickStyle = styled(Container)(({ theme }) => ({
 const UniImageStyle = styled(motion.img)(({ theme }) => ({
   width: 'auto',
   height: '25vh',
-  objectFit: 'cover'
+  objectFit: 'cover',
+  border: '1px solid #6c757d',
+  borderRadius: '5px',
+  margin: '8px 0'
 }));
 
 // ----------------------------------------------------------------------
 
 const settings = {
-  dots: true,
+  dots: false,
   infinite: true,
   slidesToShow: 2,
   slidesToScroll: 1,
@@ -58,7 +61,7 @@ export default function HomePartnerSlider() {
     if (isDesktop) {
       setUseSetting({
         ...useSettings,
-        slidesToShow: 3
+        slidesToShow: 4
       });
     } else {
       setUseSetting({
@@ -69,14 +72,16 @@ export default function HomePartnerSlider() {
   }, [isDesktop]);
 
   return (
-    <RootStyle>
+    <RootStyle initial="initial" animate="animate" variants={varWrapEnter}>
+      <TitleCard>
+        <MotionInView variants={varFadeInDown}>
+          <Typography variant={isDesktop ? 'h4' : 'h5'} style={{ color: 'white' }}>
+            BẠN ĐỒNG HÀNH
+          </Typography>
+        </MotionInView>
+      </TitleCard>
       <SlickStyle maxWidth="lg" style={{ position: 'relative' }}>
         <Box sx={{ mb: { xs: 5, md: 8 }, textAlign: 'center' }}>
-          <MotionInView variants={varFadeInDown}>
-            <Typography variant="h3" sx={{ mb: 3 }}>
-              BẠN ĐỒNG HÀNH
-            </Typography>
-          </MotionInView>
           <MotionInView variants={varFadeInUp}>
             <Typography
               sx={{
@@ -95,6 +100,7 @@ export default function HomePartnerSlider() {
           <UniImageStyle className="rounded-3" src="/static/home/home_partner_code9.png" />
           <UniImageStyle className="rounded-3" src="/static/home/home_partner_bravo.png" />
           <UniImageStyle className="rounded-3" src="/static/home/home_partner_vss.png" />
+          <UniImageStyle className="rounded-3" src="/static/home/home_partner_bravo.png" />
         </Slider>
       </SlickStyle>
     </RootStyle>

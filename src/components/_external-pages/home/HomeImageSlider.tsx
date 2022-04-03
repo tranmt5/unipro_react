@@ -137,6 +137,7 @@ export default function HomeImageSlider() {
                     variant={isDesktopMd ? 'h3' : 'h2'}
                     color={isDesktopSm ? '#00000' : '#ffff'}
                     sx={{ ml: { sm: 6, lg: 8 }, px: 2, py: 2 }}
+                    textAlign={['center', 'justify']}
                   >
                     {SLIDERS[indexTitle].title}
                   </Typography>
@@ -173,6 +174,7 @@ export default function HomeImageSlider() {
                     variant={isDesktopMd ? 'h3' : 'h2'}
                     color={isDesktopSm ? '#00000' : '#ffff'}
                     sx={{ ml: { sm: 6, lg: 8 }, px: 2, py: 2 }}
+                    textAlign={['center', 'justify']}
                   >
                     {SLIDERS[indexTitle].title}
                   </Typography>

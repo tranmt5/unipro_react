@@ -64,8 +64,9 @@ const CardStyle = styled(Card)(({ theme }) => {
 });
 
 const CardIconStyle = styled('img')(({ theme }) => ({
-  width: 54,
-  height: 54,
+  width: 80,
+  height: 80,
+  borderRadius: '50%',
   margin: 'auto',
   objectFit: 'cover',
   marginBottom: theme.spacing(5),

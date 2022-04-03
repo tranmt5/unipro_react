@@ -17,8 +17,8 @@ const ContentStyle = styled('div')(({ theme }) => ({
   overflowY: 'visible',
   overflowX: 'hidden',
   position: 'relative',
-  backgroundColor: theme.palette.background.neutral,
-  padding: theme.spacing(0, 0, 0)
+  backgroundColor: theme.palette.background.default,
+  padding: theme.spacing(16, 0, 0, 0)
 }));
 
 export default function ContactPage() {

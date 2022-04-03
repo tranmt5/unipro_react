@@ -10,36 +10,9 @@ import {
   varFadeInDown,
   varFadeInUp
 } from '../../animate';
+import { TitleCardSemicircle } from '../../TitleCard';
 
 // ----------------------------------------------------------------------
-
-const RootStyle = styled(motion.div)(({ theme }) => ({
-  paddingTop: theme.spacing(10),
-  background: theme.palette.background.default,
-  paddingBottom: theme.spacing(6)
-}));
-
-const HeroImgStyle = styled(motion.img)(({ theme }) => {
-  const shadowCard = (opacity: number) =>
-    theme.palette.mode === 'light'
-      ? alpha(theme.palette.grey[500], opacity)
-      : alpha(theme.palette.common.black, opacity);
-
-  return {
-    borderRadius: '8px',
-    height: '35vh',
-    marginTop: 0,
-    objectFit: 'cover',
-    width: 'auto',
-    boxShadow: `0px 40px 80px 0 ${shadowCard(0.4)}`,
-    [theme.breakpoints.up('lg')]: {
-      height: '45vh',
-      width: 540,
-      backgroundColor: theme.palette.background.paper
-    }
-  };
-});
-
 const SERVICES = [
   {
     title: 'Hình ảnh học viên tại UNIPRO',
@@ -106,20 +79,51 @@ const SERVICES = [
   }
 ];
 
+const RootStyle = styled(motion.div)(({ theme }) => ({
+  paddingTop: theme.spacing(5),
+  background: theme.palette.background.default,
+  paddingBottom: theme.spacing(16),
+  position: 'relative',
+  borderTop: '2px solid rgb(255, 165, 0)'
+}));
+
+const HeroImgStyle = styled(motion.img)(({ theme }) => {
+  const shadowCard = (opacity: number) =>
+    theme.palette.mode === 'light'
+      ? alpha(theme.palette.grey[500], opacity)
+      : alpha(theme.palette.common.black, opacity);
+
+  return {
+    borderRadius: '8px',
+    height: '35vh',
+    marginTop: 0,
+    objectFit: 'cover',
+    width: 'auto',
+    boxShadow: `0px 40px 80px 0 ${shadowCard(0.4)}`,
+    [theme.breakpoints.up('lg')]: {
+      height: '45vh',
+      width: 540,
+      backgroundColor: theme.palette.background.paper
+    }
+  };
+});
+
 export default function HomeServiceFeature() {
   const theme = useTheme();
-  const isDesktop = useMediaQuery(theme.breakpoints.up('lg'));
+  const isDesktop = useMediaQuery(theme.breakpoints.up('md'));
   const isLight = theme.palette.mode === 'light';
 
   return (
     <RootStyle initial="initial" animate="animate" variants={varWrapEnter}>
+      <TitleCardSemicircle>
+        <MotionInView variants={varFadeInDown}>
+          <Typography variant={isDesktop ? 'h4' : 'h5'} style={{ color: 'white' }}>
+            GIỚI THIỆU
+          </Typography>
+        </MotionInView>
+      </TitleCardSemicircle>
       <Container maxWidth="md">
         <Box sx={{ mb: { xs: 5, md: 8 }, textAlign: 'center' }}>
-          <MotionInView variants={varFadeInDown}>
-            <Typography variant="h3" sx={{ mb: 3 }}>
-              GIỚI THIỆU
-            </Typography>
-          </MotionInView>
           <MotionInView variants={varFadeInUp}>
             <Typography
               sx={{

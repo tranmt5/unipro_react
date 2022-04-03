@@ -9,10 +9,8 @@ import {
 } from '@material-ui/core';
 import { styled, useTheme } from '@material-ui/core/styles';
 import { motion } from 'framer-motion';
-//
+import PhoneIcon from '@material-ui/icons/Phone';
 import { MotionInView, varFadeInDown, varFadeInRight, varFadeInUp } from '../../animate';
-
-// ----------------------------------------------------------------------
 
 // ----------------------------------------------------------------------
 
@@ -41,7 +39,7 @@ export default function EnterpriseContact() {
   const isDesktop = useMediaQuery(theme.breakpoints.up('lg'));
 
   return (
-    <Box width="100%">
+    <Box width="100%" style={{ position: 'relative' }}>
       <ContentStyle>
         <MotionInView
           variants={varFadeInUp}
@@ -58,7 +56,6 @@ export default function EnterpriseContact() {
             />
           </motion.div>
         </MotionInView>
-
         <Box
           sx={{
             pl: { md: 10 },
@@ -71,47 +68,36 @@ export default function EnterpriseContact() {
               Để lại email và chúng tôi sẽ liên lạc với bạn ngay
             </Typography>
           </MotionInView>
-          <MotionInView variants={varFadeInDown}>
+          {/* <MotionInView variants={varFadeInDown}>
             <Stack
               direction={['column', 'row']}
               spacing={[1.5, 1.5]}
               rowGap={[1.5, 1.5]}
               justifyContent={{ xs: 'center', md: 'flex-start' }}
+              style={{ zIndex: 2 }}
             >
               <motion.div variants={varFadeInRight}>
-                <TextField
-                  sx={{
-                    pr: [0, 2],
-                    minWidth: 300,
-                    '& .MuiOutlinedInput-notchedOutline': {
-                      borderColor: theme.palette.primary.main
-                    },
-                    input: {
-                      '&::placeholder': {
-                        color: theme.palette.text.primary
-                      }
-                    }
-                  }}
-                  fullWidth
-                  variant="outlined"
-                  size="medium"
-                  placeholder="Email của bạn"
-                />
-              </motion.div>
-              <motion.div variants={varFadeInRight}>
-                <Button
-                  size="large"
-                  variant="contained"
-                  disableElevation
-                  sx={{ width: '100%', height: ['48px', '100%'] }}
-                >
-                  Gửi
-                </Button>
+                <a href="tel:0346766535">
+                  <PhoneIcon color="info" fontSize="small" />
+                  0346766535
+                </a>
               </motion.div>
             </Stack>
-          </MotionInView>
+          </MotionInView> */}
         </Box>
       </ContentStyle>
+      <ul className="bg-bubbles">
+        <li />
+        <li />
+        <li />
+        <li />
+        <li />
+        <li />
+        <li />
+        <li />
+        <li />
+        <li />
+      </ul>
     </Box>
   );
 }

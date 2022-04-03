@@ -11,34 +11,8 @@ import {
   varWrapEnter,
   varFadeInDown
 } from '../../animate';
+import TitleCard from '../../TitleCard';
 // ----------------------------------------------------------------------
-
-const RootStyle = styled(motion.div)(({ theme }) => ({
-  paddingTop: theme.spacing(10),
-  background: theme.palette.background.neutral,
-  paddingBottom: theme.spacing(6)
-}));
-
-const HeroImgStyle = styled(motion.img)(({ theme }) => {
-  const shadowCard = (opacity: number) =>
-    theme.palette.mode === 'light'
-      ? alpha(theme.palette.grey[500], opacity)
-      : alpha(theme.palette.common.black, opacity);
-
-  return {
-    borderRadius: '8px',
-    height: '35vh',
-    marginTop: 0,
-    objectFit: 'cover',
-    width: 'auto',
-    boxShadow: `0px 40px 80px 0 ${shadowCard(0.4)}`,
-    [theme.breakpoints.up('lg')]: {
-      height: '45vh',
-      width: 540,
-      backgroundColor: theme.palette.background.paper
-    }
-  };
-});
 
 const FEEDBACKS = [
   {
@@ -82,9 +56,38 @@ const FEEDBACKS = [
   }
 ];
 
+const RootStyle = styled(motion.div)(({ theme }) => ({
+  paddingTop: theme.spacing(5),
+  background: theme.palette.background.neutral,
+  paddingBottom: theme.spacing(16),
+  position: 'relative',
+  borderTop: '2px solid rgb(255, 165, 0)'
+}));
+
+const HeroImgStyle = styled(motion.img)(({ theme }) => {
+  const shadowCard = (opacity: number) =>
+    theme.palette.mode === 'light'
+      ? alpha(theme.palette.grey[500], opacity)
+      : alpha(theme.palette.common.black, opacity);
+
+  return {
+    borderRadius: '8px',
+    height: '35vh',
+    marginTop: 0,
+    objectFit: 'cover',
+    width: 'auto',
+    boxShadow: `0px 40px 80px 0 ${shadowCard(0.4)}`,
+    [theme.breakpoints.up('lg')]: {
+      height: '45vh',
+      width: 540,
+      backgroundColor: theme.palette.background.paper
+    }
+  };
+});
+
 export default function HomeFeedbackMentee() {
   const theme = useTheme();
-  const isDesktop = useMediaQuery(theme.breakpoints.up('lg'));
+  const isDesktop = useMediaQuery(theme.breakpoints.up('md'));
   const isLight = theme.palette.mode === 'light';
   const sliderRef = useRef<Slider>(null);
   const settings = {
@@ -104,15 +107,13 @@ export default function HomeFeedbackMentee() {
 
   return (
     <RootStyle initial="initial" animate="animate" variants={varWrapEnter}>
-      <Container maxWidth="md">
-        <Box sx={{ mb: { xs: 5, md: 8 }, textAlign: 'center' }}>
-          <MotionInView variants={varFadeInDown}>
-            <Typography variant="h3" sx={{ mb: 3 }}>
-              CẢM NHẬN HỌC VIÊN UNIPRO
-            </Typography>
-          </MotionInView>
-        </Box>
-      </Container>
+      <TitleCard>
+        <MotionInView variants={varFadeInDown}>
+          <Typography variant={isDesktop ? 'h4' : 'h5'} style={{ color: 'white' }}>
+            CẢM NHẬN HỌC VIÊN UNIPRO
+          </Typography>
+        </MotionInView>
+      </TitleCard>
       <Slider ref={sliderRef} {...settings}>
         {FEEDBACKS.map((feedback, index) => {
           const secondary = index % 2 !== 0;

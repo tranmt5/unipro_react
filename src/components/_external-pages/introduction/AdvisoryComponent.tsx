@@ -22,43 +22,31 @@ import TitleCard from '../../TitleCard';
 
 const DETAILS = [
   {
-    icon: '/static/introduction/lecturer_avatar_1.jpg',
-    title: 'Câu hỏi số 1',
     question: 'UniPro dạy về gì?',
     answer:
       'Chương trình giảng dạy ở UniPro về các khóa học lập trình từ chuyên sâu đến các lớp học cấp tốc, từ Front-end, Back-end đến Full-stack.'
   },
   {
-    icon: '/static/introduction/lecturer_avatar_2.jpg',
-    title: 'Câu hỏi số 2',
     question: 'Ai có thể tham gia vào các khóa học?',
     answer:
       'UniPro cung cấp các khóa học theo từng cấp độ khác nhau tùy nhu cầu theo học của từng học viên. Vì thế chúng tôi không hạn chế về đối tượng tham gia, chỉ cần bạn đam mê và muốn học lập trình, đừng ngừng ngại, chúng tôi sẽ hỗ trợ bạn hết mức có thể.'
   },
   {
-    icon: '/static/introduction/lecturer_avatar_3.jpg',
-    title: 'Câu hỏi số 3',
     question: 'Front-end là gì?',
     answer:
       'Front-end là phần tương tác với người dùng. Tất cả mọi thứ người dùng nhìn thấy khi điều hướng trên Internet, từ các font chữ, màu sắc cho tới các menu xổ xuống và các thanh trượt.'
   },
   {
-    icon: '/static/introduction/lecturer_avatar_3.jpg',
-    title: 'Câu hỏi số 4',
     question: 'Back-end là gì?',
     answer:
       'Back-end là phần phía sau, hỗ trợ cho sự hoạt động của Front end, bao gồm một máy chủ, một ứng dụng, và một cơ sở dữ liệu.'
   },
   {
-    icon: '/static/introduction/lecturer_avatar_3.jpg',
-    title: 'Câu hỏi số 5',
     question: 'Thế nào là một full-stack developer?',
     answer:
       'Full-stack developer chỉ lập trình viên có khả năng lập trình từ Front-end đến Back-end của một website.'
   },
   {
-    icon: '/static/introduction/lecturer_avatar_3.jpg',
-    title: 'Câu hỏi số 6',
     question: 'Học xong thì có thể đi làm ở đâu?',
     answer:
       'Sau khi học xong bạn có thể tham gia nộp CV và phỏng vấn việc làm tại các công ty IT đang hiện có theo từng khóa học bạn theo như VNG, KMS, TMA, …'

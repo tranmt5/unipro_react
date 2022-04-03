@@ -11,19 +11,58 @@ import AppRegistrationIcon from '@material-ui/icons/AppRegistration';
 import UpcomingIcon from '@material-ui/icons/Upcoming';
 import DesignServicesIcon from '@material-ui/icons/DesignServices';
 import VpnKeyIcon from '@material-ui/icons/VpnKey';
-import VerifiedUserIcon from '@material-ui/icons/VerifiedUser';
-import {
-  MotionInView,
-  varFadeInLeft,
-  varFadeInRight,
-  varWrapEnter,
-  varFadeInDown,
-  varFadeInUp
-} from '../../animate';
+import { MotionInView, varFadeInRight, varWrapEnter, varFadeInDown } from '../../animate';
 import TitleCard from '../../TitleCard';
 
 Chart.register(...registerables);
 // ----------------------------------------------------------------------
+const COREVALUEDETAILS = [
+  {
+    title: 'Courage',
+    icon: <UpcomingIcon style={{ color: 'white' }} fontSize="large" />,
+    descripiton:
+      'Mọi sự cố gắng sẽ được đền đáp một cách xứng đáng, để có được kết quả tốt nhất, UniPro luôn luôn cố gắng để giúp học viên tiếp cận được bài học một cách vui vẻ, thoải mái và hiệu quả nhất.',
+    image: '/static/home/home_feedback_mentee_1.jpg'
+  },
+  {
+    title: 'Cooperation',
+    icon: <AccountTreeIcon style={{ color: 'white' }} fontSize="large" />,
+    descripiton:
+      'UniPro đề cao sự hợp tác vui vẻ, tạo cho học viên một môi trường học tập và phát triển thuận lợi nhất.',
+    image: '/static/home/home_feedback_mentee_2.jpg'
+  },
+  {
+    title: 'Continuous',
+    icon: <AppRegistrationIcon style={{ color: 'white' }} fontSize="large" />,
+    descripiton:
+      'UniPro luôn sẵn sàng lắng nghe và hỗ trợ học viên trong vấn đề học tập mọi khi cần.',
+    image: '/static/home/home_feedback_mentee_3.jpg'
+  },
+  {
+    title: 'Creative',
+    icon: <DesignServicesIcon style={{ color: 'white' }} fontSize="large" />,
+    descripiton:
+      'IT là một lĩnh vực cần sự sáng tạo, UniPro với đội ngũ trẻ, nhiệt tình với công việc và sự sáng tạo luôn tràn trề, giúp học viên nắm vững kiến thức mà không hề nhàm chán trong quá trình học.',
+    image: '/static/home/home_feedback_mentee_3.jpg'
+  }
+];
+
+const COREVALUES = {
+  labels: ['Courage', 'Cooperation', 'Continuous', 'Creative'],
+  datasets: [
+    {
+      label: 'Population',
+      data: [100, 100, 100, 100],
+      backgroundColor: [
+        'rgba(255, 99, 132, 0.6)',
+        'rgba(54, 162, 235, 0.6)',
+        'rgba(255, 206, 86, 0.6)',
+        'rgba(75, 192, 192, 0.6)',
+        'rgba(255, 159, 64, 0.6)'
+      ]
+    }
+  ]
+};
 
 const RootStyle = styled(motion.div)(({ theme }) => ({
   paddingTop: theme.spacing(5),
@@ -53,86 +92,6 @@ const HeroImgStyle = styled(motion.img)(({ theme }) => {
     }
   };
 });
-
-const FEEDBACKS = [
-  {
-    title: 'Courage',
-    mentee: 'Lê Duy Thuận',
-    image: '/static/home/home_feedback_mentee_1.jpg',
-    rating: 4,
-    // icon: '/static/icons/ic_delivery.gif',
-    icon: <UpcomingIcon style={{ color: 'white' }} fontSize="large" />,
-    feedbackDetails: [
-      {
-        title: 'Khả năng truyền đạt của giảng viên',
-        descripiton:
-          'Mọi sự cố gắng sẽ được đền đáp một cách xứng đáng, để có được kết quả tốt nhất, UniPro luôn luôn cố gắng để giúp học viên tiếp cận được bài học một cách vui vẻ, thoải mái và hiệu quả nhất.'
-      }
-    ]
-  },
-  {
-    title: 'Cooperation',
-    mentee: 'Nguyễn Trần Thanh Tâm',
-    image: '/static/home/home_feedback_mentee_2.jpg',
-    rating: 5,
-    // icon: '/static/icons/ic_mastercard.svg',
-    icon: <AccountTreeIcon style={{ color: 'white' }} fontSize="large" />,
-    feedbackDetails: [
-      {
-        title: 'Môi trường học tập',
-        descripiton:
-          'UniPro đề cao sự hợp tác vui vẻ, tạo cho học viên một môi trường học tập và phát triển thuận lợi nhất.'
-      }
-    ]
-  },
-  {
-    title: 'Continuous',
-    mentee: 'Nguyễn Chí Thiện',
-    image: '/static/home/home_feedback_mentee_3.jpg',
-    rating: 4,
-    // icon: '/static/icons/ic_notification_chat.svg',
-    icon: <AppRegistrationIcon style={{ color: 'white' }} fontSize="large" />,
-    feedbackDetails: [
-      {
-        title: '2 tháng thành developer',
-        descripiton:
-          'UniPro luôn sẵn sàng lắng nghe và hỗ trợ học viên trong vấn đề học tập mọi khi cần.'
-      }
-    ]
-  },
-  {
-    title: 'Creative',
-    mentee: 'Nguyễn Chí Thiện',
-    image: '/static/home/home_feedback_mentee_3.jpg',
-    rating: 4,
-    // icon: '/static/icons/ic_rocket.svg',
-    icon: <DesignServicesIcon style={{ color: 'white' }} fontSize="large" />,
-    feedbackDetails: [
-      {
-        title: '2 tháng thành developer',
-        descripiton:
-          'IT là một lĩnh vực cần sự sáng tạo, UniPro với đội ngũ trẻ, nhiệt tình với công việc và sự sáng tạo luôn tràn trề, giúp học viên nắm vững kiến thức mà không hề nhàm chán trong quá trình học.'
-      }
-    ]
-  }
-];
-
-const COREVALUES = {
-  labels: ['Courage', 'Cooperation', 'Continuous', 'Creative'],
-  datasets: [
-    {
-      label: 'Population',
-      data: [100, 100, 100, 100],
-      backgroundColor: [
-        'rgba(255, 99, 132, 0.6)',
-        'rgba(54, 162, 235, 0.6)',
-        'rgba(255, 206, 86, 0.6)',
-        'rgba(75, 192, 192, 0.6)',
-        'rgba(255, 159, 64, 0.6)'
-      ]
-    }
-  ]
-};
 
 const shadowIcon = (color: string) => `drop-shadow(2px 2px 2px ${alpha(color, 0.48)})`;
 
@@ -187,18 +146,18 @@ export default function CoreValues() {
     variableWidth: false,
     pauseOnHover: true,
     afterChange: () => {
-      setHeart(0);
+      setStar(0);
     }
   };
 
-  // set heart animation
-  const [heart, setHeart] = useState(0);
+  // set star animation
+  const [star, setStar] = useState(0);
   useEffect(() => {
     const interval = setInterval(() => {
-      if (heart < 5) {
-        setHeart(heart + 1);
+      if (star < 5) {
+        setStar(star + 1);
       } else {
-        setHeart(0);
+        setStar(0);
       }
     }, 300);
     return () => clearInterval(interval);
@@ -244,21 +203,22 @@ export default function CoreValues() {
                   Những giá trị nòng cốt, trọng yếu của UniPro
                 </Typography>
               </MotionInView>
-              <Stack textAlign="center" style={{ width: '250px', height: '250px' }}>
+              <Stack
+                textAlign="justify"
+                style={{
+                  width: isDesktopSmDown ? '90vw' : '250px',
+                  height: 'auto',
+                  margin: '0 auto',
+                  padding: isDesktopSmDown ? '16px 0 32px 0' : '0'
+                }}
+              >
                 <Doughnut
                   data={COREVALUES}
                   options={{
-                    onClick: () => {
-                      console.log('fsdf');
-                    },
                     plugins: {
-                      // title: {
-                      //   display: true,
-                      //   text: 'Những nguyên tắc nòng cốt, trọng yếu của UniPro'
-                      // },
                       legend: {
                         display: true,
-                        position: 'right'
+                        position: isDesktopSmDown ? 'bottom' : 'right'
                       },
                       tooltip: {
                         enabled: false
@@ -271,16 +231,17 @@ export default function CoreValues() {
           </Stack>
           <Stack sx={{ flex: 6 }} style={{ width: isDesktop ? '65vw' : 'auto' }}>
             <Slider ref={sliderRef} {...settings}>
-              {FEEDBACKS.map((feedback, index) => {
+              {COREVALUEDETAILS.map((detail, index) => {
                 const secondary = index % 2 !== 0;
                 return (
                   <MotionInView
                     sx={{
                       backgroundColor: secondary
-                        ? theme.palette.background.neutral
-                        : theme.palette.background.neutral
+                        ? theme.palette.background.default
+                        : theme.palette.background.default,
+                      borderRadius: '15px'
                     }}
-                    key={`features-${index}`}
+                    key={`detail-${index}`}
                     variants={varFadeInRight}
                   >
                     <Stack
@@ -295,35 +256,22 @@ export default function CoreValues() {
                         textAlign={['justify', 'left']}
                       >
                         <Box mb={1}>
-                          <Typography variant="h3">{feedback.title}</Typography>
+                          <Typography variant="h3">{detail.title}</Typography>
                         </Box>
                         <Grid item xs={12} md={1}>
-                          {/* <CardIconStyle src={feedback.icon} /> */}
-                          <CircleStyle>{feedback.icon}</CircleStyle>
+                          <CircleStyle>{detail.icon}</CircleStyle>
                         </Grid>
                         <Stack mb={1}>
-                          {feedback.feedbackDetails.map((feedbackDetail) => (
-                            <Box key={`feedbackDetail-${feedbackDetail.title}`}>
-                              <Stack>
-                                <Typography variant="h6">{feedbackDetail.descripiton}</Typography>
-                              </Stack>
-                            </Box>
-                          ))}
+                          <Box>
+                            <Stack>
+                              <Typography variant="h6">{detail.descripiton}</Typography>
+                            </Stack>
+                          </Box>
                         </Stack>
-                        <StyledRating
-                          name="customized-color"
-                          value={heart}
-                          // getLabelText={(value: number) =>
-                          //   `${value} Heart${value !== 1 ? 's' : ''}`
-                          // }
-                          // precision={0.5}
-                          // icon={<FavoriteIcon fontSize="inherit" />}
-                          // emptyIcon={<FavoriteBorderIcon fontSize="inherit" />}
-                          max={5}
-                        />
+                        <StyledRating name="customized-color" value={star} max={5} />
                       </Stack>
-                      <Box>
-                        <HeroImgStyle alt="feature-1" src={feedback.image} />
+                      <Box sx={{ px: 2 }}>
+                        <HeroImgStyle alt="image" src={detail.image} />
                       </Box>
                     </Stack>
                   </MotionInView>

@@ -22,6 +22,7 @@ import ArrowDropDownIcon from '@material-ui/icons/ArrowDropDown';
 import FavoriteIcon from '@material-ui/icons/Favorite';
 import ShareIcon from '@material-ui/icons/Share';
 import SendIcon from '@material-ui/icons/Send';
+import BrightnessHighIcon from '@material-ui/icons/BrightnessHigh';
 import Popper from '@material-ui/core/Popper';
 import Grow from '@material-ui/core/Grow';
 import Paper from '@material-ui/core/Paper';
@@ -38,6 +39,7 @@ import {
   varFadeInLeft,
   varWrapEnter
 } from '../../animate';
+import { TitleCardCircle } from '../../TitleCard';
 
 // ----------------------------------------------------------------------
 const BOOTCAMPCOURSE = ['FRONTENT', 'BACKEND', 'FULLSTACK', 'MOBILE DEVELOPER'];
@@ -257,9 +259,11 @@ type MemberCardProps = {
 };
 
 const RootStyle = styled(motion.div)(({ theme }) => ({
-  paddingTop: theme.spacing(10),
+  paddingTop: theme.spacing(5),
   background: theme.palette.background.default,
-  paddingBottom: theme.spacing(6)
+  paddingBottom: theme.spacing(16),
+  position: 'relative',
+  borderTop: '2px solid rgb(255, 165, 0)'
 }));
 
 const BoxImg = styled('img')(({ theme }) => ({
@@ -322,6 +326,7 @@ export default function BootcampService() {
   const theme = useTheme();
   const isLight = theme.palette.mode === 'light';
   const isDesktop = useMediaQuery(theme.breakpoints.down('sm'));
+  const isDesktopMdUp = useMediaQuery(theme.breakpoints.up('md'));
   const [selectedCourseIndex, setSelectedCourseIndex] = useState(0);
   const [varFadeUp, setVarFadeUp] = useState(varFadeInUpCollapsed);
   const [expanded, setExpanded] = useState(false);
@@ -357,6 +362,25 @@ export default function BootcampService() {
 
   return (
     <RootStyle initial="initial" animate="animate" variants={varWrapEnter}>
+      <div
+        style={{
+          top: '0px',
+          position: 'absolute',
+          borderTop: '10px solid rgb(255, 165, 0)',
+          borderRight: '50vw solid transparent',
+          borderLeft: '50vw solid transparent'
+        }}
+      />
+      <TitleCardCircle>
+        <MotionInView variants={varFadeInDown}>
+          <motion.div
+            animate={{ rotateZ: [0, 360] }}
+            transition={{ duration: 3, repeat: Infinity }}
+          >
+            <BrightnessHighIcon color="secondary" style={{ fontSize: '40px' }} />
+          </motion.div>
+        </MotionInView>
+      </TitleCardCircle>
       <Container maxWidth="md">
         <Box sx={{ mb: { xs: 5, md: 8 }, textAlign: 'center' }}>
           <MotionInView variants={varFadeInDown}>
@@ -402,13 +426,7 @@ export default function BootcampService() {
                   <ArrowDropDownIcon />
                 </Button>
               </ButtonGroup>
-              <Popper
-                open={open}
-                anchorEl={anchorRef.current}
-                role={undefined}
-                transition
-                // disablePortal
-              >
+              <Popper open={open} anchorEl={anchorRef.current} role={undefined} transition>
                 {({ TransitionProps, placement }) => (
                   <Grow
                     {...TransitionProps}

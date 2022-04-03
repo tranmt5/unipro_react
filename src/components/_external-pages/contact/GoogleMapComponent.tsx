@@ -6,12 +6,15 @@ import { useState } from 'react';
 import DirectionsIcon from '@material-ui/icons/Directions';
 import AddLocationAltIcon from '@material-ui/icons/AddLocationAlt';
 import { varFadeInUp, MotionInView, varFadeInDown, varWrapEnter } from '../../animate';
+import { TitleCardCircle } from '../../TitleCard';
 // ----------------------------------------------------------------------
 
 const RootStyle = styled(motion.div)(({ theme }) => ({
-  paddingTop: theme.spacing(10),
+  paddingTop: theme.spacing(5),
   background: theme.palette.background.neutral,
-  paddingBottom: theme.spacing(6)
+  paddingBottom: theme.spacing(16),
+  position: 'relative',
+  borderTop: '2px solid rgb(255, 165, 0)'
 }));
 
 const CardDirectionStyle = styled('div')(({ theme }) => ({
@@ -87,21 +90,27 @@ export default function GoogleMapComponent() {
 
   return (
     <RootStyle initial="initial" animate="animate" variants={varWrapEnter}>
+      <div
+        style={{
+          top: '1px',
+          width: '100%',
+          position: 'absolute',
+          borderTop: '5px solid rgb(255, 165, 0)',
+          borderRight: '50px solid transparent',
+          borderLeft: '50px solid transparent'
+        }}
+      />
+      <TitleCardCircle>
+        <MotionInView variants={varFadeInDown}>
+          <motion.div animate={{ y: [-10, 0, -10] }} transition={{ duration: 3, repeat: Infinity }}>
+            <AddLocationAltIcon color="secondary" style={{ fontSize: '40px' }} />
+          </motion.div>
+        </MotionInView>
+      </TitleCardCircle>
       <Container maxWidth="md">
         <Box sx={{ mb: { xs: 5, md: 8 }, textAlign: 'center' }}>
           <MotionInView variants={varFadeInDown}>
             <Stack direction="row" justifyContent="center">
-              <Stack sx={{ flex: 0 }}>
-                <motion.div
-                  animate={{ y: [-20, 0, -20] }}
-                  transition={{ duration: 3, repeat: Infinity }}
-                >
-                  <AddLocationAltIcon
-                    color="secondary"
-                    style={{ fontSize: isDesktop ? '58px' : '30px' }}
-                  />
-                </motion.div>
-              </Stack>
               <Typography variant="h3" sx={{ mb: 3 }}>
                 VỊ TRÍ UNIPRO
               </Typography>
