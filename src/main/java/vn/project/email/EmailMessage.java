@@ -1,10 +1,14 @@
 package vn.project.email;
 
+import java.util.Date;
+
 public class EmailMessage {
     private String fromEmail;
     private String toEmail;
-    private String content;
-    private String reCaptcha;
+    private String fullName;
+    private String phone;
+    private String program;
+    private Date apointmentAt;
 
     public String getFromEmail() {
         return fromEmail;
@@ -22,19 +26,35 @@ public class EmailMessage {
         this.toEmail = toEmail;
     }
 
-    public String getContent() {
-        return content;
+    public String getFullName() {
+        return fullName;
     }
 
-    public void setContent(String content) {
-        this.content = content;
+    public void setFullName(String fullName) {
+        this.fullName = fullName;
     }
 
-    public String getReCaptcha() {
-        return reCaptcha;
+    public String getPhone() {
+        return phone;
     }
 
-    public void setReCaptcha(String reCaptcha) {
-        this.reCaptcha = reCaptcha;
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+
+    public String getProgram() {
+        return program;
+    }
+
+    public void setProgram(String program) {
+        this.program = program;
+    }
+
+    public Date getApointmentAt() {
+        return apointmentAt;
+    }
+
+    public void setApointmentAt(Date apointmentAt) {
+        this.apointmentAt = apointmentAt;
     }
 }

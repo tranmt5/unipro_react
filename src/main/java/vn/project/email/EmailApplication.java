@@ -22,7 +22,7 @@ import java.io.IOException;
 
 @SpringBootApplication
 @RestController
-@CrossOrigin(origins = "http://localhost:81")
+@CrossOrigin(origins = "http://localhost:8000")
 public class EmailApplication {
 
 	@Autowired
@@ -47,30 +47,31 @@ public class EmailApplication {
 	}
 
 	@RequestMapping(value = "/send", method = RequestMethod.POST)
-	public String sendEmail(@RequestBody EmailMessage emailMessage, HttpServletResponse response) throws  MessagingException, IOException{
-		System.out.println(emailMessage.getReCaptcha());
-		if(verifyRecaptcha(emailMessage.getReCaptcha())) {
-			sendMail(emailMessage);
-			return "Email sent successfully";
-		} else {
-			response.sendError(HttpServletResponse.SC_BAD_REQUEST);
-			return "Invalid reCaptcha";
-		}
+	public String sendEmail(@RequestBody EmailMessage emailMessage) throws  MessagingException, IOException{
+//		if(verifyRecaptcha(emailMessage.getReCaptcha())) {
+//
+//			return "Email sent successfully";
+//		} else {
+//			response.sendError(HttpServletResponse.SC_BAD_REQUEST);
+//			return "Invalid reCaptcha";
+//		}
+		sendMail(emailMessage);
+		return "Email sent successfully";
 	}
 
-	private boolean verifyRecaptcha(String gRecaptchaResponse) {
-		HttpHeaders httpHeaders = new HttpHeaders();
-		httpHeaders.setContentType(MediaType.APPLICATION_FORM_URLENCODED);
-
-		MultiValueMap<String, String>  map = new LinkedMultiValueMap<>();
-		map.add("secret",recaptchaSecret);
-		map.add("response",gRecaptchaResponse);
-
-		HttpEntity<MultiValueMap<String ,String>> request = new HttpEntity<>(map,httpHeaders);
-
-		ReCaptchaResponse response = restTemplate.postForObject(recaptchaServerURL, request, ReCaptchaResponse.class);
-		return response.isSuccess();
-	}
+//	private boolean verifyRecaptcha(String gRecaptchaResponse) {
+//		HttpHeaders httpHeaders = new HttpHeaders();
+//		httpHeaders.setContentType(MediaType.APPLICATION_FORM_URLENCODED);
+//
+//		MultiValueMap<String, String>  map = new LinkedMultiValueMap<>();
+//		map.add("secret",recaptchaSecret);
+//		map.add("response",gRecaptchaResponse);
+//
+//		HttpEntity<MultiValueMap<String ,String>> request = new HttpEntity<>(map,httpHeaders);
+//
+//		ReCaptchaResponse response = restTemplate.postForObject(recaptchaServerURL, request, ReCaptchaResponse.class);
+//		return response.isSuccess();
+//	}
 
 	private void sendMail(EmailMessage emailMessage) throws  MessagingException, IOException {
 
@@ -79,16 +80,16 @@ public class EmailApplication {
 		MimeMessageHelper mimeMessageHelper = new MimeMessageHelper(mimeMessage,true);
 
 		String mailSubject = emailMessage.getFromEmail() + " has sent a message to you";
-		String mailContent = "<p><b>Sender Email: </b>" + emailMessage.getFromEmail() + "</p>";
-		mailContent +=  "<p><b>Content: </b>" + emailMessage.getContent() + "</p>";
-		mailContent += "<hr><img width='100' height='100' src='cid:logoImage' />";
+		String mailContent = "<p><b>Email của học viên: </b>" + emailMessage.getFromEmail() + "</p>";
+		mailContent +=  "<p><b>Họ tên: </b>" + emailMessage.getFullName() + "<br><b>Số điện thoại: </b>" + emailMessage.getPhone() + "<br><b>Chương trình quan tâm: </b>" + emailMessage.getProgram() + "<br><b>Thời gian có thể liên lạc lại với học viên: </b>" + emailMessage.getApointmentAt() + "</p>";
+		mailContent += "<hr><img width='150' height='auto' src='cid:logoImage' alt='unipro_logo' />";
 
-		mimeMessageHelper.setFrom(emailMessage.getFromEmail(),"HIPTECHVN.COM");
+		mimeMessageHelper.setFrom(emailMessage.getFromEmail(),"UNIPRO.COM");
 		mimeMessageHelper.setTo(emailMessage.getToEmail());
 		mimeMessageHelper.setSubject(mailSubject);
 		mimeMessageHelper.setText(mailContent,true);
 
-		ClassPathResource resource= new ClassPathResource("/static/images/thien-nhien7.jpg");
+		ClassPathResource resource= new ClassPathResource("/static/images/unipro_logo.png");
 		mimeMessageHelper.addInline("logoImage",resource);
 		javaMailSender.send(mimeMessage);
 		long endTime = System.currentTimeMillis();
