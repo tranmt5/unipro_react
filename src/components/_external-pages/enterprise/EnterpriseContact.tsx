@@ -65,7 +65,7 @@ export default function EnterpriseContact() {
           <MotionInView variants={varFadeInDown} sx={{ color: 'common.white', mb: 5, pr: 2 }}>
             <Typography variant="h3">
               Cần biết thêm thông tin! <br />
-              Để lại email và chúng tôi sẽ liên lạc với bạn ngay
+              Để lại email và chúng tôi sẽ liên lạc với bạn ngay!
             </Typography>
           </MotionInView>
           {/* <MotionInView variants={varFadeInDown}>

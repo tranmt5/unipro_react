@@ -382,7 +382,7 @@ export default function BootcampService() {
         </MotionInView>
       </TitleCardCircle>
       <Container maxWidth="md">
-        <Box sx={{ mb: { xs: 5, md: 8 }, textAlign: 'center' }}>
+        <Box sx={{ mb: { xs: 4, md: 4 }, textAlign: 'center' }}>
           <MotionInView variants={varFadeInDown}>
             <Typography variant="h3" sx={{ mb: 3 }}>
               BOOTCAMP
@@ -410,7 +410,7 @@ export default function BootcampService() {
             <b>UniPro </b>cung cấp các khóa học
           </Typography>
         </MotionInView>
-        <Box sx={{ mb: { xs: 5, md: 3 }, textAlign: 'center' }}>
+        <Box sx={{ mb: { xs: 2, md: 2 }, textAlign: 'center' }}>
           {isDesktop ? (
             <div>
               <ButtonGroup variant="contained" ref={anchorRef} aria-label="split button">
@@ -488,7 +488,7 @@ export default function BootcampService() {
       </Container>
       <Container maxWidth="md">
         <MotionInView variants={varFadeInUp}>
-          <Stack py={4} alignItems="center">
+          <Stack py={2} alignItems="center">
             <CardStyle
               onMouseOver={() => {
                 if (!isDesktop) {

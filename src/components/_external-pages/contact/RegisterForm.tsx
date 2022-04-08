@@ -13,10 +13,12 @@ import DesktopDateTimePicker from '@material-ui/lab/DesktopDateTimePicker';
 import MenuItem from '@material-ui/core/MenuItem';
 import { motion } from 'framer-motion';
 import TextField from '@material-ui/core/TextField';
-//
+import { AdvisoryType } from '../../../pages/type';
+import contactApi from '../../../api/contact';
+//----------------------------------------------------------------------
+
 import { varFadeInUp, MotionInView, varFadeInDown, varWrapEnter } from '../../animate';
 import { TitleCardCircle } from '../../TitleCard';
-
 // ----------------------------------------------------------------------
 
 const RootStyle = styled(motion.div)(({ theme }) => ({
@@ -67,22 +69,29 @@ const programs = [
 ];
 // ----------------------------------------------------------------------
 
-export default function RegisterForm() {
+export default function RegisterForm({ onToggleLoadingOverlay, onChangeMessage }) {
   const theme = useTheme();
   const isLight = theme.palette.mode === 'light';
   const isDesktop = useMediaQuery(theme.breakpoints.up('md'));
   const [date, setDate] = useState<Date | null>(new Date());
   const [appointmentDate, setAppointmentDate] = useState<Date | null>(new Date());
-  const [programSelect, setProgramSelect] = useState<string | null>(programs[0].label);
+  const [programSelect, setProgramSelect] = useState<string>(programs[0].label);
 
-  // const ref = useRef<HTMLDivElement>(null);
-  // const [map, setMap] = useState<google.maps.Map>();
+  const [advisory, setAdvisory] = useState<AdvisoryType>({
+    fromEmail: '',
+    toEmail: 'emailcongty',
+    fullName: '',
+    phone: '',
+    program: programSelect,
+    apointmentAt: appointmentDate
+  });
 
-  // useEffect(() => {
-  //   if (ref.current && !map) {
-  //     setMap(new window.google.maps.Map(ref.current, {}));
-  //   }
-  // }, [ref, map]);
+  const DefaultAdvisory: AdvisoryType = {
+    ...advisory,
+    fromEmail: '',
+    fullName: '',
+    phone: ''
+  };
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setProgramSelect(event.target.value);
@@ -94,6 +103,27 @@ export default function RegisterForm() {
   //   console.log(parseInt(event.target.value, 10));
   //   setProgramSelect(parseInt(event.target.value, 10));
   // };
+
+  async function handleSubmit(event: any) {
+    event.preventDefault();
+    onToggleLoadingOverlay();
+    onChangeMessage('Đang gửi...');
+    try {
+      await contactApi.createAdvisory(advisory);
+      onChangeMessage('Thành công! UniPro sẽ liên hệ lại với bạn.');
+      setAppointmentDate(new Date());
+      setProgramSelect(programs[0].label);
+      setAdvisory(DefaultAdvisory);
+      console.log('success');
+    } catch (error) {
+      console.error(error);
+      onChangeMessage('Xin lỗi! Đã có lỗi xảy ra.');
+    } finally {
+      setTimeout(() => {
+        onToggleLoadingOverlay();
+      }, 5000);
+    }
+  }
 
   return (
     <RootStyle initial="initial" animate="animate" variants={varWrapEnter}>
@@ -150,9 +180,12 @@ export default function RegisterForm() {
                 <ValidationTextField
                   focused
                   label="Fullname"
+                  name="fullName"
+                  value={advisory.fullName}
                   required
                   variant="filled"
                   id="validation-filled-input-1"
+                  onChange={(e) => setAdvisory({ ...advisory, fullName: e.target.value })}
                 />
               </Grid>
               <Grid item xs={12} md={6} container justifyContent="center">
@@ -186,24 +219,29 @@ export default function RegisterForm() {
               <Grid item xs={12} md={6} container justifyContent="center">
                 <ValidationTextField
                   label="Email"
+                  name="email"
+                  value={advisory.fromEmail}
                   required
                   variant="filled"
-                  // defaultValue="Success"
                   id="validation-filled-input-3"
+                  onChange={(e) => setAdvisory({ ...advisory, fromEmail: e.target.value })}
                 />
               </Grid>
               <Grid item xs={12} md={6} container justifyContent="center">
                 <ValidationTextField
                   label="Phone"
+                  name="phone"
+                  value={advisory.phone}
                   required
                   variant="filled"
-                  // defaultValue="Success"
                   id="validation-filled-input-4"
+                  onChange={(e) => setAdvisory({ ...advisory, phone: e.target.value })}
                 />
               </Grid>
               <Grid item xs={12} md={6} container justifyContent="center">
                 <ValidationTextField
                   label="Lĩnh vực cần tư vấn"
+                  name="program"
                   select
                   required
                   variant="filled"
@@ -250,6 +288,8 @@ export default function RegisterForm() {
                   variant="contained"
                   color="primary"
                   style={{ padding: ' 10px 20px', fontSize: '18px' }}
+                  type="submit"
+                  onClick={handleSubmit}
                 >
                   <SendIcon
                     style={{ color: 'white', transform: 'rotate(-45deg)', marginBottom: '10px' }}

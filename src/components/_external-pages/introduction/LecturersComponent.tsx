@@ -49,7 +49,10 @@ const CardStyle = styled(Card)(({ theme }) => {
 
   return {
     maxWidth: 380,
-    minHeight: 340,
+    minHeight: 350,
+    [theme.breakpoints.down('md')]: {
+      minHeight: 'auto'
+    },
     margin: 'auto',
     textAlign: 'center',
     padding: theme.spacing(4, 2, 4),
@@ -143,13 +146,13 @@ export default function LecturersComponent() {
                   <CardIconStyle
                     src={card.icon}
                     sx={{
-                      ...(index === 0 && {
+                      ...(index % 3 === 0 && {
                         filter: (theme) => shadowIcon(theme.palette.warning.main)
                       }),
-                      ...(index === 1 && {
+                      ...(index % 3 === 1 && {
                         filter: (theme) => shadowIcon(theme.palette.error.main)
                       }),
-                      ...(index === 2 && {
+                      ...(index % 3 === 2 && {
                         filter: (theme) => shadowIcon(theme.palette.info.main)
                       })
                     }}
