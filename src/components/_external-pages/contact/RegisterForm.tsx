@@ -74,27 +74,93 @@ export default function RegisterForm({ onToggleLoadingOverlay, onChangeMessage }
   const isLight = theme.palette.mode === 'light';
   const isDesktop = useMediaQuery(theme.breakpoints.up('md'));
   const [date, setDate] = useState<Date | null>(new Date());
-  const [appointmentDate, setAppointmentDate] = useState<Date | null>(new Date());
-  const [programSelect, setProgramSelect] = useState<string>(programs[0].label);
-
   const [advisory, setAdvisory] = useState<AdvisoryType>({
     fromEmail: '',
-    toEmail: 'emailcongty',
+    toEmail: 'tranminhtuan8690@gmail.com',
     fullName: '',
     phone: '',
-    program: programSelect,
-    apointmentAt: appointmentDate
+    program: programs[0].label,
+    apointmentAt: new Date()
   });
 
   const DefaultAdvisory: AdvisoryType = {
     ...advisory,
     fromEmail: '',
     fullName: '',
-    phone: ''
+    phone: '',
+    program: programs[0].label,
+    apointmentAt: new Date()
   };
 
-  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setProgramSelect(event.target.value);
+  const [visibleError, setVisibleError] = useState({
+    fromEmail: false,
+    fullName: false,
+    phone: false
+  });
+
+  const [errors, setErrors] = useState({
+    fromEmail: 'Vui lòng nhập email của bạn!',
+    fullName: 'Vui lòng nhập tên của bạn!',
+    phone: 'Vui lòng nhập số điện thoại của bạn!'
+  });
+
+  const handleChangeProgram = (event: any) => {
+    event.preventDefault();
+    const { value } = event.target;
+    setAdvisory({ ...advisory, program: value });
+  };
+
+  const validEmailRegex = RegExp(
+    /^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i
+  );
+
+  const validPhoneRegex = RegExp(/^(\([0-9]{3}\)|0[0-9]{2}(-|))[0-9]{3}(-|)[0-9]{4}$/i);
+
+  const handleChangeAdvisoryandError = (
+    event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
+    event.preventDefault();
+
+    const { name, value } = event.target;
+
+    switch (name) {
+      case 'fromEmail':
+        setAdvisory({ ...advisory, fromEmail: value });
+        console.log(advisory);
+        setErrors({
+          ...errors,
+          fromEmail: validEmailRegex.test(value) ? '' : 'Email is not valid!'
+        });
+        setVisibleError({ ...visibleError, fromEmail: true });
+        break;
+      case 'fullName':
+        setAdvisory({ ...advisory, fullName: value });
+        console.log(advisory);
+        setErrors({
+          ...errors,
+          fullName: value.length < 1 ? 'Độ dài tên phải lớn hơn 1 ký tự' : ''
+        });
+        setVisibleError({ ...visibleError, fullName: true });
+        break;
+      case 'phone':
+        setAdvisory({ ...advisory, phone: value });
+        console.log(advisory);
+        setErrors({
+          ...errors,
+          phone: validPhoneRegex.test(value) ? '' : 'Số điện thoại chưa hợp lệ'
+        });
+        setVisibleError({ ...visibleError, phone: true });
+        break;
+      default:
+        break;
+    }
+  };
+
+  const validateForm = () => {
+    setVisibleError({ ...visibleError, fromEmail: true, fullName: true, phone: true });
+    let valid = true;
+    Object.values(errors).forEach((val) => val.length > 0 && (valid = false));
+    return valid;
   };
 
   // nếu muốn lưu giá trị value: number lên database
@@ -106,22 +172,26 @@ export default function RegisterForm({ onToggleLoadingOverlay, onChangeMessage }
 
   async function handleSubmit(event: any) {
     event.preventDefault();
-    onToggleLoadingOverlay();
-    onChangeMessage('Đang gửi...');
-    try {
-      await contactApi.createAdvisory(advisory);
-      onChangeMessage('Thành công! UniPro sẽ liên hệ lại với bạn.');
-      setAppointmentDate(new Date());
-      setProgramSelect(programs[0].label);
-      setAdvisory(DefaultAdvisory);
-      console.log('success');
-    } catch (error) {
-      console.error(error);
-      onChangeMessage('Xin lỗi! Đã có lỗi xảy ra.');
-    } finally {
-      setTimeout(() => {
-        onToggleLoadingOverlay();
-      }, 5000);
+    console.log(validateForm());
+    if (validateForm()) {
+      onToggleLoadingOverlay();
+      onChangeMessage('Đang gửi...');
+      try {
+        await contactApi.createAdvisory(advisory);
+        onChangeMessage('Thành công! UniPro sẽ liên hệ lại với bạn.');
+        setAdvisory(DefaultAdvisory);
+        setVisibleError({ ...visibleError, fromEmail: false, fullName: false, phone: false });
+        console.log('success');
+      } catch (error) {
+        console.error(error);
+        onChangeMessage('Xin lỗi! Đã có lỗi xảy ra.');
+      } finally {
+        setTimeout(() => {
+          onToggleLoadingOverlay();
+        }, 5000);
+      }
+    } else {
+      console.error('Invalid Form');
     }
   }
 
@@ -177,23 +247,12 @@ export default function RegisterForm({ onToggleLoadingOverlay, onChangeMessage }
           <form>
             <Grid container spacing={isDesktop ? 4 : 3} sx={{ px: isDesktop ? 10 : 2 }}>
               <Grid item xs={12} md={6} container justifyContent="center">
-                <ValidationTextField
-                  focused
-                  label="Fullname"
-                  name="fullName"
-                  value={advisory.fullName}
-                  required
-                  variant="filled"
-                  id="validation-filled-input-1"
-                  onChange={(e) => setAdvisory({ ...advisory, fullName: e.target.value })}
-                />
-              </Grid>
-              <Grid item xs={12} md={6} container justifyContent="center">
                 <LocalizationProvider dateAdapter={AdapterDateFns}>
                   {isDesktop && (
                     <DesktopDatePicker
                       label="Date"
                       value={date}
+                      inputFormat="dd/MM/yyyy"
                       readOnly
                       minDate={new Date('2017-01-01')}
                       onChange={(newValue) => {
@@ -206,6 +265,7 @@ export default function RegisterForm({ onToggleLoadingOverlay, onChangeMessage }
                     <MobileDatePicker
                       label="Date"
                       value={date}
+                      inputFormat="dd/MM/yyyy"
                       readOnly
                       minDate={new Date('2017-01-01')}
                       onChange={(newValue) => {
@@ -218,24 +278,42 @@ export default function RegisterForm({ onToggleLoadingOverlay, onChangeMessage }
               </Grid>
               <Grid item xs={12} md={6} container justifyContent="center">
                 <ValidationTextField
-                  label="Email"
-                  name="email"
-                  value={advisory.fromEmail}
+                  focused
+                  label="Fullname"
+                  name="fullName"
+                  value={advisory.fullName}
                   required
+                  error={errors.fullName.length !== 0 && visibleError.fullName}
                   variant="filled"
-                  id="validation-filled-input-3"
-                  onChange={(e) => setAdvisory({ ...advisory, fromEmail: e.target.value })}
+                  id="validation-filled-input-1"
+                  onChange={(event) => handleChangeAdvisoryandError(event)}
+                  helperText={visibleError.fullName ? errors.fullName : ''}
                 />
               </Grid>
               <Grid item xs={12} md={6} container justifyContent="center">
                 <ValidationTextField
-                  label="Phone"
+                  label="Email"
+                  name="fromEmail"
+                  value={advisory.fromEmail}
+                  required
+                  error={errors.fromEmail.length !== 0 && visibleError.fromEmail}
+                  variant="filled"
+                  id="validation-filled-input-3"
+                  onChange={(event) => handleChangeAdvisoryandError(event)}
+                  helperText={visibleError.fromEmail ? errors.fromEmail : ''}
+                />
+              </Grid>
+              <Grid item xs={12} md={6} container justifyContent="center">
+                <ValidationTextField
+                  label="Phone(0xx-xxx-xxxx)"
                   name="phone"
                   value={advisory.phone}
                   required
+                  error={errors.phone.length !== 0 && visibleError.phone}
                   variant="filled"
                   id="validation-filled-input-4"
-                  onChange={(e) => setAdvisory({ ...advisory, phone: e.target.value })}
+                  onChange={(event) => handleChangeAdvisoryandError(event)}
+                  helperText={visibleError.phone ? errors.phone : ''}
                 />
               </Grid>
               <Grid item xs={12} md={6} container justifyContent="center">
@@ -245,8 +323,8 @@ export default function RegisterForm({ onToggleLoadingOverlay, onChangeMessage }
                   select
                   required
                   variant="filled"
-                  value={programSelect}
-                  onChange={handleChange}
+                  value={advisory.program}
+                  onChange={handleChangeProgram}
                   helperText="Please select your program"
                   id="validation-filled-input-5"
                 >
@@ -262,10 +340,11 @@ export default function RegisterForm({ onToggleLoadingOverlay, onChangeMessage }
                   {isDesktop && (
                     <DesktopDateTimePicker
                       label="Chúng tôi có thể liên lạc với bạn vào lúc nào?"
-                      value={appointmentDate}
+                      value={advisory.apointmentAt}
+                      inputFormat="dd/MM/yyyy HH:mm"
                       minDate={new Date('2017-01-01')}
                       onChange={(newValue) => {
-                        setAppointmentDate(newValue);
+                        setAdvisory({ ...advisory, apointmentAt: newValue });
                       }}
                       renderInput={(params) => <ValidationTextField variant="filled" {...params} />}
                     />
@@ -273,10 +352,11 @@ export default function RegisterForm({ onToggleLoadingOverlay, onChangeMessage }
                   {!isDesktop && (
                     <MobileDateTimePicker
                       label="Chúng tôi có thể liên lạc với bạn vào lúc nào?"
-                      value={appointmentDate}
+                      value={advisory.apointmentAt}
+                      inputFormat="dd/MM/yyyy HH:mm"
                       minDate={new Date('2017-01-01')}
                       onChange={(newValue) => {
-                        setAppointmentDate(newValue);
+                        setAdvisory({ ...advisory, apointmentAt: newValue });
                       }}
                       renderInput={(params) => <ValidationTextField variant="filled" {...params} />}
                     />
