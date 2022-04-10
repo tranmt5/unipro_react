@@ -13,6 +13,8 @@ import DesktopDateTimePicker from '@material-ui/lab/DesktopDateTimePicker';
 import MenuItem from '@material-ui/core/MenuItem';
 import { motion } from 'framer-motion';
 import TextField from '@material-ui/core/TextField';
+//---------------------------------------------------------------------
+import { PROGRAMS } from '../../../utils/mock-data/contact';
 import { AdvisoryType } from '../../../pages/type';
 import contactApi from '../../../api/contact';
 //----------------------------------------------------------------------
@@ -48,25 +50,6 @@ const ValidationTextField = styled(TextField)({
     padding: '4px !important'
   }
 });
-
-const programs = [
-  {
-    value: 1,
-    label: 'Full-Stack Developer'
-  },
-  {
-    value: 2,
-    label: 'Front-end Developer'
-  },
-  {
-    value: 3,
-    label: 'Back-end Developer'
-  },
-  {
-    value: 4,
-    label: 'Mobile Developer'
-  }
-];
 // ----------------------------------------------------------------------
 
 export default function RegisterForm({ onToggleLoadingOverlay, onChangeMessage }) {
@@ -79,7 +62,7 @@ export default function RegisterForm({ onToggleLoadingOverlay, onChangeMessage }
     toEmail: 'tranminhtuan8690@gmail.com',
     fullName: '',
     phone: '',
-    program: programs[0].label,
+    program: PROGRAMS[0].label,
     apointmentAt: new Date()
   });
 
@@ -88,7 +71,7 @@ export default function RegisterForm({ onToggleLoadingOverlay, onChangeMessage }
     fromEmail: '',
     fullName: '',
     phone: '',
-    program: programs[0].label,
+    program: PROGRAMS[0].label,
     apointmentAt: new Date()
   };
 
@@ -328,7 +311,7 @@ export default function RegisterForm({ onToggleLoadingOverlay, onChangeMessage }
                   helperText="Please select your program"
                   id="validation-filled-input-5"
                 >
-                  {programs.map((program) => (
+                  {PROGRAMS.map((program) => (
                     <MenuItem key={program.value} value={program.label}>
                       {program.label}
                     </MenuItem>

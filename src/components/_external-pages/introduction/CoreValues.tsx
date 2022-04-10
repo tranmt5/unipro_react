@@ -12,46 +12,13 @@ import { styled, useTheme } from '@material-ui/core/styles';
 import Rating from '@material-ui/core/Rating';
 import { motion } from 'framer-motion';
 import { useEffect, useState } from 'react';
-import AccountTreeIcon from '@material-ui/icons/AccountTree';
-import AppRegistrationIcon from '@material-ui/icons/AppRegistration';
-import UpcomingIcon from '@material-ui/icons/Upcoming';
 import AssignmentIcon from '@material-ui/icons/Assignment';
-import DesignServicesIcon from '@material-ui/icons/DesignServices';
 import VpnKeyIcon from '@material-ui/icons/VpnKey';
+//------------------------------------------------------------------------
+import { COREVALUEDETAILS } from '../../../utils/mock-data/introduction';
 import { MotionInView, varWrapEnter, varFadeInUp } from '../../animate';
 import TitleCard from '../../TitleCard';
-
-// ----------------------------------------------------------------------
-const COREVALUEDETAILS = [
-  {
-    title: 'Courage',
-    icon: <UpcomingIcon fontSize="large" />,
-    description:
-      'Mọi sự cố gắng sẽ được đền đáp một cách xứng đáng, để có được kết quả tốt nhất, UniPro luôn luôn cố gắng để giúp học viên tiếp cận được bài học một cách vui vẻ, thoải mái và hiệu quả nhất.',
-    image: '/static/home/home_feedback_mentee_1.jpg'
-  },
-  {
-    title: 'Cooperation',
-    icon: <AccountTreeIcon fontSize="large" />,
-    description:
-      'UniPro đề cao sự hợp tác vui vẻ, tạo cho học viên một môi trường học tập và phát triển thuận lợi nhất.',
-    image: '/static/home/home_feedback_mentee_2.jpg'
-  },
-  {
-    title: 'Continuous',
-    icon: <AppRegistrationIcon fontSize="large" />,
-    description:
-      'UniPro luôn sẵn sàng lắng nghe và hỗ trợ học viên trong vấn đề học tập mọi khi cần.',
-    image: '/static/home/home_feedback_mentee_3.jpg'
-  },
-  {
-    title: 'Creative',
-    icon: <DesignServicesIcon fontSize="large" />,
-    description:
-      'IT là một lĩnh vực cần sự sáng tạo, UniPro với đội ngũ trẻ, nhiệt tình với công việc và sự sáng tạo luôn tràn trề, giúp học viên nắm vững kiến thức mà không hề nhàm chán trong quá trình học.',
-    image: '/static/home/home_feedback_mentee_3.jpg'
-  }
-];
+// -----------------------------------------------------------------------
 
 const RootStyle = styled(motion.div)(({ theme }) => ({
   paddingTop: theme.spacing(5),

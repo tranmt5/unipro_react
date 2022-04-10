@@ -2,6 +2,7 @@ import { Box, Typography, useMediaQuery, Container } from '@material-ui/core';
 import { useTheme, styled } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import { motion } from 'framer-motion';
+//----------------------------------------------------------------------
 import { MotionInView, varWrapEnter, varFadeInDown } from '../../animate';
 
 // ----------------------------------------------------------------------

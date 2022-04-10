@@ -8,7 +8,6 @@ import RegisterForm from 'components/_external-pages/contact/RegisterForm';
 import GoogleMapComponent from 'components/_external-pages/contact/GoogleMapComponent';
 import ContactIntroduction from 'components/_external-pages/contact/ContactIntroduction';
 import CheckCircleIcon from '@material-ui/icons/CheckCircle';
-import RemoveDoneIcon from '@material-ui/icons/RemoveDone';
 import AssignmentLateIcon from '@material-ui/icons/AssignmentLate';
 
 // components

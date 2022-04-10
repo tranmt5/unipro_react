@@ -2,70 +2,11 @@
 import { alpha, useTheme, styled } from '@material-ui/core/styles';
 import { Box, Grid, Card, Container, Typography, useMediaQuery, Button } from '@material-ui/core';
 import { motion } from 'framer-motion';
-//
+//--------------------------------------------------------------------------------------
+import { CARDS } from '../../../utils/mock-data/home';
 import { varFadeInUp, MotionInView, varFadeInDown, varWrapEnter } from '../../animate';
 import { TitleCardTrapezoidLeft } from '../../TitleCard';
-
-// ----------------------------------------------------------------------
-
-// const CA = [
-//   '/static/icons/browser-edge.svg',
-//   '/static/icons/elephant.svg',
-//   '/static/icons/ic_api.svg',
-//   '/static/icons/ic_architecture.svg',
-//   '/static/icons/ic_chrome.svg',
-//   '/static/icons/ic_code.svg',
-//   '/static/icons/ic_customer.svg',
-//   '/static/icons/ic_delivery.gif',
-//   '/static/icons/ic_demand.svg',
-//   '/static/icons/ic_design.svg',
-//   '/static/icons/ic_drive.svg',
-//   '/static/icons/ic_dropbox.svg',
-//   '/static/icons/ic_evernote.svg',
-//   '/static/icons/ic_flag_de.svg',
-//   '/static/icons/ic_franchise.svg',
-//   '/static/icons/ic_github.svg',
-//   '/static/icons/ic_headless.svg',
-//   '/static/icons/ic_mastercard.svg',
-//   '/static/icons/ic_multilang.svg',
-//   '/static/icons/ic_notification_chat.svg',
-//   '/static/icons/ic_notification_mail.svg',
-//   '/static/icons/ic_notification_package.svg',
-//   '/static/icons/ic_notification_shipping.svg',
-//   '/static/icons/ic_order.svg',
-//   '/static/icons/ic_payment.svg',
-//   '/static/icons/ic_paypal.svg',
-//   '/static/icons/ic_responsive.svg',
-//   '/static/icons/ic_rocket.svg',
-//   '/static/icons/ic_star.svg',
-//   '/static/icons/ic_store.svg',
-//   '/static/icons/ic_visa.svg',
-//   '/static/icons/json-logo.svg',
-//   '/static/icons/love-camera.svg',
-//   '/static/icons/shape-avatar.svg',
-//   '/static/icons/shield.svg'
-// ];
-
-const CARDS = [
-  {
-    icon: '/static/icons/ic_customer.svg',
-    title: <>Mentee</>,
-    description:
-      'Mentee là những học viên mới, chưa có nhiều trải nghiệm. Họ muốn học tập và chuyển sang lĩnh vực IT.'
-  },
-  {
-    icon: '/static/icons/ic_store.svg',
-    title: <>Mentor</>,
-    description:
-      'Mentor đóng vai trò cố vấn, hướng dẫn cho mentee trong quá trình học tập và phát triển.'
-  },
-  {
-    icon: '/static/icons/ic_headless.svg',
-    title: <>Master</>,
-    description:
-      'Master là người có chuyên môn sâu, kinh nghiệm lâu năm trong lĩnh vực IT, sẽ là người định hướng học viên kỹ năng và con đường đến với nhà tuyển dụng.'
-  }
-];
+// -------------------------------------------------------------------------------------
 
 const shadowIcon = (color: string) => `drop-shadow(2px 2px 2px ${alpha(color, 0.48)})`;
 
@@ -191,16 +132,6 @@ export default function HomeThreeModels() {
           ))}
         </Grid>
       </Container>
-      {/* <Grid>
-          {CA.map((ca, index) => (
-            <Grid key={`card-hero-${index}`} item xs={12} md={4}>
-              <CardIconStyle
-                src={ca}
-                sx={{ filter: (theme) => shadowIcon(theme.palette.info.main) }}
-              />
-            </Grid>
-          ))}
-        </Grid> */}
     </RootStyle>
   );
 }

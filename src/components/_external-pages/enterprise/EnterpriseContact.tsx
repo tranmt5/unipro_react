@@ -1,15 +1,8 @@
-import {
-  Box,
-  Button,
-  Container,
-  Stack,
-  TextField,
-  Typography,
-  useMediaQuery
-} from '@material-ui/core';
+import { Box, Typography, useMediaQuery } from '@material-ui/core';
 import { styled, useTheme } from '@material-ui/core/styles';
 import { motion } from 'framer-motion';
 import PhoneIcon from '@material-ui/icons/Phone';
+//----------------------------------------------------------------------
 import { MotionInView, varFadeInDown, varFadeInRight, varFadeInUp } from '../../animate';
 
 // ----------------------------------------------------------------------
@@ -68,22 +61,6 @@ export default function EnterpriseContact() {
               Để lại email và chúng tôi sẽ liên lạc với bạn ngay!
             </Typography>
           </MotionInView>
-          {/* <MotionInView variants={varFadeInDown}>
-            <Stack
-              direction={['column', 'row']}
-              spacing={[1.5, 1.5]}
-              rowGap={[1.5, 1.5]}
-              justifyContent={{ xs: 'center', md: 'flex-start' }}
-              style={{ zIndex: 2 }}
-            >
-              <motion.div variants={varFadeInRight}>
-                <a href="tel:0346766535">
-                  <PhoneIcon color="info" fontSize="small" />
-                  0346766535
-                </a>
-              </motion.div>
-            </Stack>
-          </MotionInView> */}
         </Box>
       </ContentStyle>
       <ul className="bg-bubbles">

@@ -1,7 +1,8 @@
 import { alpha, Container, Stack, Typography, useMediaQuery, Box } from '@material-ui/core';
 import { styled, useTheme } from '@material-ui/core/styles';
 import { motion } from 'framer-motion';
-//
+//----------------------------------------------------------------------
+import { SERVICES } from '../../../utils/mock-data/home';
 import {
   MotionInView,
   varFadeInLeft,
@@ -11,73 +12,7 @@ import {
   varFadeInUp
 } from '../../animate';
 import { TitleCardSemicircle } from '../../TitleCard';
-
 // ----------------------------------------------------------------------
-const SERVICES = [
-  {
-    title: 'Hình ảnh học viên tại UNIPRO',
-    caption: 'Hoạt động khóa học',
-    image: '/static/home/home_service_learning.jpg',
-    serviceDetails: [
-      {
-        title: 'Tiêu chí hướng tới',
-        descripiton:
-          'Tạo môi trường tốt nhất cho học viên học tập và có việc làm ngay sau khi hoàn thành khóa học'
-      },
-      {
-        title: 'Rèn luyện kỹ năng',
-        descripiton:
-          'Để có được đam mê, hãy tiến từng bước nhỏ từ giải bài tập cho tới làm các dự án, rồi làm nhiều thứ hay ho hơn để nâng cao khả năng lập trình của mình.'
-      },
-      {
-        title: 'Vượt mọi khó khăn',
-        descripiton:
-          'Không bơ phờ vì triền miên thiếu ngủ, không chán nản bên những ký tự khô khan, học viên luôn tràn đầy sức sống bởi có bí kíp tìm niềm vui từ những ngày làm bạn với các dãy code dài miên man.'
-      }
-    ]
-  },
-  {
-    title: 'Xây dựng mô hình Bootcamp',
-    caption: 'Coding Bootcamp',
-    image: '/static/home/home_service_bootcamp.jpg',
-    serviceDetails: [
-      {
-        title: 'Thời gian',
-        descripiton:
-          'Chỉ mất khoảng thời gian từ 6-8 tháng, học viên tham gia khóa học Cording Bootcamp tại Unipro Center sẽ trở thành một lập trình viên thực chiến.'
-      },
-      {
-        title: 'Chi phí',
-        descripiton: 'Rất thấp, chỉ bằng 1/4 chi phí tại các giảng đường Đại học.'
-      },
-      {
-        title: 'Kiến thức',
-        descripiton: (
-          <>
-            Các môn học tập trung chuyên sâu
-            <b> vừa học-vừa hành</b>.
-          </>
-        )
-      }
-    ]
-  },
-  {
-    title: 'Thực hành tại phòng Lab',
-    caption: 'Lab office',
-    image: '/static/home/home_service_lab.jpg',
-    serviceDetails: [
-      {
-        title: 'Mục tiêu',
-        descripiton: 'Tạo ra các ứng dụng, phần mềm có thể mang tới giá trị cho xã hội.'
-      },
-      {
-        title: 'Trang thiết bị phòng Lab',
-        descripiton:
-          'Dàn máy cấu hình "khủng", điều hòa mát lạnh lại có view xanh tươi thích hợp cho những ý tưởng mới.'
-      }
-    ]
-  }
-];
 
 const RootStyle = styled(motion.div)(({ theme }) => ({
   paddingTop: theme.spacing(5),

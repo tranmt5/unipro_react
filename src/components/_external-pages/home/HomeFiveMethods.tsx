@@ -5,15 +5,11 @@ import TimelineConnector from '@material-ui/lab/TimelineConnector';
 import TimelineContent from '@material-ui/lab/TimelineContent';
 import TimelineOppositeContent from '@material-ui/lab/TimelineOppositeContent';
 import TimelineDot from '@material-ui/lab/TimelineDot';
-import LaptopMacIcon from '@material-ui/icons/LaptopMac';
-import LibraryBooksIcon from '@material-ui/icons/LibraryBooks';
-import PeopleAltIcon from '@material-ui/icons/PeopleAlt';
-import DoneOutlineIcon from '@material-ui/icons/DoneOutline';
-import PoolIcon from '@material-ui/icons/Pool';
-import TrendingUpIcon from '@material-ui/icons/TrendingUp';
 import { useTheme, styled } from '@material-ui/core/styles';
 import { motion } from 'framer-motion';
 import { Typography, Container, Box, useMediaQuery } from '@material-ui/core';
+//---------------------------------------------------------------------------------
+import { METHODS } from '../../../utils/mock-data/home';
 import {
   varFadeInUp,
   MotionInView,
@@ -23,39 +19,7 @@ import {
   varWrapEnter
 } from '../../animate';
 import { TitleCardTrapezoidRight } from '../../TitleCard';
-
-const METHODS = [
-  {
-    title: 'Project-Based Learning',
-    icon: <LibraryBooksIcon color="secondary" />,
-    time: <DoneOutlineIcon color="success" />,
-    description: 'Học tập dựa trên dự án'
-  },
-  {
-    title: 'Practice-Oriented Class',
-    icon: <LaptopMacIcon color="secondary" />,
-    time: <DoneOutlineIcon color="success" />,
-    description: 'Lớp học định hướng thực hành'
-  },
-  {
-    title: 'Peer Learning Method',
-    icon: <PeopleAltIcon color="secondary" />,
-    time: <DoneOutlineIcon color="success" />,
-    description: 'Phương pháp học theo cặp'
-  },
-  {
-    title: 'Product Development',
-    icon: <TrendingUpIcon color="secondary" />,
-    time: <DoneOutlineIcon color="success" />,
-    description: 'Phát triển sản phẩm'
-  },
-  {
-    title: 'Pro-Active Working Environment',
-    icon: <PoolIcon color="secondary" />,
-    time: <DoneOutlineIcon color="success" />,
-    description: 'Môi trường làm việc chủ động'
-  }
-];
+//----------------------------------------------------------------------------------
 
 const RootStyle = styled(motion.div)(({ theme }) => ({
   paddingTop: theme.spacing(5),
@@ -106,7 +70,6 @@ export default function HomeFiveMethods() {
           {METHODS.map((method, index) => (
             <TimelineItem key={`method-${index}`}>
               <TimelineOppositeContent
-                // sx={{ py: '12px', px: 2 }}
                 align="right"
                 variant="body2"
                 color="text.secondary"

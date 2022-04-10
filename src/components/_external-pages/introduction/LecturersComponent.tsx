@@ -2,34 +2,13 @@
 import { alpha, useTheme, styled } from '@material-ui/core/styles';
 import { Box, Grid, Card, Container, Typography, useMediaQuery, Stack } from '@material-ui/core';
 import LibraryBooksIcon from '@material-ui/icons/LibraryBooks';
-import KeyboardVoiceIcon from '@material-ui/icons/KeyboardVoice';
 import GroupIcon from '@material-ui/icons/Group';
 import { motion } from 'framer-motion';
-//
+//----------------------------------------------------------------------
+import { LECTURERS } from '../../../utils/mock-data/introduction';
 import { varFadeInUp, MotionInView, varFadeInDown, varWrapEnter } from '../../animate';
 import TitleCard from '../../TitleCard';
-
 // ----------------------------------------------------------------------
-
-const CARDS = [
-  {
-    icon: '/static/introduction/lecturer_avatar_4.jpg',
-    title: <>Lê Sỹ Việt</>,
-    description:
-      'Tham gia các hoạt động giảng dạy và nghiên cứu các ngành Công nghệ thông tin tại trường Đại học FPT.'
-  },
-  {
-    icon: '/static/introduction/lecturer_avatar_5.jpg',
-    title: <>Lý Dạ Thảo Quyên</>,
-    description: 'Thực hiện các nhiệm vụ trong các dự án công nghệ của Tập đoàn FPT.'
-  },
-  {
-    icon: '/static/introduction/lecturer_avatar_6.jpg',
-    title: <>Phùng Thanh Thiết</>,
-    description:
-      'Tham gia giảng dạy các môn học thuộc chuyên ngành Công nghệ thông tin: Lập trình máy tính, thiết bị di động và lập trình website.'
-  }
-];
 
 const shadowIcon = (color: string) => `drop-shadow(2px 2px 2px ${alpha(color, 0.48)})`;
 
@@ -124,17 +103,11 @@ export default function LecturersComponent() {
       </Container>
       <Container maxWidth="lg">
         <Grid container spacing={isDesktop ? 6 : 4}>
-          {CARDS.map((card, index) => (
+          {LECTURERS.map((lecturer, index) => (
             <Grid key={`card-hero-${index}`} item xs={12} md={4}>
               <MotionInView variants={varFadeInUp}>
                 <CardStyle
                   className="cardItem"
-                  // className={
-                  //   (index === 0 && 'cardLeft') ||
-                  //   (index === 1 && 'cardCenter') ||
-                  //   (index === 2 && 'cardRight') ||
-                  //   ''
-                  // }
                   onMouseOver={(event) =>
                     !isDesktopSmDown &&
                     (event.currentTarget.style.borderTop = '5px solid rgb(77, 146, 187)')
@@ -144,7 +117,7 @@ export default function LecturersComponent() {
                   }
                 >
                   <CardIconStyle
-                    src={card.icon}
+                    src={lecturer.icon}
                     sx={{
                       ...(index % 3 === 0 && {
                         filter: (theme) => shadowIcon(theme.palette.warning.main)
@@ -158,7 +131,7 @@ export default function LecturersComponent() {
                     }}
                   />
                   <Typography variant="h5" paragraph>
-                    {card.title}
+                    {lecturer.title}
                   </Typography>
                   <Typography
                     sx={{
@@ -169,7 +142,7 @@ export default function LecturersComponent() {
                   >
                     <LibraryBooksIcon color="info" />
                     &nbsp;
-                    {card.description}
+                    {lecturer.description}
                   </Typography>
                 </CardStyle>
               </MotionInView>

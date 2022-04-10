@@ -3,8 +3,6 @@ import { Navigate, useRoutes, useLocation } from 'react-router-dom';
 // layouts
 import MainLayout from '../layouts/main';
 import LogoOnlyLayout from '../layouts/LogoOnlyLayout';
-// pages
-import FeaturesPage from '../pages/Features';
 // components
 import LoadingScreen from '../components/LoadingScreen';
 // ----------------------------------------------------------------------
@@ -43,19 +41,18 @@ export default function Router() {
       element: <LogoOnlyLayout />,
       children: [
         { path: '404', element: <NotFound /> },
-        { path: '*', element: <Navigate to="/coming-soon" replace /> }
+        { path: '*', element: <Navigate to="/404" replace /> }
       ]
     },
     {
       path: '/',
       element: <MainLayout />,
       children: [
-        { path: '/features', element: <FeaturesPage /> },
         { path: '/', element: <HomePage /> },
         { path: '/khoa-hoc', element: <CoursePage /> },
         { path: '/gioi-thieu', element: <IntroductionPage /> },
-        { path: '/coming-soon', element: <ComingSoon /> },
-        { path: '/lien-he', element: <ContactPage /> }
+        { path: '/lien-he', element: <ContactPage /> },
+        { path: '*', element: <Navigate to="/404" replace /> }
       ]
     },
     { path: '*', element: <Navigate to="/404" replace /> }
@@ -66,10 +63,9 @@ export default function Router() {
 
 // Dashboard
 const NotFound = Loadable(lazy(() => import('../pages/Page404')));
-const ComingSoon = Loadable(lazy(() => import('../pages/ComingSoon')));
+
 // Main
 const HomePage = Loadable(lazy(() => import('../pages/Home')));
 const CoursePage = Loadable(lazy(() => import('../pages/Course')));
-const ClientPage = Loadable(lazy(() => import('../pages/Client')));
 const IntroductionPage = Loadable(lazy(() => import('../pages/IntroductionPage')));
 const ContactPage = Loadable(lazy(() => import('../pages/ContactPage')));

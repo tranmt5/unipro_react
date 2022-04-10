@@ -1,10 +1,9 @@
 import { alpha, Container, Stack, Typography, useMediaQuery, Box, Card } from '@material-ui/core';
 import { styled, useTheme } from '@material-ui/core/styles';
 import { motion } from 'framer-motion';
-import FunctionsIcon from '@material-ui/icons/Functions';
-import CurrencyExchangeIcon from '@material-ui/icons/PriceCheck';
 import ShutterSpeedIcon from '@material-ui/icons/ShutterSpeed';
-//
+//-----------------------------------------------------------------------
+import { TUITIONS } from '../../../utils/mock-data/course';
 import {
   MotionInView,
   varFadeInRight,
@@ -13,31 +12,7 @@ import {
   varFadeInUp
 } from '../../animate';
 import { TitleCardCircle } from '../../TitleCard';
-
 // ----------------------------------------------------------------------
-
-const TUITIONS = [
-  {
-    title: [
-      'Giai đoạn',
-      'Học kỳ 1',
-      'Học kỷ 2',
-      'Học kỳ 3',
-      'Học kỳ 4',
-      'Học kỳ 5',
-      <>
-        <FunctionsIcon color="success" fontSize="large" />
-      </>,
-      <>
-        <CurrencyExchangeIcon color="error" fontSize="large" />
-      </>
-    ],
-    option_1: ['Đóng theo 1 học kỳ', 6000000, 6000000, 6000000, 6000000, 6000000, 30000000, '0%'],
-    option_2: ['Đóng theo 2 học kỳ', 10200000, 10200000, 5100000, 25500000, '15%'],
-    option_3: ['Đóng theo 3 học kỳ', 14400000, 9600000, 24000000, '20%'],
-    option_4: ['Đóng theo trọn khóa (5 kỳ)', 22500000, 22500000, '25%']
-  }
-];
 
 const RootStyle = styled(motion.div)(({ theme }) => ({
   paddingTop: theme.spacing(5),

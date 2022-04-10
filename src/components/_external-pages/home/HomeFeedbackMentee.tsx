@@ -4,6 +4,8 @@ import { styled, useTheme } from '@material-ui/core/styles';
 import Rating from '@material-ui/core/Rating';
 import { motion } from 'framer-motion';
 import { useRef } from 'react';
+//---------------------------------------------------------------------
+import { FEEDBACKS } from '../../../utils/mock-data/home';
 import {
   MotionInView,
   varFadeInLeft,
@@ -13,48 +15,6 @@ import {
 } from '../../animate';
 import TitleCard from '../../TitleCard';
 // ----------------------------------------------------------------------
-
-const FEEDBACKS = [
-  {
-    title: '',
-    mentee: 'Lê Duy Thuận',
-    image: '/static/home/home_feedback_mentee_1.jpg',
-    rating: 4,
-    feedbackDetails: [
-      {
-        title: 'Khả năng truyền đạt của giảng viên',
-        descripiton:
-          'Thầy giảng bài rất dễ tiếp thu, toàn những kiến thức hay cùng những kinh nghiệm của thầy không ở đâu mà tìm được.'
-      }
-    ]
-  },
-  {
-    title: '',
-    mentee: 'Nguyễn Trần Thanh Tâm',
-    image: '/static/home/home_feedback_mentee_2.jpg',
-    rating: 5,
-    feedbackDetails: [
-      {
-        title: 'Môi trường học tập',
-        descripiton:
-          'Em học ở đây đã được 3 tháng, giáo viên vui vẻ nhiệt tình, không khí lớp học lúc nào cũng náo nhiệt chứ không tĩnh mịch như em nghĩ lúc đầu.'
-      }
-    ]
-  },
-  {
-    title: '',
-    mentee: 'Nguyễn Chí Thiện',
-    image: '/static/home/home_feedback_mentee_3.jpg',
-    rating: 4,
-    feedbackDetails: [
-      {
-        title: '2 tháng thành developer',
-        descripiton:
-          'Học ở đây mãi không chán, học tới đâu nắm tới đó, trước giờ tự học mãi mà không có tác dụng gì, không ngờ đến lớp mới 2 tháng đã thành thạo được lập trình. Quá tuyệt vời.'
-      }
-    ]
-  }
-];
 
 const RootStyle = styled(motion.div)(({ theme }) => ({
   paddingTop: theme.spacing(5),

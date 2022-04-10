@@ -3,35 +3,11 @@ import Slider from 'react-slick';
 import { useTheme, styled } from '@material-ui/core/styles';
 import { Box, useMediaQuery, Typography, Container, Grid } from '@material-ui/core';
 import { motion } from 'framer-motion';
+//----------------------------------------------------------------------------------
+import { SLIDERS } from '../../../utils/mock-data/home';
 import { MotionInView, varFadeInDown, varWrapEnter } from '../../animate';
-import { CarouselControlsArrowsBasic2 } from '../../carousel';
-
-// ----------------------------------------------------------------------
-
-const SLIDERS = [
-  {
-    title: 'GÓC HỌC TẬP',
-    caption: 'Học tập theo cặp, cùng nhau phát triển',
-    image: '/static/home/home_slider_developer.jpg'
-  },
-  {
-    title: 'TRỞ THÀNH DEVELOPER',
-    caption: 'Làm việc ngay sau khi hoàn thành khóa học',
-    image: '/static/home/home_slider_code.jpg'
-  },
-  {
-    title: 'NGÔI NHÀ CHUNG',
-    caption: 'Môi trường thân thiện kết hợp hoạt động thể thao.',
-    image: '/static/home/home_slider_friendly.jpg'
-  },
-  {
-    title: 'VỊ TRÍ',
-    caption: 'Gần trường đại học FPT.',
-    image: '/static/home/home_slider_fpt_school.png'
-  }
-];
-
-// ----------------------------------------------------------------------
+import { CarouselControlsArrowsBasic2 } from '../../carousel/controls';
+// ---------------------------------------------------------------------------------
 
 type MemberCardProps = {
   member: {

@@ -4,7 +4,7 @@ import { useTheme, styled } from '@material-ui/core/styles';
 import { Container, Typography, useMediaQuery, Box } from '@material-ui/core';
 import { motion } from 'framer-motion';
 import Slider from 'react-slick';
-//
+//-----------------------------------------------------------------------
 import { MotionInView, varFadeInDown, varFadeInUp, varWrapEnter } from '../../animate';
 import TitleCard from '../../TitleCard';
 // ----------------------------------------------------------------------

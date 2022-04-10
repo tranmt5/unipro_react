@@ -14,44 +14,11 @@ import { motion } from 'framer-motion';
 import { useState } from 'react';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import HelpOutline from '@material-ui/icons/HelpOutline';
-//
+//----------------------------------------------------------------------
+import { DETAILS } from '../../../utils/mock-data/introduction';
 import { varFadeInUp, MotionInView, varFadeInDown, varWrapEnter } from '../../animate';
 import TitleCard from '../../TitleCard';
-
 // ----------------------------------------------------------------------
-
-const DETAILS = [
-  {
-    question: 'UniPro dạy về gì?',
-    answer:
-      'Chương trình giảng dạy ở UniPro về các khóa học lập trình từ chuyên sâu đến các lớp học cấp tốc, từ Front-end, Back-end đến Full-stack.'
-  },
-  {
-    question: 'Ai có thể tham gia vào các khóa học?',
-    answer:
-      'UniPro cung cấp các khóa học theo từng cấp độ khác nhau tùy nhu cầu theo học của từng học viên. Vì thế chúng tôi không hạn chế về đối tượng tham gia, chỉ cần bạn đam mê và muốn học lập trình, đừng ngừng ngại, chúng tôi sẽ hỗ trợ bạn hết mức có thể.'
-  },
-  {
-    question: 'Front-end là gì?',
-    answer:
-      'Front-end là phần tương tác với người dùng. Tất cả mọi thứ người dùng nhìn thấy khi điều hướng trên Internet, từ các font chữ, màu sắc cho tới các menu xổ xuống và các thanh trượt.'
-  },
-  {
-    question: 'Back-end là gì?',
-    answer:
-      'Back-end là phần phía sau, hỗ trợ cho sự hoạt động của Front end, bao gồm một máy chủ, một ứng dụng, và một cơ sở dữ liệu.'
-  },
-  {
-    question: 'Thế nào là một full-stack developer?',
-    answer:
-      'Full-stack developer chỉ lập trình viên có khả năng lập trình từ Front-end đến Back-end của một website.'
-  },
-  {
-    question: 'Học xong thì có thể đi làm ở đâu?',
-    answer:
-      'Sau khi học xong bạn có thể tham gia nộp CV và phỏng vấn việc làm tại các công ty IT đang hiện có theo từng khóa học bạn theo như VNG, KMS, TMA, …'
-  }
-];
 
 const RootStyle = styled(motion.div)(({ theme }) => ({
   paddingTop: theme.spacing(5),
@@ -136,11 +103,7 @@ export default function AdvisoryComponent() {
                   variant="h6"
                 >
                   {detail.question}
-                  {/* <LabelIcon color="secondary" fontSize={isDesktop ? 'large' : 'medium'} /> */}
                 </Typography>
-                {/* <Typography sx={{ color: 'text.black' }} variant="h6">
-                  {detail.question}
-                </Typography> */}
               </AccordionSummary>
               <AccordionDetails>
                 <Typography
