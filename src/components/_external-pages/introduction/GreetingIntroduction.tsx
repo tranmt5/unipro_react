@@ -50,8 +50,8 @@ export default function GreetingIntroduction() {
             <Grid container>
               <Grid item xs={12} sm={9} md={8}>
                 <Typography
-                  variant={isDesktopMd ? 'h6' : 'h5'}
-                  color={isDesktopSm ? '#00000' : '#ffff'}
+                  variant={isDesktopMd ? 'h3' : 'h2'}
+                  color={isDesktopSm ? '#00000' : '#FF6600'}
                   sx={{ ml: { sm: 6, lg: 8 }, px: 2, py: 2 }}
                 >
                   Giới thiệu về UniPro
@@ -59,7 +59,7 @@ export default function GreetingIntroduction() {
               </Grid>
             </Grid>
           </MotionInView>
-          <MotionInView variants={varFadeInDown}>
+          {/* <MotionInView variants={varFadeInDown}>
             <Grid container>
               <Grid item xs={12} sm={9} md={8}>
                 <Typography
@@ -73,17 +73,17 @@ export default function GreetingIntroduction() {
                 </Typography>
               </Grid>
             </Grid>
-          </MotionInView>
+          </MotionInView> */}
           <MotionInView variants={varFadeInDown}>
             <Grid container>
               <Grid item xs={12} sm={9} md={8}>
                 <Typography
-                  variant={isDesktopMd ? 'h6' : 'h5'}
+                  variant={isDesktopMd ? 'h6' : 'h4'}
                   color={isDesktopSm ? '#00000' : '#ffff'}
                   sx={{ ml: { sm: 6, lg: 8 }, px: 2, py: 2 }}
                 >
-                  Với nhiều năm kinh nghiệm cùng phương pháp đào tạo hiệu quả, UniPro đào tạo học
-                  viên theo từng cấp độ, tạo môi trường học tập phù hợp nhất cho từng người.
+                  Với nhiều năm kinh nghiệm cùng phương pháp đào tạo hiệu quả, UniPro hướng dẫn theo
+                  từng cấp độ và môi trường học tập phù hợp nhất cho từng học viên.
                 </Typography>
               </Grid>
             </Grid>

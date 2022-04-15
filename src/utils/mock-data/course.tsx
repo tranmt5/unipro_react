@@ -5,7 +5,14 @@ import WifiProtectedSetupIcon from '@material-ui/icons/WifiProtectedSetup';
 import FunctionsIcon from '@material-ui/icons/Functions';
 import CurrencyExchangeIcon from '@material-ui/icons/PriceCheck';
 
-export const BOOTCAMPCOURSE = ['FRONTENT', 'BACKEND', 'FULLSTACK', 'MOBILE DEVELOPER'];
+export const BOOTCAMPCOURSE = [
+  'FRONTENT',
+  'BACKEND',
+  'FULLSTACK',
+  'MOBILE DEVELOPER',
+  'DATA SCIENCE & AI',
+  'COMPUTER NETWORKS & SECURITY'
+];
 
 export const COURSEDETAILS = [
   {
@@ -32,7 +39,7 @@ export const COURSEDETAILS = [
         semester: 'Học kỳ 2',
         subject: (
           <ul>
-            <li>JReactJS cơ bản</li>
+            <li>ReactJS cơ bản</li>
             <li>ReactJS nâng cao</li>
           </ul>
         ),
@@ -204,6 +211,94 @@ export const COURSEDETAILS = [
           <ul>
             <li>Swift iOs cơ bản</li>
             <li>Swift iOs nâng cao</li>
+          </ul>
+        ),
+        time: '2 tháng',
+        icon: <WifiProtectedSetupIcon color="secondary" />
+      }
+    ]
+  },
+  {
+    title: 'Khoa học dữ liệu & Trí tuệ nhân tạo',
+    image: '/static/course/course_data_science_ai.jpg',
+    description:
+      'Lập trình viên phát triển ứng dụng làm thông minh hóa các hệ thống sản xuất và trong các ứng dụng đời sống.',
+    caption: 'Chương trình Khoa học dữ liệu và trí tuệ nhân tạo.',
+    target:
+      'Nắm vững các kiến thức thiết kế xây dựng các hệ thống khai thác, xử lý dữ liệu… cũng như phát triển những hệ thống trí tuệ nhân tạo.',
+    course: [
+      {
+        semester: 'Học kỳ 1',
+        subject: (
+          <ul>
+            <li>Tư duy phân tích dữ liệu & Thực hành với Excel</li>
+            <li>Lưu trữ dữ liệu lớn với MSSQL và Google Big Query</li>
+          </ul>
+        ),
+        time: '2 tháng',
+        icon: <WorkspacesIcon color="secondary" />
+      },
+      {
+        semester: 'Học kỳ 2',
+        subject: (
+          <ul>
+            <li>Lập trình Python cơ bản</li>
+            <li>Lập trình Python trong khoa học dữ liệu</li>
+          </ul>
+        ),
+        time: '2 tháng',
+        icon: <SuperscriptIcon color="secondary" />
+      },
+      {
+        semester: 'Học kỳ 3',
+        subject: (
+          <ul>
+            <li>Trình bày dữ liệu với Google Data Studio</li>
+            <li>Trình bày dữ liệu với PowerBI</li>
+          </ul>
+        ),
+        time: '2 tháng',
+        icon: <WifiProtectedSetupIcon color="secondary" />
+      }
+    ]
+  },
+  {
+    title: 'Mạng máy tính & An toàn thông tin',
+    image: '/static/course/course_computer_network_security.jpg',
+    description:
+      'Đây là một thuật ngữ chuyên môn để chỉ những lập trình viên đảm bảo an toàn thông tin người dùng internet.',
+    caption: 'Chương trình Mạng máy tính và An toàn thông tin.',
+    target:
+      'Đảm bảo được độ an toàn thông tin người dùng không chỉ dừng lại ở việc bảo vệ hệ thống máy tính khỏi sự xâm nhập bất hợp pháp của hacker, mà đòi hỏi độ an toàn thông tin trong truyền nhận dữ liệu và lưu trữ.',
+    course: [
+      {
+        semester: 'Học kỳ 1',
+        subject: (
+          <ul>
+            <li>Windows Server OS</li>
+            <li>Linux OS</li>
+          </ul>
+        ),
+        time: '2 tháng',
+        icon: <WorkspacesIcon color="secondary" />
+      },
+      {
+        semester: 'Học kỳ 2',
+        subject: (
+          <ul>
+            <li>Networking (CCNA)</li>
+            <li>Mikrotik RouterOS</li>
+          </ul>
+        ),
+        time: '2 tháng',
+        icon: <SuperscriptIcon color="secondary" />
+      },
+      {
+        semester: 'Học kỳ 3',
+        subject: (
+          <ul>
+            <li>Web security</li>
+            <li>Digital forensics</li>
           </ul>
         ),
         time: '2 tháng',

@@ -109,6 +109,9 @@ function MenuDesktopItem({ item, pathname, isHome, isOffset }: MenuDesktopItemPr
       <div key={title}>
         <LinkStyle
           onClick={handleClick}
+          // key={title}
+          // to={path}
+          // component={RouterLink}
           sx={{
             display: 'flex',
             cursor: 'pointer',

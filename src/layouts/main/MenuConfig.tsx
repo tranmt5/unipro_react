@@ -13,6 +13,15 @@ export const rightMenuConfig = [
     title: 'Trang chủ',
     path: '/',
     icon: <ApartmentIcon {...ICON_SIZE} />
+    // children: [
+    //   {
+    //     subheader: 'Other',
+    //     items: [
+    //       { title: 'About us', path: '/khoa-hoc' },
+    //       { title: 'About ', path: '/gioi-thieu' }
+    //     ]
+    //   }
+    // ]
   },
   {
     title: 'Khóa học',

@@ -28,6 +28,9 @@ const CardStyle = styled(Card)(({ theme }) => {
     maxWidth: 380,
     minHeight: 400,
     margin: 'auto',
+    [theme.breakpoints.down('md')]: {
+      minHeight: 'auto'
+    },
     textAlign: 'center',
     padding: theme.spacing(4, 2, 4),
     boxShadow: `-40px 40px 80px 0 ${shadowCard(0.48)}`,
@@ -49,7 +52,7 @@ const CardIconStyle = styled('img')(({ theme }) => ({
   width: 54,
   height: 54,
   margin: 'auto',
-  marginBottom: theme.spacing(5),
+  marginBottom: theme.spacing(3),
   filter: shadowIcon(theme.palette.primary.main)
 }));
 
@@ -59,6 +62,7 @@ export default function HomeThreeModels() {
   const theme = useTheme();
   const isLight = theme.palette.mode === 'light';
   const isDesktop = useMediaQuery(theme.breakpoints.up('md'));
+  const isDesktopSmDown = useMediaQuery(theme.breakpoints.down('sm'));
 
   return (
     <RootStyle initial="initial" animate="animate" variants={varWrapEnter}>
@@ -99,6 +103,13 @@ export default function HomeThreeModels() {
               <MotionInView variants={varFadeInUp}>
                 <CardStyle
                   className={(index === 0 && 'cardLeft') || (index === 1 && 'cardCenter') || ''}
+                  onMouseOver={(event) =>
+                    !isDesktopSmDown &&
+                    (event.currentTarget.style.borderBottom = '5px solid rgba(241, 90, 34, 1)')
+                  }
+                  onMouseLeave={(event) =>
+                    !isDesktopSmDown && (event.currentTarget.style.borderBottom = 'none')
+                  }
                 >
                   <CardIconStyle
                     src={card.icon}

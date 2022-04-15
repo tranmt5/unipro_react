@@ -59,7 +59,7 @@ export default function RegisterForm({ onToggleLoadingOverlay, onChangeMessage }
   const [date, setDate] = useState<Date | null>(new Date());
   const [advisory, setAdvisory] = useState<AdvisoryType>({
     fromEmail: '',
-    toEmail: 'tranminhtuan8690@gmail.com',
+    toEmail: 'khiemtranthien1411@gmail.com',
     fullName: '',
     phone: '',
     program: PROGRAMS[0].label,
@@ -81,11 +81,13 @@ export default function RegisterForm({ onToggleLoadingOverlay, onChangeMessage }
     phone: false
   });
 
-  const [errors, setErrors] = useState({
+  const errorDefault = {
     fromEmail: 'Vui lòng nhập email của bạn!',
     fullName: 'Vui lòng nhập tên của bạn!',
     phone: 'Vui lòng nhập số điện thoại của bạn!'
-  });
+  };
+
+  const [errors, setErrors] = useState(errorDefault);
 
   const handleChangeProgram = (event: any) => {
     event.preventDefault();
@@ -143,6 +145,7 @@ export default function RegisterForm({ onToggleLoadingOverlay, onChangeMessage }
     setVisibleError({ ...visibleError, fromEmail: true, fullName: true, phone: true });
     let valid = true;
     Object.values(errors).forEach((val) => val.length > 0 && (valid = false));
+    console.log(`value=  + ${valid}`);
     return valid;
   };
 
@@ -163,6 +166,7 @@ export default function RegisterForm({ onToggleLoadingOverlay, onChangeMessage }
         await contactApi.createAdvisory(advisory);
         onChangeMessage('Thành công! UniPro sẽ liên hệ lại với bạn.');
         setAdvisory(DefaultAdvisory);
+        setErrors(errorDefault);
         setVisibleError({ ...visibleError, fromEmail: false, fullName: false, phone: false });
         console.log('success');
       } catch (error) {
@@ -207,7 +211,7 @@ export default function RegisterForm({ onToggleLoadingOverlay, onChangeMessage }
             <MotionInView variants={varFadeInDown}>
               <Stack direction="row" justifyContent="center">
                 <Typography variant="h3" sx={{ mb: 3 }}>
-                  Đăng ký tư vấn
+                  ĐĂNG KÝ TƯ VẤN
                 </Typography>
               </Stack>
             </MotionInView>
@@ -233,7 +237,7 @@ export default function RegisterForm({ onToggleLoadingOverlay, onChangeMessage }
                 <LocalizationProvider dateAdapter={AdapterDateFns}>
                   {isDesktop && (
                     <DesktopDatePicker
-                      label="Date"
+                      label="Ngày gửi"
                       value={date}
                       inputFormat="dd/MM/yyyy"
                       readOnly
@@ -246,7 +250,7 @@ export default function RegisterForm({ onToggleLoadingOverlay, onChangeMessage }
                   )}
                   {!isDesktop && (
                     <MobileDatePicker
-                      label="Date"
+                      label="Ngày gửi"
                       value={date}
                       inputFormat="dd/MM/yyyy"
                       readOnly
@@ -262,7 +266,7 @@ export default function RegisterForm({ onToggleLoadingOverlay, onChangeMessage }
               <Grid item xs={12} md={6} container justifyContent="center">
                 <ValidationTextField
                   focused
-                  label="Fullname"
+                  label="Tên của bạn"
                   name="fullName"
                   value={advisory.fullName}
                   required
@@ -275,7 +279,7 @@ export default function RegisterForm({ onToggleLoadingOverlay, onChangeMessage }
               </Grid>
               <Grid item xs={12} md={6} container justifyContent="center">
                 <ValidationTextField
-                  label="Email"
+                  label="Email của bạn"
                   name="fromEmail"
                   value={advisory.fromEmail}
                   required
@@ -288,7 +292,7 @@ export default function RegisterForm({ onToggleLoadingOverlay, onChangeMessage }
               </Grid>
               <Grid item xs={12} md={6} container justifyContent="center">
                 <ValidationTextField
-                  label="Phone(0xx-xxx-xxxx)"
+                  label="Số điện thoại(0xx-xxx-xxxx)"
                   name="phone"
                   value={advisory.phone}
                   required

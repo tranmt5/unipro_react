@@ -338,7 +338,7 @@ export default function BootcampService() {
                       style={{ pointerEvents: 'auto', marginLeft: 'auto', fontSize: 'h6' }}
                       aria-label="learn more"
                     >
-                      {expanded ? 'ẨN' : 'CHI TIẾT...'}
+                      {expanded ? 'ẨN BỚT' : 'CHI TIẾT...'}
                     </Button>
                   </CardActions>
                 </div>
